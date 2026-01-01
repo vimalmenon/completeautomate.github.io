@@ -1,5 +1,10 @@
 # CompleteAutomate
 
+### What we do?
+- We assist companies with automation
+- We automate menial tasks / workflows there by reducing manual efforts
+- 
+
 
 ### Stories
 
@@ -10,4 +15,5 @@
 
 ### Styles
 
+- Background : White
 - Theme : Yellow / Black
