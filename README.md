@@ -7,7 +7,6 @@
 - We automate menial tasks
 
 
-
 ### Styles
 
 - Background : White
@@ -67,13 +66,13 @@
 - [YouTube](https://www.youtube.com/@real_vimal_menon)
 
 
-
 ### Time Management
 
 - [ ] 1.5 hours for video making
 - [ ] 1 hour for video editing
 - [ ] 2 hours Research business
 - [ ] 5 hours Develop business
+
 
 ---
 #### Version
