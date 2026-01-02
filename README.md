@@ -1,9 +1,10 @@
 # [Complete Automate](http://completeautomate.com/)
 
+
 ### What we do?
+
 - We assist companies with automation
 - We automate menial tasks
-- 
 
 
 ### Stories
