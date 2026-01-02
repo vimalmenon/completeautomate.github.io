@@ -7,8 +7,10 @@ export default function Home() {
     //     This is the home page.
     //   </main>
     // </div>
-    <div>
-      Page is under construction.
+    <div className="flex min-h-screen items-center justify-center bg-white">
+      <div className="text-center">
+        Page is under construction.
+      </div>
     </div>
   );
 }
