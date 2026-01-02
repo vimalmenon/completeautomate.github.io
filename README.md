@@ -47,21 +47,26 @@
 
 
 ### Stories
-- [1] Header
-- [2] Footer
-- [3] Pages
-    - [3.1] Home
-    - [3.2] About
-    - [3.3] Contact us
-    
+
+- [1] Layout
+    - [1.1] Header
+    - [2.1] Footer
+    - [3.1] Main Page
+- [2] Pages
+    - [2.1] Home
+    - [2.2] About
+    - [2.3] Contact us
+
 
 
 ### Links
+
 - [Complete Automate](http://completeautomate.com/)
 - [YouTube](https://www.youtube.com/@real_vimal_menon)
 
 
 ---
 #### Version
+
 v0.0.01
 
