@@ -7,12 +7,6 @@
 - We automate menial tasks
 
 
-### Stories
-
-- Common Header
-- Common Footer
-- Pages Partial
-
 
 ### Styles
 
@@ -37,17 +31,29 @@
 
 
 ### Done
+
 - [x] Domain Name
 - [x] Set Up Site
 
 
 ### Expenses
+
 - CapEx
     - None
     
 - OpEx
     - GitHub Copilot : 80 HKD for 1 Month
     - Domain Name : 500 HKD for 4 Years
+
+
+### Stories
+- [1] Header
+- [2] Footer
+- [3] Pages
+    - [3.1] Home
+    - [3.2] About
+    - [3.3] Contact us
+    
 
 
 ### Links
