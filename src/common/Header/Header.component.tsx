@@ -10,19 +10,9 @@ export const Header: React.FC = () => {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <Link href="/about" className="hover:text-yellow-200">
+              {/* <Link href="/about" className="hover:text-yellow-200">
                 About
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-yellow-200">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-yellow-200">
-                Contact
-              </Link>
+              </Link> */}
             </li>
           </ul>
         </nav>
