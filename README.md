@@ -21,11 +21,11 @@
 
 
 ### To Do
+
 - YouTube
     - [ ] YouTube Videos
     - [ ] YouTube Shorts
 - Website
-    - [ ] Host our Website
     - [ ] Basic Pages
     - [ ] Backend
 - Instagram
@@ -38,6 +38,7 @@
 
 ### Done
 - [x] Domain Name
+- [x] Set Up Site
 
 
 ### Expenses
