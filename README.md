@@ -56,7 +56,8 @@
     - [2.1] Home
     - [2.2] About
     - [2.3] Contact us
-
+- [3] Builds
+    - [3.1] Set up eslint
 
 
 ### Links
