@@ -260,14 +260,45 @@ Make sure all imports use correct relative paths. Check that the file exists and
 
 ## Contributing
 
-1. Create a feature branch: `git checkout -b feature/your-feature`
-2. Make changes and test thoroughly
-3. Run type checking: `npm run tsc`
-4. Commit with clear messages: `git commit -m "Add feature description"`
-5. Push: `git push origin feature/your-feature`
-6. Create a pull request
-7. Request review from team members
-8. Ensure all checks pass before merging
+### Important Rules
+
+⚠️ **NEVER commit directly to the main branch**
+- All work must be done on feature branches
+- Main branch should only be updated through pull requests
+- Use feature branches: `feature/your-feature` or `fix/bug-fix`
+
+### Workflow
+
+1. Ensure you're on main and up to date: `git checkout main && git pull origin main`
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make changes and test thoroughly
+4. Run type checking: `npm run tsc`
+5. Commit with clear messages: `git commit -m "Add feature description"`
+6. Push: `git push origin feature/your-feature`
+7. Create a pull request with description of changes
+8. Request review from team members
+9. Ensure all checks pass before merging
+10. Delete feature branch after merge: `git branch -d feature/your-feature`
+
+### Branch Naming Conventions
+
+- `feature/feature-name` - For new features
+- `fix/bug-name` - For bug fixes
+- `docs/update-docs` - For documentation updates
+- `refactor/refactor-name` - For refactoring code
+
+**Example:**
+```bash
+# Good branch names
+git checkout -b feature/add-user-dashboard
+git checkout -b fix/header-styling
+git checkout -b docs/update-readme
+
+# Bad branch names
+git checkout -b my-changes
+git checkout -b test
+git checkout -b new-feature
+```
 
 ---
 
