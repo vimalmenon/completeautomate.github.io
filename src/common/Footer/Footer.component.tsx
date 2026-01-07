@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
                     <div className="text-center md:text-left">
                         <h3 className="text-lg font-bold mb-2">
                             <span className="text-yellow-400">Complete</span>
-                            <span className="text-red-500">Automate</span>
+                            <span className="text-red-500"> Automate</span>
                         </h3>
                         <p className="text-sm text-gray-400">
                             Automation solutions for modern workflows
@@ -22,12 +22,12 @@ export const Footer: React.FC = () => {
                     {/* Links Section */}
                     <div className="text-center">
                         <h4 className="font-semibold mb-3 text-yellow-400">Quick Links</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li><a href="/" className="text-gray-400 hover:text-yellow-400 transition">Home</a></li>
-                            <li><a href="/services" className="text-gray-400 hover:text-yellow-400 transition">Services</a></li>
-                            <li><a href="/about" className="text-gray-400 hover:text-yellow-400 transition">About</a></li>
-                            <li><a href="/contact" className="text-gray-400 hover:text-yellow-400 transition">Contact</a></li>
-                        </ul>
+                        <div className="grid grid-cols-2 gap-3 text-sm">
+                            <a href="/" className="text-gray-400 hover:text-yellow-400 transition">Home</a>
+                            <a href="/services" className="text-gray-400 hover:text-yellow-400 transition">Services</a>
+                            <a href="/about" className="text-gray-400 hover:text-yellow-400 transition">About</a>
+                            <a href="/contact" className="text-gray-400 hover:text-yellow-400 transition">Contact</a>
+                        </div>
                     </div>
 
                     {/* Social Links Section */}
