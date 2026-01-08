@@ -54,6 +54,74 @@ npm run build    # Production build
 npm start        # Start production server
 ```
 
+## Bash Guide: Creating Files with Text
+
+### Method 1: Using `echo` (Single Line)
+```bash
+echo "Your text here" > filename.txt
+```
+**Example**:
+```bash
+echo "Hello World" > greeting.txt
+```
+
+### Method 2: Using `echo` with Append (Multiple Lines)
+```bash
+echo "Line 1" > filename.txt
+echo "Line 2" >> filename.txt
+echo "Line 3" >> filename.txt
+```
+**Note**: Use `>` for first line (overwrites), `>>` for subsequent lines (appends)
+
+### Method 3: Using `cat` with Here-Document (Multi-line)
+```bash
+cat > filename.txt << EOF
+Your text content here
+Can be multiple lines
+No need to escape quotes
+EOF
+```
+**Example**:
+```bash
+cat > config.json << EOF
+{
+  "name": "MyApp",
+  "version": "1.0.0"
+}
+EOF
+```
+
+### Method 4: Using `tee` (Write & Display)
+```bash
+echo "Your text here" | tee filename.txt
+```
+**Example**:
+```bash
+echo "Installation complete" | tee install.log
+```
+
+### Method 5: Create with `touch` (Empty File)
+```bash
+touch filename.txt
+```
+
+### Method 6: Using `printf` (Formatted Content)
+```bash
+printf "Line 1\nLine 2\nLine 3\n" > filename.txt
+```
+
+### Common Tips
+
+| Action | Command |
+|--------|---------|
+| Create/overwrite file | `echo "text" > file.txt` |
+| Append to file | `echo "text" >> file.txt` |
+| View file content | `cat file.txt` |
+| Edit file | `nano file.txt` or `vim file.txt` |
+| Create multi-line | `cat > file.txt << EOF` ... `EOF` |
+| Delete file | `rm file.txt` |
+| Copy file | `cp source.txt destination.txt` |
+
 ## Contributing Rules
 
 ### ⚠️ CRITICAL: Never Commit to Main
