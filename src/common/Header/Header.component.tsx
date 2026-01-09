@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from './Header.module.css';
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +10,7 @@ export const Header: React.FC = () => {
   // Handle scroll for sticky header
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 0);
+      setIsSticky(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -35,6 +34,18 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
@@ -44,35 +55,37 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`${styles.header} ${isSticky ? styles.sticky : ''}`}
+      className={`fixed top-0 left-0 right-0 w-full bg-white shadow-md z-50 transition-all duration-300 ${isSticky ? 'shadow-lg' : ''}`}
       role="banner"
     >
       <nav
-        className={styles.navbar}
+        className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto"
         role="navigation"
         aria-label="Main navigation"
       >
         {/* Logo Section */}
-        <div className={styles.logoContainer}>
+        <div>
           <Link
             href="/"
-            className={styles.logo}
+            className="flex items-center gap-1 text-2xl font-bold"
             aria-label="CompleteAutomate Home"
+            onClick={handleNavClick}
           >
-            <span className={styles.logoText}>Complete</span>
-            <span className={styles.logoHighlight}>Automate</span>
+            <span className="text-gray-900">Complete</span>
+            <span className="text-blue-600">Automate</span>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <div className={styles.desktopNav}>
-          <ul className={styles.navList} role="menubar">
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex items-center gap-8" role="menubar">
             {navItems.map((item) => (
               <li key={item.label} role="none">
                 <Link
                   href={item.href}
-                  className={styles.navLink}
+                  className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
                   role="menuitem"
+                  tabIndex={0}
                 >
                   {item.label}
                 </Link>
@@ -83,59 +96,52 @@ export const Header: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
+          className="md:hidden flex flex-col gap-1.5 cursor-pointer"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle navigation menu"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
           type="button"
+          tabIndex={0}
         >
-          <span className={styles.hamburgerLine}></span>
-          <span className={styles.hamburgerLine}></span>
-          <span className={styles.hamburgerLine}></span>
+          <span className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
         </button>
       </nav>
 
       {/* Mobile Navigation Menu */}
       <nav
         id="mobile-menu"
-        className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}
+        className={`md:hidden fixed left-0 right-0 top-20 bg-white shadow-lg transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-96' : 'max-h-0'}`}
         role="navigation"
         aria-label="Mobile navigation"
         aria-hidden={!isMenuOpen}
       >
-        <ul className={styles.mobileNavList} role="menubar">
+        <ul className="flex flex-col gap-4 p-6" role="menubar">
           {navItems.map((item) => (
             <li key={item.label} role="none">
               <Link
                 href={item.href}
-                className={styles.mobileNavLink}
+                className="text-gray-700 hover:text-blue-600 transition-colors font-medium block"
                 role="menuitem"
                 onClick={handleNavClick}
+                tabIndex={isMenuOpen ? 0 : -1}
               >
                 {item.label}
               </Link>
             </li>
           ))}
-          <li role="none" className={styles.mobileCTAContainer}>
-            <Link
-              href="/consultation"
-              className={styles.mobileCTAButton}
-              role="button"
-              onClick={handleNavClick}
-            >
-              Get Free Consultation
-            </Link>
-          </li>
         </ul>
       </nav>
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div
-          className={styles.menuOverlay}
+          className="md:hidden fixed inset-0 bg-black/30 top-20 z-40"
           onClick={() => setIsMenuOpen(false)}
           aria-hidden="true"
+          tabIndex={-1}
         ></div>
       )}
     </header>
