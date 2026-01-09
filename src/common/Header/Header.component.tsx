@@ -67,7 +67,7 @@ export const Header: React.FC = () => {
         <div>
           <Link
             href="/"
-            className="flex items-center gap-1 text-2xl font-bold"
+            className="flex items-center gap-1 text-2xl font-bold focus:outline-none"
             aria-label="CompleteAutomate Home"
             onClick={handleNavClick}
           >
