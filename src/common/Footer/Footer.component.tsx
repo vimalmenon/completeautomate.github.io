@@ -1,5 +1,3 @@
-'use client';
-
 import { Youtube, Mail, Github } from 'lucide-react';
 
 export const Footer: React.FC = () => {
