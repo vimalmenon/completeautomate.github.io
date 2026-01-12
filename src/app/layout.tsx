@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header, Footer } from "@common";
+import { AppContext } from "@context"
 import "./globals.css";
 
 const geistSans = Geist({
@@ -69,6 +70,7 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 5,
   },
+
   category: "Technology",
 };
 
@@ -82,11 +84,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        <Header />
-        <main>
-          {children}
-        </main>
-        <Footer />
+        <AppContext>
+          <Header />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </AppContext>
       </body>
     </html>
   );
