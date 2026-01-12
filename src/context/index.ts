@@ -1,1 +1,1 @@
-export * from "./AppContext.component";
+export * from './AppContext.component';

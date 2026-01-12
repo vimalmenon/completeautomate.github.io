@@ -1,77 +1,81 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Header, Footer } from "@common";
-import { AppContext } from "@context"
-import "./globals.css";
+import type { Metadata } from 'next';
+
+import { Geist, Geist_Mono } from 'next/font/google';
+
+import { Footer, Header } from '@common';
+import { AppContext } from '@context';
+import './globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
 });
 
 export const metadata: Metadata = {
-  title: "Complete Automate | Automation Scripts & Workflow Solutions",
-  description: "Your all-in-one solution for automation scripts and tools. We provide a comprehensive collection of ready-to-use automation scripts to streamline your workflows and boost productivity.",
-  keywords: ["automation", "scripts", "workflow", "productivity", "tools"],
-  authors: [{ name: "CompleteAutomate" }],
-  creator: "CompleteAutomate",
-  publisher: "CompleteAutomate",
+  authors: [{ name: 'CompleteAutomate' }],
+  category: 'Technology',
+  creator: 'CompleteAutomate',
+  description:
+    'Your all-in-one solution for automation scripts and tools. We provide a comprehensive collection of ready-to-use automation scripts to streamline your workflows and boost productivity.',
   formatDetection: {
-    email: true,
     address: false,
+    email: true,
     telephone: false,
   },
-  metadataBase: new URL("http://completeautomate.com"),
+  icons: {
+    apple: '/apple-touch-icon.png',
+    icon: '/favicon.ico',
+  },
+  keywords: ['automation', 'scripts', 'workflow', 'productivity', 'tools'],
+  metadataBase: new URL('http://completeautomate.com'),
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "http://completeautomate.com",
-    title: "Complete Automate | Automation Scripts & Workflow Solutions",
-    description: "Your all-in-one solution for automation scripts and tools. Streamline your workflows and boost productivity.",
-    siteName: "CompleteAutomate",
+    description:
+      'Your all-in-one solution for automation scripts and tools. Streamline your workflows and boost productivity.',
     images: [
       {
-        url: "http://completeautomate.com/og-image.jpg",
-        width: 1200,
+        alt: 'CompleteAutomate - Automation Solutions',
         height: 630,
-        alt: "CompleteAutomate - Automation Solutions",
+        url: 'http://completeautomate.com/og-image.jpg',
+        width: 1200,
       },
     ],
+    locale: 'en_US',
+    siteName: 'CompleteAutomate',
+    title: 'Complete Automate | Automation Scripts & Workflow Solutions',
+    type: 'website',
+    url: 'http://completeautomate.com',
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Complete Automate | Automation Scripts & Workflow Solutions",
-    description: "Streamline your workflows with automation scripts and tools.",
-    creator: "@real_vimal_menon",
-    images: ["http://completeautomate.com/og-image.jpg"],
-  },
+  publisher: 'CompleteAutomate',
   robots: {
-    index: true,
     follow: true,
     googleBot: {
-      index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
+      index: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
+    index: true,
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
+  title: 'Complete Automate | Automation Scripts & Workflow Solutions',
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@real_vimal_menon',
+    description: 'Streamline your workflows with automation scripts and tools.',
+    images: ['http://completeautomate.com/og-image.jpg'],
+    title: 'Complete Automate | Automation Scripts & Workflow Solutions',
   },
 
-  category: "Technology",
+  viewport: {
+    initialScale: 1,
+    maximumScale: 5,
+    width: 'device-width',
+  },
 };
 
 export default function RootLayout({
@@ -81,14 +85,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}>
         <AppContext>
           <Header />
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
           <Footer />
         </AppContext>
       </body>
