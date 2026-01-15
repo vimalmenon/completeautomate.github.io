@@ -66,9 +66,81 @@ npm start
 | `npm run dev` | Start development server on http://localhost:3000 |
 | `npm run build` | Build production bundle |
 | `npm start` | Start production server |
-| `npm run lint` | Run ESLint |
+| `npm run lint` | Run ESLint to check code quality |
+| `npm run lint:fix` | Run ESLint and fix fixable issues |
+| `npm run format` | Format code with Prettier |
 | `npm run tsc` | Type check with TypeScript |
 | `npm run update` | Update dependencies |
+
+## 🎨 Code Quality & Formatting
+
+### ESLint
+
+ESLint is configured to enforce code quality standards and best practices.
+
+**Configuration File**: `eslint.config.mjs`
+
+**Key Rules**:
+- TypeScript support with recommended rules
+- React best practices and hooks validation
+- Next.js specific recommendations
+- Import organization
+- Unused variable detection
+- Code complexity checks
+
+**Running ESLint**:
+```bash
+# Check for issues
+npm run lint
+
+# Fix fixable issues automatically
+npm run lint:fix
+```
+
+### Prettier
+
+Prettier is used for consistent code formatting across the project.
+
+**Configuration File**: `.prettierrc.js`
+
+**Format Rules**:
+- 2-space indentation
+- Single quotes for strings
+- Semicolons required
+- Trailing commas in multi-line objects/arrays
+- Print width: 80 characters
+- Automatic formatting on save (when configured in IDE)
+
+**Running Prettier**:
+```bash
+# Format all files
+npm run format
+
+# Format specific file
+npx prettier --write src/app/page.tsx
+```
+
+**IDE Integration**:
+- **VS Code**: Install Prettier extension and enable "Format on Save"
+- Configure in VS Code settings:
+  ```json
+  {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+  ```
+
+### Pre-commit Hooks
+
+To ensure code quality before committing:
+
+```bash
+# Install husky (if not already installed)
+npx husky install
+
+# This will run ESLint and Prettier checks before each commit
+```
+
 
 ## 📁 Project Structure
 
@@ -127,6 +199,33 @@ completeautomate.github.io/
 - **Website**: [completeautomate.com](http://completeautomate.com/)
 - **YouTube**: [@real_vimal_menon](https://www.youtube.com/@real_vimal_menon)
 - **Email**: contact@completeautomate.com
+
+## 🐛 Troubleshooting
+
+### ESLint Issues
+
+**Issue**: ESLint errors not showing in IDE
+- **Solution**: Ensure ESLint extension is installed and workspace is trusted in VS Code
+
+**Issue**: Conflicting rules between ESLint and Prettier
+- **Solution**: ESLint is configured to defer formatting to Prettier. Run `npm run format` first, then `npm run lint`
+
+**Issue**: Rules too strict
+- **Solution**: Check `eslint.config.mjs` and adjust rules or disable specific rules inline with `// eslint-disable-line`
+
+### Prettier Issues
+
+**Issue**: Code not formatting on save
+- **Solution**: 
+  - Ensure Prettier extension is installed
+  - Check `.prettierrc.js` configuration
+  - Verify "Format on Save" is enabled in VS Code settings
+
+**Issue**: Conflicts with existing formatting
+- **Solution**: Run `npm run format` to reformat entire codebase, then commit
+
+**Issue**: Different formatting between developers
+- **Solution**: Ensure everyone uses the same `.prettierrc.js` configuration and runs `npm install`
 
 ## 📄 License
 
