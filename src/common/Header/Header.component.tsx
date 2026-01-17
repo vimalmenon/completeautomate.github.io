@@ -10,11 +10,14 @@ export const Header: React.FC = () => {
 
   // Handle scroll for sticky header
   useEffect(() => {
+    // Guard for SSR: only run in the browser
+    if (typeof window === 'undefined') return;
+
     const handleScroll = () => {
       setIsSticky(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -25,6 +28,9 @@ export const Header: React.FC = () => {
 
   // Handle keyboard escape
   useEffect(() => {
+    // Guard for SSR: only run in the browser
+    if (typeof window === 'undefined') return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setIsMenuOpen(false);
@@ -37,6 +43,9 @@ export const Header: React.FC = () => {
 
   // Prevent body scroll when menu is open
   useEffect(() => {
+    // Guard for SSR: only run in the browser
+    if (typeof document === 'undefined') return;
+
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
