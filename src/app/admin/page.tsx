@@ -1,10 +1,10 @@
 
 
-export default function Home() {
+export default function admin() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-white">
       <div className="text-center">
-        Page is under construction.
+        This is Admin Page
       </div>
     </div>
   );
