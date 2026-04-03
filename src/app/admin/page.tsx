@@ -1,4 +1,10 @@
-import { Env } from "../../constants";
+"use client";
+
+
+import { useEffect } from "react";
+import { Env, API_ROUTES } from "../../constants";
+
+
 
 const kpiCards = [
   { label: "Active Jobs", value: "128", trend: "+12%" },
@@ -29,6 +35,9 @@ const statusColor: Record<string, string> = {
 };
 
 export default function AdminPage() {
+  useEffect(() => {
+    fetch(`${Env.API_URL}${API_ROUTES.JOBS}`).then((res) => res.json()).then(console.log)
+  }, [])
   return (
     <main className="min-h-screen bg-zinc-50 text-zinc-900">
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
