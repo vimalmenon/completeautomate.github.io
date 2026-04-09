@@ -4,11 +4,13 @@
 ## TODO
 - [ ] Create a component for Admin Layout
 - [ ] Support Server Side Rendering
-- [ ] Create Blog Section
-- [ ] Keep admin page hidden
 - [ ] Set up linting
 - [ ] Set up prettify
 - [ ] Set up CI
+- [ ] Page
+    - [ ] Create Home Page
+    - [ ] Create Blog Page
+    - [ ] Create Admin Page
 
 ## 📦 Installation
 
