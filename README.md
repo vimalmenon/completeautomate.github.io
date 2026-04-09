@@ -2,12 +2,13 @@
 
 
 ## TODO
-- [ ] Create a component for Admin Layout
+- [ ] Create a Layout for Admin Layout
+- [ ] Library for react component
 - [ ] Support Server Side Rendering
 - [ ] Set up linting
 - [ ] Set up prettify
 - [ ] Set up CI
-- [ ] Page
+- [ ] Pages
     - [ ] Create Home Page
     - [ ] Create Blog Page
     - [ ] Create Admin Page
