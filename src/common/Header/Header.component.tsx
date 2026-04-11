@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -11,12 +12,21 @@ const navLinks = [
 
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="bg-black text-yellow-400 shadow-md">
+    <header className="sticky top-0 z-50 bg-black text-yellow-400 shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
-        <Link href="/" className="text-2xl font-bold">
-          CompleteAutomate
+        <Link href="/" className="flex flex-col leading-none">
+          <span className="text-2xl font-bold">
+            CompleteAutomate
+          </span>
+          <span className="hidden text-xs tracking-wide text-yellow-400/60 md:inline">
+            AI-Powered Automation
+          </span>
         </Link>
 
         <button
@@ -43,7 +53,14 @@ export const Header: React.FC = () => {
           <ul className="flex space-x-6">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:text-yellow-200">
+                <Link
+                  href={link.href}
+                  className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-yellow-200 after:transition-all after:duration-200 hover:text-yellow-200 hover:after:w-full ${
+                    isActive(link.href)
+                      ? "font-semibold text-yellow-200 after:w-full"
+                      : "after:w-0"
+                  }`}
+                >
                   {link.label}
                 </Link>
               </li>
@@ -52,23 +69,29 @@ export const Header: React.FC = () => {
         </nav>
       </div>
 
-      {menuOpen && (
-        <nav className="border-t border-yellow-400/20 md:hidden">
-          <ul className="container mx-auto flex flex-col gap-2 p-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block rounded px-2 py-1 hover:text-yellow-200"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <nav
+        className={`overflow-hidden border-t border-yellow-400/20 transition-all duration-300 md:hidden ${
+          menuOpen ? "max-h-64" : "max-h-0"
+        }`}
+      >
+        <ul className="container mx-auto flex flex-col gap-1 p-4">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-yellow-400/10 ${
+                  isActive(link.href)
+                    ? "font-semibold text-yellow-200"
+                    : ""
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 };
