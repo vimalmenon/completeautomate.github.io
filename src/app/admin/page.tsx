@@ -39,7 +39,7 @@ export default function AdminPage() {
     fetch(`${Env.API_URL}${API_ROUTES.JOBS}`).then((res) => res.json()).then(console.log)
   }, [])
   return (
-    <main className="min-h-screen bg-zinc-50 text-zinc-900">
+    <main className="flex-1 bg-zinc-50 text-zinc-900">
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           <aside className="lg:col-span-3">
