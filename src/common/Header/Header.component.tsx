@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "../ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -18,36 +19,40 @@ export const Header: React.FC = () => {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 bg-black text-yellow-400 shadow-md">
+    <header className="sticky top-0 z-50 bg-surface-dark text-primary shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/" className="flex flex-col leading-none">
           <span className="text-2xl font-bold">
             CompleteAutomate
           </span>
-          <span className="hidden text-xs tracking-wide text-yellow-400/60 md:inline">
+          <span className="hidden text-xs tracking-wide text-primary/60 md:inline">
             AI-Powered Automation
           </span>
         </Link>
 
-        <button
-          className="md:hidden"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={menuOpen}
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+
+          <button
+            className="md:hidden"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
           >
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
 
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
@@ -55,9 +60,9 @@ export const Header: React.FC = () => {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-yellow-200 after:transition-all after:duration-200 hover:text-yellow-200 hover:after:w-full ${
+                  className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-200 hover:text-accent hover:after:w-full ${
                     isActive(link.href)
-                      ? "font-semibold text-yellow-200 after:w-full"
+                      ? "font-semibold text-accent after:w-full"
                       : "after:w-0"
                   }`}
                 >
@@ -70,7 +75,7 @@ export const Header: React.FC = () => {
       </div>
 
       <nav
-        className={`overflow-hidden border-t border-yellow-400/20 transition-all duration-300 md:hidden ${
+        className={`overflow-hidden border-t border-primary/20 transition-all duration-300 md:hidden ${
           menuOpen ? "max-h-64" : "max-h-0"
         }`}
       >
@@ -79,9 +84,9 @@ export const Header: React.FC = () => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-yellow-400/10 ${
+                className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${
                   isActive(link.href)
-                    ? "font-semibold text-yellow-200"
+                    ? "font-semibold text-accent"
                     : ""
                 }`}
                 onClick={() => setMenuOpen(false)}
