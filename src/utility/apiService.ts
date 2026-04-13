@@ -1,5 +1,6 @@
 import { IApiData } from "../types";
 
 export const ApiService = async (data: IApiData<unknown>): Promise<unknown> => {
-  return await fetch(data.url);
+  const { baseUrl, url } = data;
+  return await fetch(`${baseUrl}${url}`);
 };
