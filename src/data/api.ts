@@ -20,7 +20,15 @@ export const getPrompts = (): IApiData => {
 export const getVideos = (channelId: string): IApiData => {
   return {
     baseUrl: Env.API_URL,
-    url: `api/v1/channels/{channelId}`,
+    url: `api/v1/channels/${channelId}`,
+    method: "GET",
+  };
+};
+
+export const getJobs = (): IApiData => {
+  return {
+    baseUrl: Env.API_URL,
+    url: `api/v1/jobs`,
     method: "GET",
   };
 };
