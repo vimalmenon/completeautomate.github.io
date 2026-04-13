@@ -13,7 +13,34 @@ export interface IJob {
   errorMsg?: string;
 }
 
-export interface IYouTubeVideo {}
+export interface IYouTubeVideoStats {
+  views: number;
+  likes: number;
+  comments: number;
+  timestamp: string;
+}
+
+export interface IYouTubeVideo {
+  refId: string;
+  publishedAt: string;
+  lastUpdatedAt: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  taskStatus: string;
+  tags: string[];
+  language: string;
+  stats: IYouTubeVideoStats[];
+  transcript: null;
+  summarizedTranscript: null;
+  userMessage: null;
+  status: "Active";
+  metadataSuggestions: string[];
+  thumbnailPromptSuggestions: string[];
+  thumbnailsSuggestions: string[];
+  communityPosts: string[];
+  twitterPosts: string[];
+}
 
 export interface IYouTubeChannelStats {
   subscriberCount: number;
