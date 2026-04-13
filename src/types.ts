@@ -18,3 +18,8 @@ export interface IYouTubeVideo {}
 export interface IYouTubeChannel {}
 
 export interface IPrompt {}
+
+export interface IResponse<T> {
+  data: T;
+}
+
