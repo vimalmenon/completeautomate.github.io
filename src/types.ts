@@ -1,4 +1,5 @@
 export type JobStatusType = "Running" | "Queued" | "Completed" | "Failed";
+export type ApiMethodType = "GET" | "POST" | "PUT" | "DELETE";
 
 export interface IJob {
   id: string;
@@ -89,4 +90,11 @@ export interface IPrompt {
 
 export interface IRequestResponse<T> {
   data: T;
+}
+
+export interface IApiData<T = unknown> {
+  baseUrl: string
+  url: string;
+  method: ApiMethodType;
+  data?: T;
 }

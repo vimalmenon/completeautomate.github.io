@@ -9,7 +9,7 @@ const navLinks = [
 const socialLinks = [
   {
     label: "YouTube",
-    href: "https://youtube.com/@completeautomate",
+    href: "https://youtube.com/@real_vimal_menon",
     icon: (
       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
