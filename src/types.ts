@@ -17,9 +17,21 @@ export interface IYouTubeVideo {}
 
 export interface IYouTubeChannel {}
 
-export interface IPrompt {}
-
-export interface IResponse<T> {
-  data: T;
+export interface IPromptVersion {
+  prompt: string;
+  systemMessage: string;
+  version: string;
+  ai: string;
+  createdAt: string;
+}
+export interface IPrompt {
+  task: string;
+  description: string;
+  version: string;
+  lastUpdated: string;
+  versions: IPromptVersion[];
 }
 
+export interface IRequestResponse<T> {
+  data: T;
+}
