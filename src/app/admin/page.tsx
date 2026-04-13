@@ -2,7 +2,7 @@
 
 
 import { useEffect } from "react";
-import { Env, API_ROUTES } from "../../constants";
+import { Env } from "../../constants";
 
 
 
@@ -35,9 +35,6 @@ const statusColor: Record<string, string> = {
 };
 
 export default function AdminPage() {
-  useEffect(() => {
-    fetch(`${Env.API_URL}${API_ROUTES.JOBS}`).then((res) => res.json()).then(console.log)
-  }, [])
   return (
     <main className="flex-1 bg-background text-foreground">
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
