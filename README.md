@@ -18,6 +18,7 @@
 - [ ] Images
   - [ ] Image for Website
   - [ ] Favicon for Website
+  - [ ] Logo for Website
 - [ ] Set Up Blogs
   - [ ] Add Page for Blogs
 - [ ] Other
@@ -25,7 +26,7 @@
   - [ ] Make Page Static as possible
 - [ ] Social Media SetUp
   - [ ] Twitter Account
-  - [ ] YouTube
+  - [ ] YouTube Channel
 
 
 
