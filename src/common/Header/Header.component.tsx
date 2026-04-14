@@ -4,12 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "../ThemeToggle";
+import { HeaderNavigation } from "../../data";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/blogs", label: "Blogs" },
-  { href: "/admin", label: "Admin" },
-];
 
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -56,17 +52,16 @@ export const Header: React.FC = () => {
 
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
-            {navLinks.map((link) => (
-              <li key={link.href}>
+            {HeaderNavigation.map((navigation) => (
+              <li key={navigation.url}>
                 <Link
-                  href={link.href}
-                  className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-200 hover:text-accent hover:after:w-full ${
-                    isActive(link.href)
-                      ? "font-semibold text-accent after:w-full"
-                      : "after:w-0"
-                  }`}
+                  href={navigation.url}
+                  className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-200 hover:text-accent hover:after:w-full ${isActive(navigation.url)
+                    ? "font-semibold text-accent after:w-full"
+                    : "after:w-0"
+                    }`}
                 >
-                  {link.label}
+                  {navigation.label}
                 </Link>
               </li>
             ))}
@@ -75,23 +70,21 @@ export const Header: React.FC = () => {
       </div>
 
       <nav
-        className={`overflow-hidden border-t border-primary/20 transition-all duration-300 md:hidden ${
-          menuOpen ? "max-h-64" : "max-h-0"
-        }`}
+        className={`overflow-hidden border-t border-primary/20 transition-all duration-300 md:hidden ${menuOpen ? "max-h-64" : "max-h-0"
+          }`}
       >
         <ul className="container mx-auto flex flex-col gap-1 p-4">
-          {navLinks.map((link) => (
-            <li key={link.href}>
+          {HeaderNavigation.map((navigation) => (
+            <li key={navigation.url}>
               <Link
-                href={link.href}
-                className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${
-                  isActive(link.href)
-                    ? "font-semibold text-accent"
-                    : ""
-                }`}
+                href={navigation.url}
+                className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${isActive(navigation.url)
+                  ? "font-semibold text-accent"
+                  : ""
+                  }`}
                 onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                {navigation.label}
               </Link>
             </li>
           ))}
