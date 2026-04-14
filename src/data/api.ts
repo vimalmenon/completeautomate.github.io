@@ -1,25 +1,25 @@
-import { Env } from '../constants';
-import { IApiData } from '../types';
+import { Env } from '@constants';
+import { IApiData } from '@types';
 
-export const getChannels = (): IApiData => ({
+export const getChannelsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: '/api/v1/channels',
 });
 
-export const getPrompts = (): IApiData => ({
+export const getPromptsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: '/api/v1/prompts',
 });
 
-export const getVideos = (channelId: string): IApiData => ({
+export const getVideosApi = (channelId: string): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
-  url: `api/v1/channels/${channelId}`,
+  url: `api/v1/channels/${channelId}/videos`,
 });
 
-export const getJobs = (): IApiData => ({
+export const getJobsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: `api/v1/jobs`,
