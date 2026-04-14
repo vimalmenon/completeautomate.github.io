@@ -26,6 +26,8 @@
   - [ ] Make pages static as much as possible
   - [ ] Have proper Title and Description
   - [ ] Components for `tailwindcss`
+  - [ ] Add Env for the Build
+  - [ ] Set up Auth
 - [ ] Social Media SetUp
   - [ ] Twitter Account
   - [ ] Instagram Account
