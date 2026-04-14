@@ -1,48 +1,47 @@
 import { Env } from "../constants";
+import { INavigation } from "../types";
 
-export const adminNavigation = {
+export const adminNavigation: INavigation = {
   url: "/admin",
   label: "Admin",
   hidden: !Env.ADMIN_ENABLED,
 };
 
-export const jobNavigation = {
+export const jobNavigation: INavigation = {
   url: "/admin/jobs",
   label: "Jobs",
   hidden: !Env.ADMIN_ENABLED,
 };
 
-export const promptsNavigation = {
+export const promptsNavigation: INavigation = {
   url: "/admin/prompts",
   label: "Prompts",
   hidden: !Env.ADMIN_ENABLED,
 };
 
-export const youtubeNavigation = {
+export const youtubeNavigation: INavigation = {
   url: "/admin/youtube",
   label: "YouTube",
   hidden: !Env.ADMIN_ENABLED,
 };
 
-export const homeNavigation = {
+export const homeNavigation: INavigation = {
   url: "/",
   label: "Home",
-  hidden: false,
 };
-export const blogsNavigation = {
+export const blogsNavigation: INavigation = {
   url: "/blogs",
   label: "Blogs",
-  hidden: false,
 };
 
-export const AdminNavigation = [
+export const AdminNavigation: INavigation[] = [
   adminNavigation,
   jobNavigation,
   promptsNavigation,
   youtubeNavigation,
 ];
 
-export const HeaderNavigation = [
+export const HeaderNavigation: INavigation[] = [
   homeNavigation,
   blogsNavigation,
   adminNavigation,

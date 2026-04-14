@@ -98,3 +98,10 @@ export interface IApiData<T = unknown> {
   method: ApiMethodType;
   data?: T;
 }
+
+
+export interface INavigation {
+  url: string;
+  label: string;
+  hidden?: boolean,
+}
