@@ -9,7 +9,19 @@ export const adminNavigation = {
 export const jobNavigation = {
   url: "/admin/jobs",
   label: "Jobs",
-  hidden: false,
+  hidden: !Env.ADMIN_ENABLED,
+};
+
+export const promptsNavigation = {
+  url: "/admin/prompts",
+  label: "Prompts",
+  hidden: !Env.ADMIN_ENABLED,
+};
+
+export const youtubeNavigation = {
+  url: "/admin/youtube",
+  label: "YouTube",
+  hidden: !Env.ADMIN_ENABLED,
 };
 
 export const homeNavigation = {
@@ -23,7 +35,12 @@ export const blogsNavigation = {
   hidden: false,
 };
 
-export const AdminNavigation = [adminNavigation, jobNavigation];
+export const AdminNavigation = [
+  adminNavigation,
+  jobNavigation,
+  promptsNavigation,
+  youtubeNavigation,
+];
 
 export const HeaderNavigation = [
   homeNavigation,
