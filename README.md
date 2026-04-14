@@ -15,12 +15,14 @@
 - [ ] Linting
   - [ ] Set up prettier
   - [ ] Set Up CI
+  - [ ] Set Up linting
 - [ ] Images
   - [ ] Image for Website
   - [ ] Favicon for Website
   - [ ] Logo for Website
 - [ ] Set Up Blogs
   - [ ] Add pages for blogs
+  - [ ] Admin pages to show Jobs/ Prompts / YouTube
 - [ ] Other
   - [ ] Fix HTTPS connection
   - [ ] Make pages static as much as possible
