@@ -52,19 +52,24 @@ export const Header: React.FC = () => {
 
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
-            {HeaderNavigation.map((navigation) => (
-              <li key={navigation.url}>
-                <Link
-                  href={navigation.url}
-                  className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-200 hover:text-accent hover:after:w-full ${isActive(navigation.url)
-                    ? "font-semibold text-accent after:w-full"
-                    : "after:w-0"
-                    }`}
-                >
-                  {navigation.label}
-                </Link>
-              </li>
-            ))}
+            {HeaderNavigation.map((navigation) => {
+              if (!navigation.hidden) {
+                return (
+                  <li key={navigation.url}>
+                    <Link
+                      href={navigation.url}
+                      className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-200 hover:text-accent hover:after:w-full ${isActive(navigation.url)
+                        ? "font-semibold text-accent after:w-full"
+                        : "after:w-0"
+                        }`}
+                    >
+                      {navigation.label}
+                    </Link>
+                  </li>
+                )
+              }
+              return null
+            })}
           </ul>
         </nav>
       </div>
@@ -74,20 +79,25 @@ export const Header: React.FC = () => {
           }`}
       >
         <ul className="container mx-auto flex flex-col gap-1 p-4">
-          {HeaderNavigation.map((navigation) => (
-            <li key={navigation.url}>
-              <Link
-                href={navigation.url}
-                className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${isActive(navigation.url)
-                  ? "font-semibold text-accent"
-                  : ""
-                  }`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {navigation.label}
-              </Link>
-            </li>
-          ))}
+          {HeaderNavigation.map((navigation) => {
+            if (!navigation.hidden) {
+              return (
+                <li key={navigation.url}>
+                  <Link
+                    href={navigation.url}
+                    className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${isActive(navigation.url)
+                      ? "font-semibold text-accent"
+                      : ""
+                      }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {navigation.label}
+                  </Link>
+                </li>
+              )
+            }
+            return null
+          })}
         </ul>
       </nav>
     </header>
