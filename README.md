@@ -16,24 +16,19 @@
 
 ### To Do
 
-- YouTube
-    - [ ] YouTube Videos
-    - [ ] YouTube Shorts
-- Website
-    - [ ] Basic Pages
-    - [ ] Backend
-- Instagram
-    - [ ] Set It Up
-- X / Twitter
-    - [ ] Set It Up
-- Reddit
-    - [ ] Set It Up
+- [ ] Linting
+  - [ ] Set up prettier
+  - [ ] Set Up CI
+- [ ] Set Up Blogs
+  - [ ] Add Page for Blogs
+- [ ] Other
+  - [ ] Set Up HTTPS connection
+- [ ] Social Media SetUp
+  - [ ] Twitter Account
+  - [ ] YouTube
 
 
 ### Done
-
-- [x] Domain Name
-- [x] Set Up Site
 
 
 ### Expenses
@@ -46,18 +41,6 @@
     - Domain Name : 500 HKD for 4 Years
 
 
-### Stories
-
-- [1] Layout
-    - [1.1] Header
-    - [2.1] Footer
-    - [3.1] Main Page
-- [2] Pages
-    - [2.1] Home
-    - [2.2] About
-    - [2.3] Contact us
-- [3] Builds
-    - [3.1] Set up eslint
 
 
 ### Links
