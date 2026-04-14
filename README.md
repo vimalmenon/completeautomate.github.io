@@ -25,6 +25,7 @@
   - [ ] Add pages for blogs
   - [ ] Admin pages to show Jobs/ Prompts / YouTube
 - [ ] Other
+  - [ ] Add paths for easy access
   - [ ] Fix HTTPS connection
   - [ ] Make pages static as much as possible
   - [ ] Have proper Title and Description

@@ -2,6 +2,8 @@
 
 import { JSX } from 'react';
 
+import { JobPage } from '@page';
+
 const kpiCards = [
   { label: 'Active Jobs', trend: '+12%', value: '128' },
   { label: 'Teams', trend: '+4%', value: '24' },
@@ -33,6 +35,7 @@ const statusColor: Record<string, string> = {
 export default function AdminPage(): JSX.Element {
   return (
     <div className="space-y-6 lg:col-span-9">
+      <JobPage />
       <div id="overview" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
