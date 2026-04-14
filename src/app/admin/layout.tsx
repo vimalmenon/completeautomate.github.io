@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Env } from "../../constants";
 import { notFound } from "next/navigation"
+import Link from "next/link";
+import { AdminNavigation } from "../../data"
+
 
 
 export const metadata: Metadata = {
@@ -27,9 +30,12 @@ export default function RootLayout({
               <p className="mt-2 text-sm text-muted">Monitor jobs, teams, and runtime health from one place.</p>
 
               <nav className="mt-6 space-y-2 text-sm">
-                <a className="block rounded-lg bg-primary px-3 py-2 font-medium text-primary-foreground" href="#overview">Overview</a>
-                <a className="block rounded-lg px-3 py-2 text-foreground/80 hover:bg-muted/10" href="#jobs">Jobs</a>
-                <a className="block rounded-lg px-3 py-2 text-foreground/80 hover:bg-muted/10" href="#activity">Activity</a>
+                <a href="#overview">Overview</a>
+                {AdminNavigation.map((navigation, index) => {
+                  return (
+                    <Link href={navigation.url} className="block rounded-lg bg-primary px-3 py-2 font-medium text-primary-foreground" key={index}>{navigation.label}</Link>
+                  )
+                })}
               </nav>
 
               <div className="mt-6 rounded-lg bg-muted/10 p-3 text-xs text-foreground/80">
