@@ -20,13 +20,15 @@
   - [ ] Favicon for Website
   - [ ] Logo for Website
 - [ ] Set Up Blogs
-  - [ ] Add Page for Blogs
+  - [ ] Add pages for blogs
 - [ ] Other
   - [ ] Fix HTTPS connection
-  - [ ] Make Page Static as possible
+  - [ ] Make pages static as much as possible
+  - [ ] Have proper Title and Description
+  - [ ] Components for `tailwindcss`
 - [ ] Social Media SetUp
   - [ ] Twitter Account
-  - [ ] YouTube Channel
+  - [ ] Dedicated YouTube Channel
 
 
 
