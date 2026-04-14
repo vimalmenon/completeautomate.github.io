@@ -13,8 +13,6 @@
 ### To Do
 
 - [ ] Linting
-  - [x] Set up prettier
-  - [x] Set Up linting
   - [ ] Set Up CI
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
