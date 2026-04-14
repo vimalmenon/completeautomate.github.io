@@ -16,6 +16,8 @@
   - [ ] Set up prettier
   - [ ] Set Up CI
   - [ ] Set Up linting
+- [ ] Bugs
+  - [ ] Navigation to book now is going to admin page
 - [ ] Images
   - [ ] Image for Website
   - [ ] Favicon for Website
