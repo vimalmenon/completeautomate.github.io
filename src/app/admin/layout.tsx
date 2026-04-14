@@ -41,7 +41,7 @@ export default function RootLayout({
                       <Link
                         href={navigation.url}
                         className="block rounded-lg bg-primary px-3 py-2 font-medium text-primary-foreground"
-                        key={index}
+                        key={navigation.url}
                       >
                         {navigation.label}
                       </Link>
@@ -51,7 +51,7 @@ export default function RootLayout({
                     <Link
                       href={navigation.url}
                       className="block rounded-lg px-3 py-2 text-foreground/80 hover:bg-muted/10"
-                      key={index}
+                      key={navigation.url}
                     >
                       {navigation.label}
                     </Link>
