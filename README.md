@@ -28,6 +28,7 @@
   - [ ] Components for `tailwindcss`
 - [ ] Social Media SetUp
   - [ ] Twitter Account
+  - [ ] Instagram Account
   - [ ] Dedicated YouTube Channel
 
 
