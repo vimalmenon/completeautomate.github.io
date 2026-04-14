@@ -1,9 +1,12 @@
+import { JSX } from 'react';
+
 import { Footer, Header } from '@common';
 import { ThemeProvider } from 'next-themes';
 
 import type { Metadata } from 'next';
 
 import { Geist, Geist_Mono } from 'next/font/google';
+
 import './globals.css';
 
 const geistSans = Geist({
@@ -25,7 +28,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
       <body

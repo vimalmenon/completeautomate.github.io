@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 const services = [
   {
     description:
@@ -31,7 +33,7 @@ const stats = [
   { label: 'Client Satisfaction', value: '98%' },
 ];
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       {/* Hero */}

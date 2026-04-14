@@ -1,4 +1,6 @@
-export default function BlogsPage() {
+import { JSX } from 'react';
+
+export default function BlogsPage(): JSX.Element {
   return (
     <div className="flex flex-1 items-center justify-center">
       <div className="text-center">

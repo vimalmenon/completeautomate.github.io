@@ -1,4 +1,5 @@
 'use client';
+import { JSX } from 'react';
 
 const kpiCards = [
   { label: 'Active Jobs', trend: '+12%', value: '128' },
@@ -28,7 +29,7 @@ const statusColor: Record<string, string> = {
   Running: 'bg-blue-100 text-blue-700',
 };
 
-export default function AdminPage() {
+export default function AdminPage(): JSX.Element {
   return (
     <div className="space-y-6 lg:col-span-9">
       <div id="overview" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">

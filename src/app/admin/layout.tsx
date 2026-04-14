@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 import type { Metadata } from 'next';
 
 import Link from 'next/link';
@@ -15,7 +17,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
   if (!Env.ADMIN_ENABLED) {
     notFound();
   }
