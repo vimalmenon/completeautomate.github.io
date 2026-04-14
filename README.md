@@ -38,8 +38,6 @@
   - [ ] Instagram Account
   - [ ] Dedicated YouTube Channel
 
-
-
 ### Links
 
 - [Complete Automate](http://completeautomate.com/)
