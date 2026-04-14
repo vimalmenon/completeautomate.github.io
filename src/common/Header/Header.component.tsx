@@ -12,7 +12,8 @@ export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+  const isActive = (href: string): boolean =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 bg-surface-dark text-primary shadow-md">
@@ -93,7 +94,7 @@ export const Header: React.FC = () => {
                     className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${
                       isActive(navigation.url) ? 'font-semibold text-accent' : ''
                     }`}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(): void => setMenuOpen(false)}
                   >
                     {navigation.label}
                   </Link>

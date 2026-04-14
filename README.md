@@ -13,9 +13,9 @@
 ### To Do
 
 - [ ] Linting
-  - [ ] Set up prettier
+  - [x] Set up prettier
+  - [x] Set Up linting
   - [ ] Set Up CI
-  - [ ] Set Up linting
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
   - [ ] Improve the yellow color

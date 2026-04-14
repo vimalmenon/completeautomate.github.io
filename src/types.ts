@@ -5,7 +5,7 @@ export interface IJob {
   id: string;
   status: JobStatusType;
   type: string;
-  taskData: Record<string, any>;
+  taskData: Record<string, string>;
   description: string;
   createdAt: string;
   failedCount: number;
