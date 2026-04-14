@@ -22,7 +22,9 @@
       "@common": ["./src/common"],
       "@types": ["./src/types"],
       "@constants": ["./src/constants"],
-      "@page": ["./src/page"]
+      "@page": ["./src/page"],
+      "@utility": ["./src/utility"],
+      "@data": ["./src/data"]
     }
   },
   "include": [

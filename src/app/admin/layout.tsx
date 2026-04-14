@@ -1,12 +1,12 @@
 import { JSX } from 'react';
 
+import { Env } from '@constants';
+import { AdminNavigation } from '@data';
+
 import type { Metadata } from 'next';
 
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-
-import { Env } from '../../constants';
-import { AdminNavigation } from '../../data';
 
 export const metadata: Metadata = {
   description: 'This is the website for Complete Automate',

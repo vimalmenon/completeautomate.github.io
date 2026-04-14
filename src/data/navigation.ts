@@ -1,5 +1,5 @@
-import { Env } from '../constants';
-import { INavigation } from '../types';
+import { Env } from '@constants';
+import { INavigation } from '@types';
 
 export const adminNavigation: INavigation = {
   hidden: !Env.ADMIN_ENABLED,
