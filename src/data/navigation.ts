@@ -1,37 +1,37 @@
-import { Env } from "../constants";
-import { INavigation } from "../types";
+import { Env } from '../constants';
+import { INavigation } from '../types';
 
 export const adminNavigation: INavigation = {
-  url: "/admin",
-  label: "Admin",
   hidden: !Env.ADMIN_ENABLED,
+  label: 'Admin',
+  url: '/admin',
 };
 
 export const jobNavigation: INavigation = {
-  url: "/admin/jobs",
-  label: "Jobs",
   hidden: !Env.ADMIN_ENABLED,
+  label: 'Jobs',
+  url: '/admin/jobs',
 };
 
 export const promptsNavigation: INavigation = {
-  url: "/admin/prompts",
-  label: "Prompts",
   hidden: !Env.ADMIN_ENABLED,
+  label: 'Prompts',
+  url: '/admin/prompts',
 };
 
 export const youtubeNavigation: INavigation = {
-  url: "/admin/youtube",
-  label: "YouTube",
   hidden: !Env.ADMIN_ENABLED,
+  label: 'YouTube',
+  url: '/admin/youtube',
 };
 
 export const homeNavigation: INavigation = {
-  url: "/",
-  label: "Home",
+  label: 'Home',
+  url: '/',
 };
 export const blogsNavigation: INavigation = {
-  url: "/blogs",
-  label: "Blogs",
+  label: 'Blogs',
+  url: '/blogs',
 };
 
 export const AdminNavigation: INavigation[] = [
@@ -41,8 +41,4 @@ export const AdminNavigation: INavigation[] = [
   youtubeNavigation,
 ];
 
-export const HeaderNavigation: INavigation[] = [
-  homeNavigation,
-  blogsNavigation,
-  adminNavigation,
-];
+export const HeaderNavigation: INavigation[] = [homeNavigation, blogsNavigation, adminNavigation];

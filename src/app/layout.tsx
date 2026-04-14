@@ -1,22 +1,24 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Header, Footer } from "@common";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
+import { Footer, Header } from '@common';
+import { ThemeProvider } from 'next-themes';
+
+import type { Metadata } from 'next';
+
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
 });
 
 export const metadata: Metadata = {
-  title: "Complete Automate",
-  description: "This is the website for Complete Automate",
+  description: 'This is the website for Complete Automate',
+  title: 'Complete Automate',
 };
 
 export default function RootLayout({

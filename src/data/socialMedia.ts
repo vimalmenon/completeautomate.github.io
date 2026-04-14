@@ -1,6 +1,6 @@
 const YouTubeSocialMedia = {
-  link: "",
-  icon: "",
+  icon: '',
+  link: '',
 };
 
 export const SocialMedia = [YouTubeSocialMedia];

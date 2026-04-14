@@ -1,4 +1,4 @@
-import { IApiData } from "../types";
+import { IApiData } from '../types';
 
 export const ApiService = async (data: IApiData<unknown>): Promise<unknown> => {
   const { baseUrl, url } = data;

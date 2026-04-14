@@ -18,6 +18,7 @@
   - [ ] Set Up linting
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
+  - [ ] Improve the yellow color
 - [ ] Images
   - [ ] Image for Website
   - [ ] Favicon for Website

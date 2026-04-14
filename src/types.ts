@@ -1,5 +1,5 @@
-export type JobStatusType = "Running" | "Queued" | "Completed" | "Failed";
-export type ApiMethodType = "GET" | "POST" | "PUT" | "DELETE";
+export type JobStatusType = 'Running' | 'Queued' | 'Completed' | 'Failed';
+export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export interface IJob {
   id: string;
@@ -35,7 +35,7 @@ export interface IYouTubeVideo {
   transcript: null;
   summarizedTranscript: null;
   userMessage: null;
-  status: "Active";
+  status: 'Active';
   metadataSuggestions: string[];
   thumbnailPromptSuggestions: string[];
   thumbnailsSuggestions: string[];
@@ -93,15 +93,14 @@ export interface IRequestResponse<T> {
 }
 
 export interface IApiData<T = unknown> {
-  baseUrl: string
+  baseUrl: string;
   url: string;
   method: ApiMethodType;
   data?: T;
 }
 
-
 export interface INavigation {
   url: string;
   label: string;
-  hidden?: boolean,
+  hidden?: boolean;
 }

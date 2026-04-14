@@ -1,34 +1,34 @@
 const services = [
   {
-    icon: "⚙️",
-    title: "Workflow Automation",
     description:
-      "Eliminate manual processes. From data entry to approvals, we automate the workflows that slow you down.",
+      'Eliminate manual processes. From data entry to approvals, we automate the workflows that slow you down.',
+    icon: '⚙️',
+    title: 'Workflow Automation',
   },
   {
-    icon: "🤖",
-    title: "AI Assistance",
     description:
-      "Smart assistants that handle inquiries, draft content, and support your team 24/7.",
+      'Smart assistants that handle inquiries, draft content, and support your team 24/7.',
+    icon: '🤖',
+    title: 'AI Assistance',
   },
   {
-    icon: "🧭",
-    title: "Consultancy",
     description:
-      "Not sure where to start? We audit your operations and build a custom AI automation roadmap.",
+      'Not sure where to start? We audit your operations and build a custom AI automation roadmap.',
+    icon: '🧭',
+    title: 'Consultancy',
   },
   {
-    icon: "🚀",
-    title: "AI Productivity",
     description:
-      "Supercharge your team with AI tools that draft, summarize, and analyze — so your people focus on what matters.",
+      'Supercharge your team with AI tools that draft, summarize, and analyze — so your people focus on what matters.',
+    icon: '🚀',
+    title: 'AI Productivity',
   },
 ];
 
 const stats = [
-  { value: "500+", label: "Hours Saved" },
-  { value: "50+", label: "Businesses Automated" },
-  { value: "98%", label: "Client Satisfaction" },
+  { label: 'Hours Saved', value: '500+' },
+  { label: 'Businesses Automated', value: '50+' },
+  { label: 'Client Satisfaction', value: '98%' },
 ];
 
 export default function Home() {
@@ -41,8 +41,8 @@ export default function Home() {
             AI Automation, Built for Your Business
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-primary/80">
-            Stop wasting time on repetitive tasks. We build intelligent workflows
-            that save hours and scale your operations.
+            Stop wasting time on repetitive tasks. We build intelligent workflows that save hours
+            and scale your operations.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
@@ -64,12 +64,10 @@ export default function Home() {
       {/* Services */}
       <section id="services" className="bg-background px-6 py-20">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-3xl font-bold text-foreground">
-            What We Do
-          </h2>
+          <h2 className="text-center text-3xl font-bold text-foreground">What We Do</h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-muted">
-            End-to-end AI automation tailored for small businesses — so you can
-            focus on growth, not busywork.
+            End-to-end AI automation tailored for small businesses — so you can focus on growth, not
+            busywork.
           </p>
           <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
@@ -78,12 +76,8 @@ export default function Home() {
                 className="rounded-2xl border border-border bg-surface p-6 shadow-sm transition hover:shadow-md"
               >
                 <span className="text-3xl">{service.icon}</span>
-                <h3 className="mt-4 text-lg font-semibold text-foreground">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {service.description}
-                </p>
+                <h3 className="mt-4 text-lg font-semibold text-foreground">{service.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{service.description}</p>
               </div>
             ))}
           </div>
@@ -96,9 +90,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8 text-center sm:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="text-4xl font-extrabold text-foreground">
-                  {stat.value}
-                </p>
+                <p className="text-4xl font-extrabold text-foreground">{stat.value}</p>
                 <p className="mt-2 text-sm font-medium tracking-wide text-muted uppercase">
                   {stat.label}
                 </p>
@@ -107,8 +99,7 @@ export default function Home() {
           </div>
           <blockquote className="mt-14 rounded-2xl border border-border bg-surface p-8 text-center shadow-sm">
             <p className="text-lg italic text-foreground/80">
-              &ldquo;CompleteAutomate cut our invoice processing time by 80%. Game
-              changer.&rdquo;
+              &ldquo;CompleteAutomate cut our invoice processing time by 80%. Game changer.&rdquo;
             </p>
             <cite className="mt-4 block text-sm font-medium text-muted not-italic">
               — Small Business Owner
@@ -122,8 +113,7 @@ export default function Home() {
         <div className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-bold sm:text-4xl">Ready to Automate?</h2>
           <p className="mx-auto mt-4 max-w-lg text-primary/80">
-            Book a free consultation and discover how AI can transform your
-            business.
+            Book a free consultation and discover how AI can transform your business.
           </p>
           <a
             href="/admin"

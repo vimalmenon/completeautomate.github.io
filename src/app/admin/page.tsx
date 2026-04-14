@@ -1,37 +1,31 @@
-"use client";
-
-
-import { useEffect } from "react";
-import { Env } from "../../constants";
-
-
+'use client';
 
 const kpiCards = [
-  { label: "Active Jobs", value: "128", trend: "+12%" },
-  { label: "Teams", value: "24", trend: "+4%" },
-  { label: "Success Rate", value: "98.1%", trend: "+1.3%" },
-  { label: "Pending Reviews", value: "17", trend: "-9%" },
+  { label: 'Active Jobs', trend: '+12%', value: '128' },
+  { label: 'Teams', trend: '+4%', value: '24' },
+  { label: 'Success Rate', trend: '+1.3%', value: '98.1%' },
+  { label: 'Pending Reviews', trend: '-9%', value: '17' },
 ];
 
 const recentJobs = [
-  { id: "JOB-8421", type: "YouTube Sync", owner: "Growth Team", status: "Running" },
-  { id: "JOB-8399", type: "Image Prompt", owner: "Creative Team", status: "Queued" },
-  { id: "JOB-8387", type: "Metadata Scan", owner: "Data Team", status: "Completed" },
-  { id: "JOB-8372", type: "Prompt Suggest", owner: "Ops Team", status: "Failed" },
+  { id: 'JOB-8421', owner: 'Growth Team', status: 'Running', type: 'YouTube Sync' },
+  { id: 'JOB-8399', owner: 'Creative Team', status: 'Queued', type: 'Image Prompt' },
+  { id: 'JOB-8387', owner: 'Data Team', status: 'Completed', type: 'Metadata Scan' },
+  { id: 'JOB-8372', owner: 'Ops Team', status: 'Failed', type: 'Prompt Suggest' },
 ];
 
 const activityFeed = [
-  "Scheduler restarted at 09:12",
-  "New prompt template published",
-  "Team Creative Team added 2 jobs",
-  "Offline mode check passed",
+  'Scheduler restarted at 09:12',
+  'New prompt template published',
+  'Team Creative Team added 2 jobs',
+  'Offline mode check passed',
 ];
 
 const statusColor: Record<string, string> = {
-  Running: "bg-blue-100 text-blue-700",
-  Queued: "bg-amber-100 text-amber-700",
-  Completed: "bg-emerald-100 text-emerald-700",
-  Failed: "bg-rose-100 text-rose-700",
+  Completed: 'bg-emerald-100 text-emerald-700',
+  Failed: 'bg-rose-100 text-rose-700',
+  Queued: 'bg-amber-100 text-amber-700',
+  Running: 'bg-blue-100 text-blue-700',
 };
 
 export default function AdminPage() {
@@ -41,7 +35,9 @@ export default function AdminPage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-xl font-semibold">Overview</h2>
-            <p className="text-sm text-muted">Quick snapshot of core metrics and operational status.</p>
+            <p className="text-sm text-muted">
+              Quick snapshot of core metrics and operational status.
+            </p>
           </div>
           <button className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary-dark">
             New Job
@@ -80,7 +76,9 @@ export default function AdminPage() {
                   <td className="px-3 py-3">{job.type}</td>
                   <td className="px-3 py-3">{job.owner}</td>
                   <td className="px-3 py-3">
-                    <span className={`rounded-full px-2.5 py-1 text-xs font-medium ${statusColor[job.status]}`}>
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-xs font-medium ${statusColor[job.status]}`}
+                    >
                       {job.status}
                     </span>
                   </td>
