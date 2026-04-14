@@ -24,7 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  if (Env.ADMIN_DISABLED) {
+  if (!Env.ADMIN_ENABLED) {
     notFound()
   }
   return (
