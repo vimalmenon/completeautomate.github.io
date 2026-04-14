@@ -32,6 +32,7 @@
   - [ ] Components for `tailwindcss`
   - [ ] Add Env for the Build
   - [ ] Set up Auth
+  - [ ] Improve theme changer (make it sleek)
 - [ ] Social Media SetUp
   - [ ] Twitter Account
   - [ ] Instagram Account
