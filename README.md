@@ -16,7 +16,7 @@
   - [ ] Set Up CI
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
-  - [ ] Improve the yellow color
+  - [x] Improve the yellow color
 - [ ] Images
   - [ ] Image for Website
   - [ ] Favicon for Website
