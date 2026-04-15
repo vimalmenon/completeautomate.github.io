@@ -16,11 +16,13 @@ export const Header: React.FC = () => {
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 bg-surface-dark text-primary shadow-md">
-      <div className="container mx-auto flex items-center justify-between p-4">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="flex flex-col leading-none">
-          <span className="text-2xl font-bold">CompleteAutomate</span>
-          <span className="hidden text-xs tracking-wide text-primary/60 md:inline">
+          <span className="text-2xl font-semibold tracking-[-0.04em] text-foreground">
+            CompleteAutomate
+          </span>
+          <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
             AI-Powered Automation
           </span>
         </Link>
@@ -29,7 +31,7 @@ export const Header: React.FC = () => {
           <ThemeToggle />
 
           <button
-            className="md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
@@ -62,9 +64,9 @@ export const Header: React.FC = () => {
                   <li key={navigation.url}>
                     <Link
                       href={navigation.url}
-                      className={`relative py-1 transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-200 hover:text-accent hover:after:w-full ${
+                      className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 after:absolute after:bottom-1 after:left-3 after:h-px after:bg-primary after:transition-all after:duration-200 hover:text-primary hover:after:w-[calc(100%-1.5rem)] ${
                         isActive(navigation.url)
-                          ? 'font-semibold text-accent after:w-full'
+                          ? 'bg-surface/70 text-primary after:w-[calc(100%-1.5rem)]'
                           : 'after:w-0'
                       }`}
                     >
@@ -80,19 +82,21 @@ export const Header: React.FC = () => {
       </div>
 
       <nav
-        className={`overflow-hidden border-t border-primary/20 transition-all duration-300 md:hidden ${
+        className={`overflow-hidden border-t border-border/60 bg-background/95 transition-all duration-300 md:hidden ${
           menuOpen ? 'max-h-64' : 'max-h-0'
         }`}
       >
-        <ul className="container mx-auto flex flex-col gap-1 p-4">
+        <ul className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-4">
           {HeaderNavigation.map((navigation) => {
             if (!navigation.hidden) {
               return (
                 <li key={navigation.url}>
                   <Link
                     href={navigation.url}
-                    className={`block rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-primary/10 ${
-                      isActive(navigation.url) ? 'font-semibold text-accent' : ''
+                    className={`block rounded-2xl border px-4 py-3 text-sm transition-colors duration-200 ${
+                      isActive(navigation.url)
+                        ? 'border-primary/40 bg-primary/10 font-semibold text-primary'
+                        : 'border-border/60 bg-surface/60 hover:border-primary/30 hover:text-primary'
                     }`}
                     onClick={(): void => setMenuOpen(false)}
                   >

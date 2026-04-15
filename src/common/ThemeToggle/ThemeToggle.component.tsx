@@ -59,11 +59,11 @@ export const ThemeToggle: React.FC = () => {
 
   if (!mounted) {
     return (
-      <div className="flex items-center gap-1 rounded-lg border border-border bg-surface p-1">
+      <div className="flex items-center gap-1 rounded-full border border-border/70 bg-surface/80 p-1 shadow-[0_12px_30px_rgb(15_23_42/0.08)]">
         {options.map((option) => (
           <button
             key={option.value}
-            className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium text-muted opacity-50"
+            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-muted opacity-50"
             aria-label={option.label}
           >
             {option.icon}
@@ -75,14 +75,14 @@ export const ThemeToggle: React.FC = () => {
   }
 
   return (
-    <div className="flex items-center gap-1 rounded-lg border border-border bg-surface p-1">
+    <div className="flex items-center gap-1 rounded-full border border-border/70 bg-surface/80 p-1 shadow-[0_12px_30px_rgb(15_23_42/0.08)]">
       {options.map((option) => (
         <button
           key={option.value}
           onClick={() => setTheme(option.value)}
-          className={`flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors ${
+          className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
             theme === option.value
-              ? 'bg-primary text-primary-foreground'
+              ? 'bg-primary text-primary-foreground shadow-[0_10px_20px_rgb(8_145_178/0.25)]'
               : 'text-muted hover:text-foreground'
           }`}
           aria-label={option.label}

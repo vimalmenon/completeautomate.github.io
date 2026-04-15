@@ -32,11 +32,13 @@ const socialLinks = [
 ];
 
 export const Footer: React.FC = () => (
-  <footer className="border-t border-primary/20 bg-surface-dark text-primary">
-    <div className="container mx-auto flex flex-col gap-8 p-8 md:flex-row md:justify-between">
+  <footer className="border-t border-border/60 bg-surface/70 text-foreground backdrop-blur-xl">
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-6 py-10 md:flex-row md:items-end md:justify-between">
       <div>
-        <p className="text-xl font-bold">CompleteAutomate</p>
-        <p className="mt-1 text-sm text-primary/70">Assisting companies with automation.</p>
+        <p className="text-xl font-semibold tracking-[-0.04em]">CompleteAutomate</p>
+        <p className="mt-2 max-w-sm text-sm leading-6 text-muted">
+          Intelligent automation systems for teams that want cleaner operations and faster output.
+        </p>
         <div className="mt-4 flex gap-4">
           {socialLinks.map((link) => (
             <a
@@ -45,7 +47,7 @@ export const Footer: React.FC = () => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="text-primary/70 transition-colors hover:text-accent"
+              className="rounded-full border border-border/60 bg-background/60 p-2 text-muted transition hover:border-primary/40 hover:text-primary"
             >
               {link.icon}
             </a>
@@ -54,11 +56,11 @@ export const Footer: React.FC = () => (
       </div>
 
       <nav>
-        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary/50">Links</p>
-        <ul className="flex flex-col gap-1 text-sm">
+        <p className="mb-3 text-xs font-semibold tracking-[0.32em] text-muted uppercase">Links</p>
+        <ul className="flex flex-col gap-2 text-sm">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="hover:text-accent">
+              <Link href={link.href} className="transition hover:text-primary">
                 {link.label}
               </Link>
             </li>
@@ -66,7 +68,7 @@ export const Footer: React.FC = () => (
         </ul>
       </nav>
 
-      <div className="text-sm text-primary/50 md:text-right">
+      <div className="text-sm text-muted md:text-right">
         <p>&copy; {new Date().getFullYear()} CompleteAutomate</p>
       </div>
     </div>

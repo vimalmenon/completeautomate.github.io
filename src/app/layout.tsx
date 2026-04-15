@@ -5,18 +5,19 @@ import { ThemeProvider } from 'next-themes';
 
 import type { Metadata } from 'next';
 
-import { Geist, Geist_Mono } from 'next/font/google';
+import { IBM_Plex_Mono, Sora } from 'next/font/google';
 
 import './globals.css';
 
-const geistSans = Geist({
+const sora = Sora({
   subsets: ['latin'],
   variable: '--font-geist-sans',
 });
 
-const geistMono = Geist_Mono({
+const mono = IBM_Plex_Mono({
   subsets: ['latin'],
   variable: '--font-geist-mono',
+  weight: ['400', '500'],
 });
 
 export const metadata: Metadata = {
@@ -32,11 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-background text-foreground antialiased`}
+        className={`${sora.variable} ${mono.variable} relative flex min-h-screen flex-col overflow-x-clip bg-background text-foreground antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="relative z-10 flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
