@@ -25,9 +25,6 @@
   - [ ] Add pages for blogs
   - [ ] Admin pages to show Jobs/ Prompts / YouTube
 - [ ] Other
-  - [x] Add paths for easy access
-  - [x] Add Env for the Build
-  - [x] Improve theme changer (make it sleek)
   - [ ] Fix HTTPS connection
   - [ ] Make pages static as much as possible
   - [ ] Have proper Title and Description
