@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type JobStatusType = 'Running' | 'Queued' | 'Completed' | 'Failed';
 export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
@@ -111,6 +111,14 @@ export interface INavigation {
   hidden?: boolean;
 }
 
+export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
+
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export type AnyType = any;
+
 export interface IAdminContext {
   loading: boolean;
+  setLoading: ReactSetState<boolean>;
+  jobs: IJob[];
+  setJobs: ReactSetState<IJob[]>;
 }

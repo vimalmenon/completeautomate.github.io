@@ -13,7 +13,7 @@
 ### To Do
 
 - [ ] Linting
-  - [ ] Set Up CI
+  - [x] Set Up CI
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
 - [ ] Images
@@ -29,7 +29,8 @@
   - [ ] Have proper Title and Description
   - [ ] Components for `tailwindcss`
   - [ ] Set up Auth
-  - [ ] Add Context
+  - [x] Add Context
+  - [ ] Add Jobs Helper in context
 - [ ] Social Media SetUp
   - [ ] Twitter Account
   - [ ] Instagram Account
