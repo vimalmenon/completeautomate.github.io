@@ -16,7 +16,6 @@
   - [ ] Set Up CI
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
-  - [x] Improve the yellow color
 - [ ] Images
   - [ ] Image for Website
   - [ ] Favicon for Website
@@ -30,6 +29,7 @@
   - [ ] Have proper Title and Description
   - [ ] Components for `tailwindcss`
   - [ ] Set up Auth
+  - [ ] Add Context
 - [ ] Social Media SetUp
   - [ ] Twitter Account
   - [ ] Instagram Account

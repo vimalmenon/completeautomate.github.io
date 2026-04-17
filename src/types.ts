@@ -1,5 +1,11 @@
+import { ReactNode } from 'react';
+
 export type JobStatusType = 'Running' | 'Queued' | 'Completed' | 'Failed';
 export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+export interface IReactChildren {
+  children: ReactNode;
+}
 
 export interface IJob {
   id: string;
