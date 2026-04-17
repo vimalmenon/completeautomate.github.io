@@ -17,15 +17,15 @@
 - [ ] Bugs
   - [ ] Navigation to book now is going to admin page
 - [ ] Images
-  - [ ] Image for Website
-  - [ ] Favicon for Website
-  - [ ] Logo for Website
+  - [ ] [5] Image for Website
+  - [ ] [5] Favicon for Website
+  - [ ] [5] Logo for Website
 - [ ] Set Up Blogs
   - [ ] Add pages for blogs
   - [ ] Admin pages to show Jobs/ Prompts / YouTube
 - [ ] Other
-  - [ ] Fix HTTPS connection
-  - [ ] Make pages static as much as possible
+  - [ ] [3] Fix HTTPS connection
+  - [ ] [2] Make pages static as much as possible
   - [ ] Have proper Title and Description
   - [ ] Components for `tailwindcss`
   - [ ] Set up Auth
