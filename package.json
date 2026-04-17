@@ -30,5 +30,8 @@
     "eslint-plugin-sort": "^4.0.0",
     "tailwindcss": "^4",
     "typescript": "^6"
+  },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "^1.32.0"
   }
 }
