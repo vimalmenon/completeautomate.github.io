@@ -122,3 +122,8 @@ export interface IAdminContext {
   jobs: IJob[];
   setJobs: ReactSetState<IJob[]>;
 }
+
+export interface IMakeRequest<T, E = string> {
+  response: T;
+  error?: E;
+}
