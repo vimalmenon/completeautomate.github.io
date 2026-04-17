@@ -37,6 +37,7 @@ export default [
     ignores: [
       'node_modules/*',
       '.next/*',
+      'next-env.d.ts',
       '/pages/api/**/*.ts',
       'out/*',
       'jest.setup.js',
