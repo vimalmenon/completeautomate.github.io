@@ -2,12 +2,12 @@
 
 import { useEffect } from 'react';
 
-import { getJobsApi } from '@data';
-import { ApiService } from '@utility';
+import { useJobsHelper } from '@context';
 
 export const JobPage: React.FC = () => {
+  const { getJobs } = useJobsHelper();
   useEffect(() => {
-    ApiService(getJobsApi());
+    getJobs();
   }, []);
   return <div></div>;
 };
