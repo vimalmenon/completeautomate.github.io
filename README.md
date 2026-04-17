@@ -15,14 +15,14 @@
 - [ ] Linting
   - [x] Set Up CI
 - [ ] Bugs
-  - [ ] Navigation to book now is going to admin page
+  - [ ] [1] Navigation to book now is going to admin page
 - [ ] Images
   - [ ] [5] Image for Website
   - [ ] [5] Favicon for Website
   - [ ] [5] Logo for Website
 - [ ] Set Up Blogs
-  - [ ] Add pages for blogs
-  - [ ] Admin pages to show Jobs/ Prompts / YouTube
+  - [ ] [8] Add pages for blogs
+  - [ ] [5] Admin pages to show Jobs/ Prompts / YouTube
 - [ ] Other
   - [ ] [3] Fix HTTPS connection
   - [ ] [2] Make pages static as much as possible
