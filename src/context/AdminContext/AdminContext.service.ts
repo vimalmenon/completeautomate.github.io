@@ -2,4 +2,9 @@
 
 import React from 'react';
 
-export const AdminContextProvider = React.createContext({});
+import { IAdminContext } from '@types';
+
+export const AdminContextProvider = React.createContext<IAdminContext>({} as IAdminContext);
+
+export const useAdminContext = (): IAdminContext =>
+  React.useContext<IAdminContext>(AdminContextProvider);

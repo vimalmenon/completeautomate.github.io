@@ -8,5 +8,7 @@ import { AdminContextProvider } from './AdminContext.service';
 
 export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
   const [loading] = React.useState<boolean>(false);
-  return <AdminContextProvider.Provider value={loading}>{children}</AdminContextProvider.Provider>;
+  return (
+    <AdminContextProvider.Provider value={{ loading }}>{children}</AdminContextProvider.Provider>
+  );
 };

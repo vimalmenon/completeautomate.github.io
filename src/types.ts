@@ -110,3 +110,7 @@ export interface INavigation {
   label: string;
   hidden?: boolean;
 }
+
+export interface IAdminContext {
+  loading: boolean;
+}
