@@ -2,4 +2,6 @@
 
 import { IReactChildren } from '@types';
 
-export const AdminContext: React.FC<IReactChildren> = () => null;
+export const AdminContext: React.FC<IReactChildren> = ({children}) => {
+    return <>{children}</>;
+};
