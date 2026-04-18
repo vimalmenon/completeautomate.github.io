@@ -2,17 +2,34 @@
 
 import { useEffect } from 'react';
 
+import { ErrorMessage } from '@common';
 import { useJobsHelper } from '@context';
 
 export const JobPage: React.FC = () => {
-  const { getJobs, jobs } = useJobsHelper();
+  const { errorMessage, getJobs, jobs, loading } = useJobsHelper();
+
   useEffect(() => {
     getJobs();
   }, []);
+
   return (
     <div id="jobs" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
       <h2 className="text-xl font-semibold">Recent Jobs</h2>
       <p className="mt-1 text-sm text-muted">Live queue and completion updates.</p>
+
+      {errorMessage ? (
+        <ErrorMessage
+          className="mt-4"
+          message={errorMessage}
+          actionLabel="Try again"
+          onAction={() => {
+            void getJobs();
+          }}
+          title="Could not load jobs"
+        />
+      ) : null}
+
+      {loading ? <p className="mt-4 text-sm text-muted">Loading jobs...</p> : null}
 
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-full text-left text-sm">

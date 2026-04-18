@@ -1,7 +1,10 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type JobStatusType = 'Running' | 'Queued' | 'Completed' | 'Failed';
+
 export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+export type SeverityType = 'success' | 'info' | 'warning' | 'error';
 
 export interface IReactChildren {
   children: ReactNode;
@@ -119,6 +122,8 @@ export type AnyType = any;
 export interface IAdminContext {
   loading: boolean;
   setLoading: ReactSetState<boolean>;
+  errorMessage: string | null;
+  setErrorMessage: ReactSetState<string | null>;
   jobs: IJob[];
   setJobs: ReactSetState<IJob[]>;
 }
@@ -126,4 +131,8 @@ export interface IAdminContext {
 export interface IMakeRequest<T, E = string> {
   response: T;
   error?: E;
+}
+
+export interface IAlert extends IReactChildren {
+  severity: SeverityType;
 }
