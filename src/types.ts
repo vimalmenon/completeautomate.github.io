@@ -137,5 +137,4 @@ export interface IMakeRequest<T, E = string> {
 
 export interface IAlert extends IReactChildren {
   severity: SeverityType;
-  message: string;
 }

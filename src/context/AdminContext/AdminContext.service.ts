@@ -14,22 +14,21 @@ export const useAdminContext = (): IAdminContext =>
   React.useContext<IAdminContext>(AdminContextProvider);
 
 export const useJobsHelper = (): IUseJobsHelper => {
-  const { errorMessage, jobs, loading, setErrorMessage, setJobs, setLoading } = useAdminContext();
+  const { errorMessage, jobs, loading, setAlert, setErrorMessage, setJobs, setLoading } =
+    useAdminContext();
   const getJobs = async (): Promise<void> => {
     setLoading(true);
     setErrorMessage(null);
 
-    const result = await ApiService<IJob[]>(getJobsApi());
-
-    if (result.response) {
-      setJobs(result.response);
-      setLoading(false);
+    const { error, response } = await ApiService<IJob[]>(getJobsApi());
+    if (error) {
+      setAlert({
+        children: typeof error === 'string' ? error : 'Unable to load jobs right now.',
+        severity: 'error',
+      });
       return;
     }
-
-    setErrorMessage(
-      typeof result.error === 'string' ? result.error : 'Unable to load jobs right now.'
-    );
+    setJobs(response);
     setLoading(false);
   };
   return {

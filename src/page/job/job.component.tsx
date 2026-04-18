@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { ErrorMessage } from '@common';
+import { ErrorMessage, LoadingIndicator } from '@common';
 import { useJobsHelper } from '@context';
 
 export const JobPage: React.FC = () => {
@@ -29,7 +29,7 @@ export const JobPage: React.FC = () => {
         />
       ) : null}
 
-      {loading ? <p className="mt-4 text-sm text-muted">Loading jobs...</p> : null}
+      {!loading ? <LoadingIndicator className="mt-4" label="Loading jobs…" /> : null}
 
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-full text-left text-sm">
