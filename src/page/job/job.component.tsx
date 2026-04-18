@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { ErrorMessage, LoadingIndicator } from '@common';
 import { useJobsHelper } from '@context';
 
+import { JobItem } from './jobItem';
+
 export const JobPage: React.FC = () => {
   const { errorMessage, getJobs, jobs, loading } = useJobsHelper();
 
@@ -43,18 +45,7 @@ export const JobPage: React.FC = () => {
           </thead>
           <tbody>
             {jobs.map((job) => (
-              <tr key={job.id} className="border-b border-border/50">
-                <td className="px-3 py-3 font-medium text-foreground/90">{job.id}</td>
-                <td className="px-3 py-3">{job.type}</td>
-                {/* <td className="px-3 py-3">{job.owner}</td> */}
-                {/* <td className="px-3 py-3">
-                    <span
-                      className={`rounded-full px-2.5 py-1 text-xs font-medium ${statusColor[job.status]}`}
-                    >
-                      {job.status}
-                    </span>
-                  </td> */}
-              </tr>
+              <JobItem job={job} key={job.id} />
             ))}
           </tbody>
         </table>

@@ -1,2 +1,2 @@
 export * from './job.component';
-export * from './job_short.component';
+export * from './jobShort.component';
