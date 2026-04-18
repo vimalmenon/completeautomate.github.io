@@ -18,13 +18,6 @@ const recentJobs = [
   { id: 'JOB-8372', owner: 'Ops Team', status: 'Failed', type: 'Prompt Suggest' },
 ];
 
-const activityFeed = [
-  'Scheduler restarted at 09:12',
-  'New prompt template published',
-  'Team Creative Team added 2 jobs',
-  'Offline mode check passed',
-];
-
 const statusColor: Record<string, string> = {
   Completed: 'bg-emerald-100 text-emerald-700',
   Failed: 'bg-rose-100 text-rose-700',
@@ -35,7 +28,6 @@ const statusColor: Record<string, string> = {
 export default function AdminPage(): JSX.Element {
   return (
     <div className="space-y-6 lg:col-span-9">
-      <JobPage />
       <div id="overview" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -59,7 +51,7 @@ export default function AdminPage(): JSX.Element {
           ))}
         </div>
       </div>
-
+      <JobPage />
       <div id="jobs" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Recent Jobs</h2>
         <p className="mt-1 text-sm text-muted">Live queue and completion updates.</p>
@@ -92,17 +84,6 @@ export default function AdminPage(): JSX.Element {
             </tbody>
           </table>
         </div>
-      </div>
-
-      <div id="activity" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-        <h2 className="text-xl font-semibold">Activity Feed</h2>
-        <ul className="mt-4 space-y-3 text-sm text-foreground/80">
-          {activityFeed.map((item) => (
-            <li key={item} className="rounded-lg border border-border bg-muted/10 px-3 py-2">
-              {item}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
