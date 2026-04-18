@@ -29,7 +29,7 @@ export const JobPage: React.FC = () => {
         />
       ) : null}
 
-      {!loading ? <LoadingIndicator className="mt-4" label="Loading jobs…" /> : null}
+      {loading ? <LoadingIndicator className="mt-4" label="Loading jobs…" /> : null}
 
       <div className="mt-4 overflow-x-auto">
         <table className="min-w-full text-left text-sm">
