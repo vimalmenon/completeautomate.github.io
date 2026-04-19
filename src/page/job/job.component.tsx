@@ -8,7 +8,7 @@ import { useJobsHelper } from '@context';
 import { JobItem } from './jobItem';
 
 export const JobPage: React.FC = () => {
-  const { errorMessage, getJobs, jobs, loading } = useJobsHelper();
+  const { alert, getJobs, jobs, loading } = useJobsHelper();
 
   useEffect(() => {
     getJobs();
@@ -19,10 +19,10 @@ export const JobPage: React.FC = () => {
       <h2 className="text-xl font-semibold">Recent Jobs</h2>
       <p className="mt-1 text-sm text-muted">Live queue and completion updates.</p>
 
-      {errorMessage ? (
+      {alert ? (
         <ErrorMessage
           className="mt-4"
-          message={errorMessage}
+          message={alert.message}
           actionLabel="Try again"
           onAction={() => {
             void getJobs();

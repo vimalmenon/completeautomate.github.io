@@ -36,7 +36,7 @@ export const useYoutubeHelper = (): IUseYoutubeHelper => {
     const { error, response } = await ApiService<IYouTubeChannel[]>(getChannelsApi());
     if (error) {
       setAlert({
-        children: typeof error === 'string' ? error : 'Unable to load channels.',
+        message: typeof error === 'string' ? error : 'Unable to load channels.',
         severity: 'error',
       });
       setLoading(false);
@@ -51,7 +51,7 @@ export const useYoutubeHelper = (): IUseYoutubeHelper => {
     const { error, response } = await ApiService<IYouTubeVideo[]>(getVideosApi(channelId));
     if (error) {
       setAlert({
-        children: typeof error === 'string' ? error : 'Unable to load videos.',
+        message: typeof error === 'string' ? error : 'Unable to load videos.',
         severity: 'error',
       });
       setVideosLoading(false);

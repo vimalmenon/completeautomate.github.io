@@ -122,10 +122,8 @@ export type AnyType = any;
 export interface IAdminContext {
   loading: boolean;
   setLoading: ReactSetState<boolean>;
-  errorMessage: string | null;
   alert: IAlert | null;
   setAlert: ReactSetState<IAlert | null>;
-  setErrorMessage: ReactSetState<string | null>;
   jobs: IJob[];
   setJobs: ReactSetState<IJob[]>;
   prompts: IPrompt[];
@@ -137,6 +135,7 @@ export interface IMakeRequest<T, E = string> {
   error?: E;
 }
 
-export interface IAlert extends IReactChildren {
+export interface IAlert {
   severity: SeverityType;
+  message: string;
 }

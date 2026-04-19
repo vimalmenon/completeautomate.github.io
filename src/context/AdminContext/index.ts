@@ -1,2 +1,2 @@
 export * from './AdminContext.component';
-export { useJobsHelper } from './AdminContext.service';
+export { useJobsHelper, usePromptsHelper } from './AdminContext.service';
