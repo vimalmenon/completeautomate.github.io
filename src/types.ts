@@ -128,6 +128,8 @@ export interface IAdminContext {
   setErrorMessage: ReactSetState<string | null>;
   jobs: IJob[];
   setJobs: ReactSetState<IJob[]>;
+  prompts: IPrompt[];
+  setPrompts: ReactSetState<IPrompt[]>;
 }
 
 export interface IMakeRequest<T, E = string> {
