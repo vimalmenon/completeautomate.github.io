@@ -10,13 +10,17 @@ import { IUseJobsHelper } from './AdminContext';
 
 export const AdminContextProvider = React.createContext<IAdminContext>({
   alert: null,
+  channels: [],
   jobs: [],
   loading: false,
   prompts: [],
   setAlert: notImplemented,
+  setChannels: notImplemented,
   setJobs: notImplemented,
   setLoading: notImplemented,
   setPrompts: notImplemented,
+  setVideos: notImplemented,
+  videos: [],
 });
 
 export const useAdminContext = (): IAdminContext =>

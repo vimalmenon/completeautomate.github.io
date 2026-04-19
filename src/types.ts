@@ -128,6 +128,10 @@ export interface IAdminContext {
   setJobs: ReactSetState<IJob[]>;
   prompts: IPrompt[];
   setPrompts: ReactSetState<IPrompt[]>;
+  channels: IYouTubeChannel[];
+  setChannels: ReactSetState<IYouTubeChannel[]>;
+  videos: IYouTubeVideo[];
+  setVideos: ReactSetState<IYouTubeVideo[]>;
 }
 
 export interface IMakeRequest<T, E = string> {
