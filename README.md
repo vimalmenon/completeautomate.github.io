@@ -11,9 +11,9 @@
 - Theme : Yellow / Black
 
 ### To Do
-
-- [ ] Linting
-  - [x] Set Up CI
+- Next
+  - [ ] [1] Add cls library
+  - [ ] [3] Fix HTTPS connection
 - [ ] Bugs
   - [ ] [1] Navigation to book now is going to admin page
 - [ ] Images
@@ -24,7 +24,6 @@
   - [ ] [8] Add pages for blogs
   - [ ] [5] Admin pages to show Jobs/ Prompts / YouTube
 - [ ] Other
-  - [ ] [3] Fix HTTPS connection
   - [ ] [2] Make pages static as much as possible
   - [ ] Have proper Title and Description
   - [ ] Components for `tailwindcss`

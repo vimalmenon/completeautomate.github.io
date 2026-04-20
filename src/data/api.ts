@@ -24,3 +24,9 @@ export const getJobsApi = (): IApiData => ({
   method: 'GET',
   url: `/api/v1/jobs`,
 });
+
+export const getHealth = (): IApiData => ({
+  baseUrl: Env.API_URL,
+  method: 'GET',
+  url: `/api/v1/health`,
+});
