@@ -25,7 +25,8 @@
       "@page": ["./src/page"],
       "@utility": ["./src/utility"],
       "@data": ["./src/data"],
-      "@context": ["./src/context"]
+      "@context": ["./src/context"],
+      "@component": ["./src/component"]
     }
   },
   "include": [
