@@ -7,16 +7,16 @@ export const getChannelsApi = (): IApiData => ({
   url: '/api/v1/channels',
 });
 
-export const getPromptsApi = (): IApiData => ({
-  baseUrl: Env.API_URL,
-  method: 'GET',
-  url: '/api/v1/prompts',
-});
-
 export const getVideosApi = (channelId: string): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: `/api/v1/channels/${channelId}/videos`,
+});
+
+export const getPromptsApi = (): IApiData => ({
+  baseUrl: Env.API_URL,
+  method: 'GET',
+  url: '/api/v1/prompts',
 });
 
 export const getJobsApi = (): IApiData => ({
