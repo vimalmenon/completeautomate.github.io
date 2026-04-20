@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import { getJobsApi } from '@data';
-import { IAdminContext, IJob } from '@types';
+import { getJobsApi, getPromptsApi } from '@data';
+import { IAdminContext, IJob, IPrompt } from '@types';
 import { ApiService, notImplemented } from '@utility';
 
-import { IUseJobsHelper } from './AdminContext';
+import { IUseJobsHelper, IUsePromptsHelper } from './AdminContext';
 
 export const AdminContextProvider = React.createContext<IAdminContext>({
   alert: null,
@@ -51,9 +51,19 @@ export const useJobsHelper = (): IUseJobsHelper => {
   };
 };
 
-export const usePromptsHelper = () => {
-  const { alert, loading, prompts, setLoading } = useAdminContext();
-  const getPrompts = () => {
+export const usePromptsHelper = (): IUsePromptsHelper => {
+  const { alert, loading, prompts, setAlert, setLoading, setPrompts } = useAdminContext();
+  const getPrompts = async (): Promise<void> => {
+    setLoading(false);
+    const { error, response } = await ApiService<IPrompt[]>(getPromptsApi());
+    if (error) {
+      setAlert({
+        message: typeof error === 'string' ? error : 'Unable to load jobs right now.',
+        severity: 'error',
+      });
+      return;
+    }
+    setPrompts(response);
     setLoading(false);
   };
 
