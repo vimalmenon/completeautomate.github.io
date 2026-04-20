@@ -8,7 +8,7 @@ import { usePromptsHelper } from '@context';
 import { PromptItem } from './promptItem';
 
 export const PromptsPage: React.FC = () => {
-  const { errorMessage, getPrompts, loading, prompts } = usePromptsHelper();
+  const { alert, getPrompts, loading, prompts } = usePromptsHelper();
 
   useEffect(() => {
     getPrompts();
@@ -19,10 +19,10 @@ export const PromptsPage: React.FC = () => {
       <h2 className="text-xl font-semibold">Prompts Library</h2>
       <p className="mt-1 text-sm text-muted">View and manage all prompts and their versions.</p>
 
-      {errorMessage ? (
+      {alert ? (
         <ErrorMessage
           className="mt-4"
-          message={errorMessage}
+          message={alert.message}
           actionLabel="Try again"
           onAction={() => {
             void getPrompts();

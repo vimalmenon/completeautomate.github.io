@@ -51,4 +51,16 @@ export const useJobsHelper = (): IUseJobsHelper => {
   };
 };
 
-export const usePromptsHelper = (): void => {};
+export const usePromptsHelper = () => {
+  const { alert, loading, prompts, setLoading } = useAdminContext();
+  const getPrompts = () => {
+    setLoading(false);
+  };
+
+  return {
+    alert,
+    getPrompts,
+    loading,
+    prompts,
+  };
+};
