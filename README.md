@@ -12,7 +12,7 @@
 
 ### To Do
 - Next
-  - [ ] [1] Add cls library
+  - [x] [1] Add cls library
   - [x] [3] Fix HTTPS connection
 - [ ] Bugs
   - [ ] [1] Navigation to book now is going to admin page
