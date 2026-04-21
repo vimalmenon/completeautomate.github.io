@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { getJobsApi, getPromptsApi } from '@data';
-import { IAdminContext, IJob, IPrompt } from '@types';
+import { IAdminContext, IJob, IPrompt, IYouTubeChannel } from '@types';
 import { ApiService, notImplemented } from '@utility';
 
 import { IUseJobsHelper, IUsePromptsHelper } from './AdminContext';
@@ -80,5 +80,19 @@ export const usePromptsHelper = (): IUsePromptsHelper => {
     getPrompts,
     loading,
     prompts,
+  };
+};
+
+export const useYouTubeHelper = () => {
+  const { alert, loading, selectedChannel, setSelectedChannel, setVideos } = useAdminContext();
+  const selectChannel = async (channel: IYouTubeChannel): Promise<void> => {
+    setSelectedChannel(channel);
+    setVideos([]);
+  };
+  return {
+    alert,
+    loading,
+    selectChannel,
+    selectedChannel,
   };
 };
