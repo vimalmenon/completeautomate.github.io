@@ -29,11 +29,8 @@
   - [ ] Have proper Title and Description
   - [ ] Components for `tailwindcss`
   - [ ] Set up Auth
-  - [x] Add Context
-  - [x] Add Jobs to context
-  - [x] Add prompts in context
-  - [ ] Add Channel to context
-  - [ ] Add Video to context
+  - [x] Add Channel to context
+  - [x] Add Video to context
 
 - [ ] Social Media SetUp
   - [ ] Twitter Account
