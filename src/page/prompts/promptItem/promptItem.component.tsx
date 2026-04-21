@@ -17,10 +17,7 @@ export const PromptItem: React.FC<IPromptItemProps> = ({ prompt }) => {
       >
         <td className="px-3 py-3 font-medium text-foreground/90">{prompt.task}</td>
         <td className="px-3 py-3 text-sm">{prompt.description}</td>
-        <td className="px-3 py-3 text-xs">{prompt.version}</td>
-        <td className="px-3 py-3 text-xs text-muted">
-          {new Date(prompt.lastUpdated).toLocaleDateString()}
-        </td>
+        <td className="px-3 py-3 text-xs">{prompt.version.substring(0, 10)}...</td>
         <td className="px-3 py-3 text-center">
           <span className="rounded-full bg-blue-100/50 px-2.5 py-1 text-xs font-medium text-blue-700">
             {prompt.versions.length} versions

@@ -6,7 +6,7 @@ import { getChannelsApi, getJobsApi, getPromptsApi, getVideosApi } from '@data';
 import { IAdminContext, IJob, IPrompt, IYouTubeChannel, IYouTubeVideo } from '@types';
 import { ApiService, notImplemented } from '@utility';
 
-import { IUseJobsHelper, IUsePromptsHelper } from './AdminContext';
+import { IUseJobsHelper, IUsePromptsHelper, IUseYouTubeHelper } from './AdminContext';
 
 export const AdminContextProvider = React.createContext<IAdminContext>({
   alert: null,
@@ -83,7 +83,7 @@ export const usePromptsHelper = (): IUsePromptsHelper => {
   };
 };
 
-export const useYouTubeHelper = () => {
+export const useYouTubeHelper = (): IUseYouTubeHelper => {
   const {
     alert,
     loading,
@@ -97,6 +97,7 @@ export const useYouTubeHelper = () => {
   const selectChannel = async (channel: IYouTubeChannel): Promise<void> => {
     setSelectedChannel(channel);
     setVideos([]);
+    await getVideos(channel.refId);
   };
   const getVideos = async (channelId: string): Promise<void> => {
     setLoading(true);
@@ -111,7 +112,6 @@ export const useYouTubeHelper = () => {
     }
     setVideos(response);
     setLoading(false);
-    await getVideos(channelId);
   };
   const getChannels = async (): Promise<void> => {
     setLoading(true);

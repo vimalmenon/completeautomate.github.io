@@ -46,8 +46,8 @@ export const PromptsPage: React.FC = () => {
               <th className="px-3 py-3">Task</th>
               <th className="px-3 py-3">Description</th>
               <th className="px-3 py-3">Version</th>
-              <th className="px-3 py-3">Last Updated</th>
               <th className="px-3 py-3 text-center">Versions</th>
+              <th className="px-3 py-3 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>

@@ -1,4 +1,4 @@
-import { IAlert, IJob, IPrompt } from '@types';
+import { IAlert, IJob, IPrompt, IYouTubeChannel } from '@types';
 
 export interface IUseJobsHelper {
   alert: IAlert | null;
@@ -13,4 +13,13 @@ export interface IUsePromptsHelper {
   loading: boolean;
   getPrompts: () => Promise<void>;
   prompts: IPrompt[];
+}
+
+export interface IUseYouTubeHelper {
+  alert: IAlert | null;
+  loading: boolean;
+  getChannels: () => Promise<void>;
+  getVideos: (channelId: string) => Promise<void>;
+  selectChannel: (channel: IYouTubeChannel) => Promise<void>;
+  selectedChannel: IYouTubeChannel | null;
 }
