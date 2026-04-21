@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 import { ErrorMessage, LoadingIndicator } from '@common';
-import { useYoutubeHelper } from '@context';
+import { useYouTubeHelper } from '@context';
 import { IYouTubeChannel, IYouTubeVideo } from '@types';
 
 const formatNumber = (n: number): string => {
@@ -121,16 +121,8 @@ const VideoRow: React.FC<VideoRowProps> = ({ video }) => {
 };
 
 export const YoutubePage: React.FC = () => {
-  const {
-    channels,
-    errorMessage,
-    getChannels,
-    loading,
-    selectChannel,
-    selectedChannel,
-    videos,
-    videosLoading,
-  } = useYoutubeHelper();
+  const { alert, channels, getChannels, loading, selectChannel, selectedChannel, videos } =
+    useYouTubeHelper();
 
   useEffect(() => {
     void getChannels();
@@ -143,10 +135,10 @@ export const YoutubePage: React.FC = () => {
         <h2 className="text-xl font-semibold">YouTube Channels</h2>
         <p className="mt-1 text-sm text-muted">Select a channel to view its videos.</p>
 
-        {errorMessage ? (
+        {alert ? (
           <ErrorMessage
             className="mt-4"
-            message={errorMessage}
+            message={alert.message}
             actionLabel="Try again"
             onAction={() => {
               void getChannels();
@@ -193,7 +185,7 @@ export const YoutubePage: React.FC = () => {
             </div>
           </div>
 
-          {videosLoading ? (
+          {loading ? (
             <LoadingIndicator className="mt-4" label="Loading videos…" />
           ) : (
             <div className="mt-4 overflow-x-auto">

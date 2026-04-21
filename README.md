@@ -21,7 +21,9 @@
   - [ ] [5] Logo for Website
 - [ ] Set Up Blogs
   - [ ] [8] Add pages for blogs
-  - [ ] [5] Admin pages to show Jobs/ Prompts / YouTube
+  - [ ] [5] Admin pages to show Jobs
+  - [ ] [5] Admin pages to show Prompts
+  - [ ] [5] Admin pages to show YouTube
 - [ ] Other
   - [ ] [2] Make pages static as much as possible
   - [ ] Have proper Title and Description
@@ -30,8 +32,8 @@
   - [x] Add Context
   - [x] Add Jobs to context
   - [x] Add prompts in context
-  - [x] Add Channel to context
-  - [x] Add Video to context
+  - [ ] Add Channel to context
+  - [ ] Add Video to context
 
 - [ ] Social Media SetUp
   - [ ] Twitter Account

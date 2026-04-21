@@ -86,6 +86,7 @@ export const usePromptsHelper = (): IUsePromptsHelper => {
 export const useYouTubeHelper = (): IUseYouTubeHelper => {
   const {
     alert,
+    channels,
     loading,
     selectedChannel,
     setAlert,
@@ -93,11 +94,12 @@ export const useYouTubeHelper = (): IUseYouTubeHelper => {
     setLoading,
     setSelectedChannel,
     setVideos,
+    videos,
   } = useAdminContext();
   const selectChannel = async (channel: IYouTubeChannel): Promise<void> => {
     setSelectedChannel(channel);
     setVideos([]);
-    await getVideos(channel.refId);
+    await getVideos(channel.channelId);
   };
   const getVideos = async (channelId: string): Promise<void> => {
     setLoading(true);
@@ -130,10 +132,12 @@ export const useYouTubeHelper = (): IUseYouTubeHelper => {
   };
   return {
     alert,
+    channels,
     getChannels,
     getVideos,
     loading,
     selectChannel,
     selectedChannel,
+    videos,
   };
 };
