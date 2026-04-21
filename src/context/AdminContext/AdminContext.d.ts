@@ -5,6 +5,7 @@ export interface IUseJobsHelper {
   loading: boolean;
   getJobs: () => Promise<void>;
   jobs: IJob[];
+  processJobs: (jobs: IJob[]) => Record<string, number>;
 }
 
 export interface IUsePromptsHelper {

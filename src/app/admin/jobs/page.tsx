@@ -53,7 +53,7 @@ export default function AdminPage(): JSX.Element {
       </div>
       <JobPage />
       <div id="jobs" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
-        <h2 className="text-xl font-semibold">Recent Jobs</h2>
+        <h2 className="text-xl font-semibold">Jobs</h2>
         <p className="mt-1 text-sm text-muted">Live queue and completion updates.</p>
 
         <div className="mt-4 overflow-x-auto">

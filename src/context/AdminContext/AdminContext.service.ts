@@ -43,11 +43,17 @@ export const useJobsHelper = (): IUseJobsHelper => {
     setJobs(response);
     setLoading(false);
   };
+  const processJobs = (jobs: IJob[]): Record<string, number> =>
+    jobs.reduce<Record<string, number>>((result, job) => {
+      result[job.status] = result[job.status] ? +result[job.status] + 1 : 1;
+      return result;
+    }, {});
   return {
     alert,
     getJobs,
     jobs,
     loading,
+    processJobs,
   };
 };
 
