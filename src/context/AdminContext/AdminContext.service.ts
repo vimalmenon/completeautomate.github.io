@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { getJobsApi, getPromptsApi } from '@data';
-import { IAdminContext, IJob, IPrompt, IYouTubeChannel } from '@types';
+import { getJobsApi, getPromptsApi, getVideosApi } from '@data';
+import { IAdminContext, IJob, IPrompt, IYouTubeChannel, IYouTubeVideo } from '@types';
 import { ApiService, notImplemented } from '@utility';
 
 import { IUseJobsHelper, IUsePromptsHelper } from './AdminContext';
@@ -84,13 +84,30 @@ export const usePromptsHelper = (): IUsePromptsHelper => {
 };
 
 export const useYouTubeHelper = () => {
-  const { alert, loading, selectedChannel, setSelectedChannel, setVideos } = useAdminContext();
+  const { alert, loading, selectedChannel, setAlert, setLoading, setSelectedChannel, setVideos } =
+    useAdminContext();
   const selectChannel = async (channel: IYouTubeChannel): Promise<void> => {
     setSelectedChannel(channel);
     setVideos([]);
   };
+  const getVideos = async (channelId: string): Promise<void> => {
+    setLoading(true);
+    const { error, response } = await ApiService<IYouTubeVideo[]>(getVideosApi(channelId));
+    if (error) {
+      setAlert({
+        message: typeof error === 'string' ? error : 'Unable to load videos.',
+        severity: 'error',
+      });
+      setLoading(false);
+      return;
+    }
+    setVideos(response);
+    setLoading(false);
+    await getVideos(channelId);
+  };
   return {
     alert,
+    getVideos,
     loading,
     selectChannel,
     selectedChannel,
