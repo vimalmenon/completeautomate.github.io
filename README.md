@@ -31,8 +31,6 @@
   - [ ] [4] Create Popup Component
     - [ ] use radix-ui
   - [ ] Set up Auth
-  - [x] Add Channel to context
-  - [x] Add Video to context
 
 - [ ] Social Media SetUp
   - [ ] Twitter Account
