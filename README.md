@@ -30,7 +30,7 @@
   - [ ] [3] Have proper Title and Description for page
   - [ ] [4] use radix-ui
     - [ ] Create Popup Component (@radix-ui/react-dialog)
-    - [ ]
+    - [ ] Create (@radix-ui/react-dropdown-menu)
   - [ ] Set up Auth
 
 - [ ] Social Media SetUp
@@ -42,11 +42,8 @@
 
 - [Complete Automate](http://completeautomate.com/)
 - [YouTube](https://www.youtube.com/@real_vimal_menon)
+- [GitHub](https://github.com/vimalmenon/vimalmenon.github.io/blob/ui-rewrite/package.json)
 
-### Next Video
-
-- [ ] Time Management
-- [ ] Timeline for our project
 
 ---
 
