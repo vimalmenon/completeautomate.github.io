@@ -14,11 +14,13 @@ export const AdminContextProvider = React.createContext<IAdminContext>({
   jobs: [],
   loading: false,
   prompts: [],
+  selectedChannel: null,
   setAlert: notImplemented,
   setChannels: notImplemented,
   setJobs: notImplemented,
   setLoading: notImplemented,
   setPrompts: notImplemented,
+  setSelectedChannel: notImplemented,
   setVideos: notImplemented,
   videos: [],
 });

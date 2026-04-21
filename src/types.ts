@@ -132,6 +132,8 @@ export interface IAdminContext {
   setChannels: ReactSetState<IYouTubeChannel[]>;
   videos: IYouTubeVideo[];
   setVideos: ReactSetState<IYouTubeVideo[]>;
+  selectedChannel: IYouTubeChannel | null;
+  setSelectedChannel: ReactSetState<IYouTubeChannel | null>;
 }
 
 export interface IMakeRequest<T, E = string> {

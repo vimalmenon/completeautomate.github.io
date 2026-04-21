@@ -13,6 +13,7 @@ export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
   const [prompts, setPrompts] = React.useState<IPrompt[]>([]);
   const [channels, setChannels] = React.useState<IYouTubeChannel[]>([]);
   const [videos, setVideos] = React.useState<IYouTubeVideo[]>([]);
+  const [selectedChannel, setSelectedChannel] = React.useState<IYouTubeChannel | null>(null);
 
   return (
     <AdminContextProvider.Provider
@@ -22,11 +23,13 @@ export const AdminContext: React.FC<IReactChildren> = ({ children }) => {
         jobs,
         loading,
         prompts,
+        selectedChannel,
         setAlert,
         setChannels,
         setJobs,
         setLoading,
         setPrompts,
+        setSelectedChannel,
         setVideos,
         videos,
       }}
