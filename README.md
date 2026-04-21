@@ -28,8 +28,9 @@
 - [ ] Other
   - [ ] [2] Make pages static as much as possible
   - [ ] [3] Have proper Title and Description for page
-  - [ ] [4] Create Popup Component
-    - [ ] use radix-ui
+  - [ ] [4] use radix-ui
+    - [ ] Create Popup Component (@radix-ui/react-dialog)
+    - [ ]
   - [ ] Set up Auth
 
 - [ ] Social Media SetUp
