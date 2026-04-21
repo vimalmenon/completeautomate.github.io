@@ -28,6 +28,8 @@
 - [ ] Other
   - [ ] [2] Make pages static as much as possible
   - [ ] [3] Have proper Title and Description for page
+  - [ ] [4] Create Popup Component
+    - [ ] use radix-ui
   - [ ] Set up Auth
   - [x] Add Channel to context
   - [x] Add Video to context
