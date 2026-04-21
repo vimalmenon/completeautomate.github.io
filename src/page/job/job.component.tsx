@@ -63,6 +63,7 @@ export const JobPage: React.FC = () => {
                 <th className="px-3 py-3">Job ID</th>
                 <th className="px-3 py-3">Type</th>
                 <th className="px-3 py-3">Status</th>
+                <th className="px-3 py-3">Actions</th>
               </tr>
             </thead>
             <tbody>
