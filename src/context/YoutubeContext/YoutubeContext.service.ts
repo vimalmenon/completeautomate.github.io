@@ -64,7 +64,7 @@ export const useYoutubeHelper = (): IUseYoutubeHelper => {
   const selectChannel = async (channel: IYouTubeChannel): Promise<void> => {
     setSelectedChannel(channel);
     setVideos([]);
-    await getVideos(channel.refId);
+    await getVideos(channel.channelId);
   };
 
   return {
