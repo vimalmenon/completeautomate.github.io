@@ -2,6 +2,7 @@
 
 import { Env } from '@constants';
 import { AdminNavigation } from '@data';
+import { clsx } from 'clsx';
 
 import Link from 'next/link';
 
@@ -21,7 +22,9 @@ export const AdminSideNavigation: React.FC = () => (
             return (
               <Link
                 href={navigation.url}
-                className="block rounded-lg bg-primary px-3 py-2 font-medium text-primary-foreground"
+                className={clsx(
+                  'block rounded-lg bg-primary px-3 py-2 font-medium text-primary-foreground'
+                )}
                 key={navigation.url}
               >
                 {navigation.label}
