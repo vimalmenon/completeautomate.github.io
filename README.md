@@ -11,6 +11,7 @@
 - Theme : Yellow / Black
 
 ### To Do
+
 - Next
 
 - [ ] Bugs
@@ -26,8 +27,7 @@
   - [ ] [5] Admin pages to show YouTube
 - [ ] Other
   - [ ] [2] Make pages static as much as possible
-  - [ ] Have proper Title and Description
-  - [ ] Components for `tailwindcss`
+  - [ ] [3] Have proper Title and Description for page
   - [ ] Set up Auth
   - [x] Add Channel to context
   - [x] Add Video to context
