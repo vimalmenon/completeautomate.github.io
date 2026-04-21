@@ -40,6 +40,8 @@ export interface IYouTubeVideo {
   taskStatus: string;
   tags: string[];
   language: string;
+  channelId: string;
+  videoId: string;
   stats: IYouTubeVideoStats[];
   transcript: null;
   summarizedTranscript: null;
@@ -63,6 +65,7 @@ export interface IYouTubeChannel {
   refId: string;
   title: string;
   description: string;
+  channelId: string;
   customUrl: string;
   publishedAt: string;
   lastUpdatedAt: string;
