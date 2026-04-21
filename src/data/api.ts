@@ -25,8 +25,14 @@ export const getJobsApi = (): IApiData => ({
   url: `/api/v1/jobs`,
 });
 
-export const getHealth = (): IApiData => ({
+export const getHealthApi = (): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: `/api/v1/health`,
+});
+
+export const downloadToLocalApi = (): IApiData => ({
+  baseUrl: Env.API_URL,
+  method: 'POST',
+  url: '/api/v1/data/download_to_local',
 });
