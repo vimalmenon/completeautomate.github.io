@@ -13,6 +13,8 @@
 ### To Do
 
 - Next
+  - [ ] Admin Page to show Health
+  - [ ] Set up Google Analytics
 
 - [ ] Bugs
   - [ ] [1] Navigation to book now is going to admin page
@@ -30,7 +32,7 @@
   - [ ] [3] Have proper Title and Description for page
   - [ ] [4] use radix-ui
     - [ ] Create Popup Component (@radix-ui/react-dialog)
-    - [ ] Create (@radix-ui/react-dropdown-menu)
+    - [ ] Create React Dropdown (@radix-ui/react-dropdown-menu)
   - [ ] Set up Auth
 
 - [ ] Social Media SetUp
