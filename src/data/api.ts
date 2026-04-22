@@ -19,11 +19,14 @@ export const getPromptsApi = (): IApiData => ({
   url: '/api/v1/prompts',
 });
 
-export const updatePromptApi = (task: string, data: IPromptUpdateInput): IApiData<IPromptUpdateInput> => ({
+export const updatePromptApi = (
+  task: string,
+  data: IPromptUpdateInput
+): IApiData<IPromptUpdateInput> => ({
   baseUrl: Env.API_URL,
+  data,
   method: 'PUT',
   url: `/api/v1/prompts/${task}`,
-  data,
 });
 
 export const getJobsApi = (): IApiData => ({

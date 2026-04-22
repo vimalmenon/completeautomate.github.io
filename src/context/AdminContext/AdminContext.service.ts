@@ -3,7 +3,14 @@
 import React from 'react';
 
 import { getChannelsApi, getJobsApi, getPromptsApi, getVideosApi, updatePromptApi } from '@data';
-import { IAdminContext, IJob, IPrompt, IPromptUpdateInput, IYouTubeChannel, IYouTubeVideo } from '@types';
+import {
+  IAdminContext,
+  IJob,
+  IPrompt,
+  IPromptUpdateInput,
+  IYouTubeChannel,
+  IYouTubeVideo,
+} from '@types';
 import { ApiService, notImplemented } from '@utility';
 
 import { IUseJobsHelper, IUsePromptsHelper, IUseYouTubeHelper } from './AdminContext';

@@ -31,7 +31,14 @@ export const PromptItem: React.FC<IPromptItemProps> = ({ prompt }) => {
     });
     setFormError(null);
     setIsEditing(false);
-  }, [currentVersion?.ai, currentVersion?.prompt, currentVersion?.systemMessage, prompt.description, prompt.version, prompt.versions]);
+  }, [
+    currentVersion?.ai,
+    currentVersion?.prompt,
+    currentVersion?.systemMessage,
+    prompt.description,
+    prompt.version,
+    prompt.versions,
+  ]);
 
   const handleToggleExpanded = (): void => {
     setIsExpanded((value) => !value);
@@ -122,7 +129,9 @@ export const PromptItem: React.FC<IPromptItemProps> = ({ prompt }) => {
                   <div className="flex items-center justify-between gap-3">
                     <div>
                       <h4 className="font-semibold text-foreground">Edit Current Prompt</h4>
-                      <p className="text-sm text-muted">Saving creates a new version and keeps prior versions intact.</p>
+                      <p className="text-sm text-muted">
+                        Saving creates a new version and keeps prior versions intact.
+                      </p>
                     </div>
                     <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-800">
                       {prompt.task}
@@ -173,7 +182,10 @@ export const PromptItem: React.FC<IPromptItemProps> = ({ prompt }) => {
                       <textarea
                         className="min-h-40 rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none transition focus:border-foreground/30"
                         onChange={(event) =>
-                          setCurrentVersionInput((value) => ({ ...value, prompt: event.target.value }))
+                          setCurrentVersionInput((value) => ({
+                            ...value,
+                            prompt: event.target.value,
+                          }))
                         }
                         value={currentVersionInput.prompt}
                       />
