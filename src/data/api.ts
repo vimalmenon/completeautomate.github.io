@@ -63,3 +63,9 @@ export const downloadToLocalApi = (): IApiData => ({
   method: 'POST',
   url: '/api/v1/data/download_to_local',
 });
+
+export const fileSyncedApi = (): IApiData => ({
+  baseUrl: Env.API_URL,
+  method: 'GET',
+  url: '/api/v1/data/file_synced',
+});

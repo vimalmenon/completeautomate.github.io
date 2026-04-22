@@ -26,3 +26,7 @@ export interface IUseYouTubeHelper {
   videos: IYouTubeVideo[];
   channels: IYouTubeChannel[];
 }
+
+export interface IUseAdminHelper {
+  checkSyncFile: () => Promise<void>;
+}

@@ -2,7 +2,14 @@
 
 import React from 'react';
 
-import { getChannelsApi, getJobsApi, getPromptsApi, getVideosApi, updatePromptApi } from '@data';
+import {
+  fileSyncedApi,
+  getChannelsApi,
+  getJobsApi,
+  getPromptsApi,
+  getVideosApi,
+  updatePromptApi,
+} from '@data';
 import {
   IAdminContext,
   IJob,
@@ -13,7 +20,12 @@ import {
 } from '@types';
 import { ApiService, notImplemented } from '@utility';
 
-import { IUseJobsHelper, IUsePromptsHelper, IUseYouTubeHelper } from './AdminContext';
+import {
+  IUseAdminHelper,
+  IUseJobsHelper,
+  IUsePromptsHelper,
+  IUseYouTubeHelper,
+} from './AdminContext';
 
 export const AdminContextProvider = React.createContext<IAdminContext>({
   alert: null,
@@ -170,5 +182,14 @@ export const useYouTubeHelper = (): IUseYouTubeHelper => {
     selectChannel,
     selectedChannel,
     videos,
+  };
+};
+
+export const useAdminHelper = (): IUseAdminHelper => {
+  const checkSyncFile = async (): Promise<void> => {
+    await ApiService<IYouTubeChannel[]>(fileSyncedApi());
+  };
+  return {
+    checkSyncFile,
   };
 };
