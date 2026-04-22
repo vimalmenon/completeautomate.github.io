@@ -29,4 +29,5 @@ export interface IUseYouTubeHelper {
 
 export interface IUseAdminHelper {
   checkSyncFile: () => Promise<void>;
+  downloadToLocal: () => Promise<void>;
 }

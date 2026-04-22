@@ -3,6 +3,7 @@
 import React from 'react';
 
 import {
+  downloadToLocalApi,
   fileSyncedApi,
   getChannelsApi,
   getJobsApi,
@@ -189,7 +190,11 @@ export const useAdminHelper = (): IUseAdminHelper => {
   const checkSyncFile = async (): Promise<void> => {
     await ApiService<IYouTubeChannel[]>(fileSyncedApi());
   };
+  const downloadToLocal = async (): Promise<void> => {
+    await ApiService(downloadToLocalApi());
+  };
   return {
     checkSyncFile,
+    downloadToLocal,
   };
 };

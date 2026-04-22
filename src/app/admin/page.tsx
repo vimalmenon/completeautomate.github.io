@@ -19,7 +19,7 @@ const activityFeed = [
 ];
 
 export default function AdminPage(): JSX.Element {
-  const { checkSyncFile } = useAdminHelper();
+  const { checkSyncFile, downloadToLocal } = useAdminHelper();
   return (
     <div className="space-y-6 lg:col-span-9">
       <div id="overview" className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
@@ -32,7 +32,7 @@ export default function AdminPage(): JSX.Element {
           </button>
           <button
             className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary-dark"
-            onClick={checkSyncFile}
+            onClick={downloadToLocal}
           >
             Sync File
           </button>
