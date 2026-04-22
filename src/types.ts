@@ -92,12 +92,27 @@ export interface IPromptVersion {
   ai: string;
   createdAt: string;
 }
+
+export interface IPromptVersionUpdateInput {
+  prompt: string;
+  systemMessage: string;
+  ai: string;
+}
+
+export interface IPromptUpdateInput {
+  description: string;
+  comment?: string | null;
+  currentVersion: IPromptVersionUpdateInput;
+}
+
 export interface IPrompt {
   task: string;
   description: string;
   version: string;
   lastUpdated: string;
   versions: IPromptVersion[];
+  comment?: string | null;
+  promptData?: Record<string, unknown>[];
 }
 
 export interface IRequestResponse<T> {

@@ -1,4 +1,4 @@
-import { IAlert, IJob, IPrompt, IYouTubeChannel, IYouTubeVideo } from '@types';
+import { IAlert, IJob, IPrompt, IPromptUpdateInput, IYouTubeChannel, IYouTubeVideo } from '@types';
 
 export interface IUseJobsHelper {
   alert: IAlert | null;
@@ -13,6 +13,7 @@ export interface IUsePromptsHelper {
   loading: boolean;
   getPrompts: () => Promise<void>;
   prompts: IPrompt[];
+  updatePrompt: (task: string, data: IPromptUpdateInput) => Promise<boolean>;
 }
 
 export interface IUseYouTubeHelper {

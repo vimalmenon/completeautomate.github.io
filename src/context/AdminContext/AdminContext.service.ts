@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import { getChannelsApi, getJobsApi, getPromptsApi, getVideosApi } from '@data';
-import { IAdminContext, IJob, IPrompt, IYouTubeChannel, IYouTubeVideo } from '@types';
+import { getChannelsApi, getJobsApi, getPromptsApi, getVideosApi, updatePromptApi } from '@data';
+import { IAdminContext, IJob, IPrompt, IPromptUpdateInput, IYouTubeChannel, IYouTubeVideo } from '@types';
 import { ApiService, notImplemented } from '@utility';
 
 import { IUseJobsHelper, IUsePromptsHelper, IUseYouTubeHelper } from './AdminContext';
@@ -62,17 +62,40 @@ export const useJobsHelper = (): IUseJobsHelper => {
 export const usePromptsHelper = (): IUsePromptsHelper => {
   const { alert, loading, prompts, setAlert, setLoading, setPrompts } = useAdminContext();
   const getPrompts = async (): Promise<void> => {
-    setLoading(false);
+    setLoading(true);
+    setAlert(null);
     const { error, response } = await ApiService<IPrompt[]>(getPromptsApi());
     if (error) {
       setAlert({
-        message: typeof error === 'string' ? error : 'Unable to load jobs right now.',
+        message: typeof error === 'string' ? error : 'Unable to load prompts right now.',
         severity: 'error',
       });
+      setLoading(false);
       return;
     }
     setPrompts(response);
     setLoading(false);
+  };
+
+  const updatePrompt = async (task: string, data: IPromptUpdateInput): Promise<boolean> => {
+    setLoading(true);
+    setAlert(null);
+
+    const { error, response } = await ApiService<IPrompt>(updatePromptApi(task, data));
+    if (error) {
+      setAlert({
+        message: typeof error === 'string' ? error : 'Unable to update prompt right now.',
+        severity: 'error',
+      });
+      setLoading(false);
+      return false;
+    }
+
+    setPrompts((currentPrompts) =>
+      currentPrompts.map((prompt) => (prompt.task === task ? response : prompt))
+    );
+    setLoading(false);
+    return true;
   };
 
   return {
@@ -80,6 +103,7 @@ export const usePromptsHelper = (): IUsePromptsHelper => {
     getPrompts,
     loading,
     prompts,
+    updatePrompt,
   };
 };
 
