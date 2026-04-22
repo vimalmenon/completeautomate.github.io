@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { ErrorMessage, LoadingIndicator } from '@common';
 import { getVideoApi, updateVideoApi } from '@data';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { IYouTubeVideo, IYouTubeVideoUpdateInput } from '@types';
 import { ApiService } from '@utility';
 import { Check, ChevronDown } from 'lucide-react';
@@ -42,49 +42,47 @@ const formatTimestamp = (iso: string): string => {
   return new Date(iso).toLocaleString();
 };
 
-const DropdownField: React.FC<DropdownFieldProps> = ({ label, onValueChange, options, value }) => {
-  return (
-    <div className="grid gap-2 text-sm">
-      <span className="font-medium text-foreground">{label}</span>
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild>
-          <button
-            type="button"
-            className="flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-border bg-surface px-3 py-2.5 text-left outline-none transition focus:border-foreground/30"
-          >
-            <span className="min-w-0 flex-1 wrap-break-word">{value}</span>
-            <ChevronDown className="h-4 w-4 shrink-0 text-muted" />
-          </button>
-        </DropdownMenu.Trigger>
+const DropdownField: React.FC<DropdownFieldProps> = ({ label, onValueChange, options, value }) => (
+  <div className="grid gap-2 text-sm">
+    <span className="font-medium text-foreground">{label}</span>
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <button
+          type="button"
+          className="flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-border bg-surface px-3 py-2.5 text-left outline-none transition focus:border-foreground/30"
+        >
+          <span className="min-w-0 flex-1 wrap-break-word">{value}</span>
+          <ChevronDown className="h-4 w-4 shrink-0 text-muted" />
+        </button>
+      </DropdownMenu.Trigger>
 
-        <DropdownMenu.Portal>
-          <DropdownMenu.Content
-            align="start"
-            className="z-50 min-w-(--radix-dropdown-menu-trigger-width) rounded-xl border border-border bg-background p-1 shadow-lg"
-            sideOffset={6}
-          >
-            <DropdownMenu.RadioGroup value={value} onValueChange={onValueChange}>
-              {options.map((option) => (
-                <DropdownMenu.RadioItem
-                  key={option}
-                  value={option}
-                  className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm outline-none transition focus:bg-muted/10 data-[state=checked]:bg-muted/10"
-                >
-                  <span className="flex h-4 w-4 items-center justify-center">
-                    <DropdownMenu.ItemIndicator>
-                      <Check className="h-4 w-4" />
-                    </DropdownMenu.ItemIndicator>
-                  </span>
-                  <span className="wrap-break-word">{option}</span>
-                </DropdownMenu.RadioItem>
-              ))}
-            </DropdownMenu.RadioGroup>
-          </DropdownMenu.Content>
-        </DropdownMenu.Portal>
-      </DropdownMenu.Root>
-    </div>
-  );
-};
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          align="start"
+          className="z-50 min-w-(--radix-dropdown-menu-trigger-width) rounded-xl border border-border bg-background p-1 shadow-lg"
+          sideOffset={6}
+        >
+          <DropdownMenu.RadioGroup value={value} onValueChange={onValueChange}>
+            {options.map((option) => (
+              <DropdownMenu.RadioItem
+                key={option}
+                value={option}
+                className="flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm outline-none transition focus:bg-muted/10 data-[state=checked]:bg-muted/10"
+              >
+                <span className="flex h-4 w-4 items-center justify-center">
+                  <DropdownMenu.ItemIndicator>
+                    <Check className="h-4 w-4" />
+                  </DropdownMenu.ItemIndicator>
+                </span>
+                <span className="wrap-break-word">{option}</span>
+              </DropdownMenu.RadioItem>
+            ))}
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  </div>
+);
 
 export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
   channelId,
