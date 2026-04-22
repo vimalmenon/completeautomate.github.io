@@ -1,6 +1,13 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
-export type JobStatusType = 'Running' | 'Queued' | 'Completed' | 'Failed';
+export type JobStatusType =
+  | 'NEW'
+  | 'IN_PROGRESS'
+  | 'COMPLETE'
+  | 'PENDING'
+  | 'REVIEW'
+  | 'FAILED'
+  | 'CLEAN_UP';
 
 export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
