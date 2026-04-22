@@ -1,8 +1,9 @@
 'use client';
-import { JSX } from 'react';
 
 import { YoutubePage } from '@page';
 
-export default function AdminYoutubePage(): JSX.Element {
-  return <YoutubePage />;
-}
+import { NextPage } from 'next';
+
+const AdminYoutubePage: NextPage = () => <YoutubePage />;
+
+export default AdminYoutubePage;
