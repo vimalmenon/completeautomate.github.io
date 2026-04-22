@@ -1,5 +1,5 @@
 import { Env } from '@constants';
-import { IApiData, IPromptUpdateInput } from '@types';
+import { IApiData, IPromptUpdateInput, IYouTubeVideoUpdateInput } from '@types';
 
 export const getChannelsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
@@ -11,6 +11,23 @@ export const getVideosApi = (channelId: string): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: `/api/v1/channels/${channelId}/videos`,
+});
+
+export const getVideoApi = (channelId: string, videoId: string): IApiData => ({
+  baseUrl: Env.API_URL,
+  method: 'GET',
+  url: `/api/v1/channels/${channelId}/videos/${videoId}`,
+});
+
+export const updateVideoApi = (
+  channelId: string,
+  videoId: string,
+  data: IYouTubeVideoUpdateInput
+): IApiData<IYouTubeVideoUpdateInput> => ({
+  baseUrl: Env.API_URL,
+  data,
+  method: 'PUT',
+  url: `/api/v1/channels/${channelId}/videos/${videoId}`,
 });
 
 export const getPromptsApi = (): IApiData => ({

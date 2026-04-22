@@ -6,6 +6,8 @@ import { ErrorMessage, LoadingIndicator } from '@common';
 import { useYouTubeHelper } from '@context';
 import { IYouTubeChannel, IYouTubeVideo } from '@types';
 
+import Link from 'next/link';
+
 const formatNumber = (n: number): string => {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
@@ -28,7 +30,7 @@ interface ChannelCardProps {
 }
 
 const ChannelCard: React.FC<ChannelCardProps> = ({ channel, isSelected, onSelect }) => {
-  const latestStats = channel.stats?.[channel.stats.length - 1];
+  const latestStats = channel.stats?.at(-1);
   return (
     <button
       onClick={() => onSelect(channel)}
@@ -86,7 +88,7 @@ interface VideoRowProps {
 }
 
 const VideoRow: React.FC<VideoRowProps> = ({ video }) => {
-  const latestStats = video.stats?.[video.stats.length - 1];
+  const latestStats = video.stats?.at(-1);
   return (
     <tr className="border-b border-border/50 hover:bg-muted/10">
       <td className="px-3 py-3">
@@ -116,6 +118,14 @@ const VideoRow: React.FC<VideoRowProps> = ({ video }) => {
           {video.taskStatus ?? '—'}
         </span>
       </td>
+      <td className="px-3 py-3 text-right">
+        <Link
+          href={`/admin/youtube/video?channelId=${encodeURIComponent(video.channelId)}&videoId=${encodeURIComponent(video.videoId)}`}
+          className="inline-flex rounded-full border border-border px-3 py-1.5 text-xs font-medium transition hover:bg-muted/10"
+        >
+          Edit
+        </Link>
+      </td>
     </tr>
   );
 };
@@ -125,7 +135,7 @@ export const YoutubePage: React.FC = () => {
     useYouTubeHelper();
 
   useEffect(() => {
-    void getChannels();
+    getChannels().catch(() => undefined);
   }, []);
 
   return (
@@ -141,7 +151,7 @@ export const YoutubePage: React.FC = () => {
             message={alert.message}
             actionLabel="Try again"
             onAction={() => {
-              void getChannels();
+              getChannels().catch(() => undefined);
             }}
             title="Could not load channels"
           />
@@ -157,7 +167,7 @@ export const YoutubePage: React.FC = () => {
                 channel={channel}
                 isSelected={selectedChannel?.refId === channel.refId}
                 onSelect={(c) => {
-                  void selectChannel(c);
+                  selectChannel(c).catch(() => undefined);
                 }}
               />
             ))}
@@ -198,6 +208,7 @@ export const YoutubePage: React.FC = () => {
                     <th className="px-3 py-3">Comments</th>
                     <th className="px-3 py-3">Published</th>
                     <th className="px-3 py-3">Status</th>
+                    <th className="px-3 py-3 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody>

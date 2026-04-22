@@ -46,12 +46,21 @@ export interface IYouTubeVideo {
   transcript: null;
   summarizedTranscript: null;
   userMessage: null;
-  status: 'Active';
+  status: 'Active' | 'Inactive';
   metadataSuggestions: string[];
   thumbnailPromptSuggestions: string[];
   thumbnailsSuggestions: string[];
   communityPosts: string[];
   twitterPosts: string[];
+}
+
+export interface IYouTubeVideoUpdateInput {
+  title: string;
+  description: string;
+  tags: string[];
+  userMessage?: string | null;
+  taskStatus: string;
+  status: 'Active' | 'Inactive';
 }
 
 export interface IYouTubeChannelStats {
@@ -133,9 +142,6 @@ export interface INavigation {
 }
 
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;
-
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-export type AnyType = any;
 
 export interface IAdminContext {
   loading: boolean;
