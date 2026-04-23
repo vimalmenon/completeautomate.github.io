@@ -13,7 +13,7 @@
 ### To Do
 
 - Next
-  - [ ] Edit Prompt , Add Prompt, View Prompts
+  - [ ] Edit Prompt, Add Prompt, View Prompts
   - [ ] Admin Page to show Health
   - [ ] Set up Google Analytics
 
@@ -46,7 +46,6 @@
 - [Complete Automate](http://completeautomate.com/)
 - [YouTube](https://www.youtube.com/@real_vimal_menon)
 - [GitHub](https://github.com/vimalmenon/vimalmenon.github.io/blob/ui-rewrite/package.json)
-
 
 ---
 
