@@ -13,7 +13,7 @@
 ### To Do
 
 - Next
-  - [ ] Edit Prompt and Add Prompt
+  - [ ] Edit Prompt , Add Prompt, View Prompts
   - [ ] Admin Page to show Health
   - [ ] Set up Google Analytics
 
@@ -33,7 +33,7 @@
   - [ ] [3] Have proper Title and Description for page
   - [ ] [4] use radix-ui
     - [ ] Create Popup Component (@radix-ui/react-dialog)
-    - [ ] Create React Dropdown (@radix-ui/react-dropdown-menu)
+    - [x] Create React Dropdown (@radix-ui/react-dropdown-menu)
   - [ ] Set up Auth
 
 - [ ] Social Media SetUp
