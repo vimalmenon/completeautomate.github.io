@@ -9,7 +9,7 @@ export type JobStatusType =
   | 'FAILED'
   | 'CLEAN_UP';
 
-export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'DELETE';
+export type ApiMethodType = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export type SeverityType = 'success' | 'info' | 'warning' | 'error';
 
@@ -21,11 +21,21 @@ export interface IJob {
   id: string;
   status: JobStatusType;
   type: string;
-  taskData: Record<string, string>;
+  taskData: Record<string, unknown>;
   description: string;
   createdAt: string;
   failedCount: number;
   pendingOn: string[];
+  completedAt?: string;
+  errorMsg?: string;
+}
+
+export interface IJobUpdateInput {
+  status?: JobStatusType;
+  description?: string;
+  taskData?: Record<string, unknown>;
+  failedCount?: number;
+  pendingOn?: string[];
   completedAt?: string;
   errorMsg?: string;
 }

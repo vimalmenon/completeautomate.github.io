@@ -1,9 +1,18 @@
-import { IAlert, IJob, IPrompt, IPromptUpdateInput, IYouTubeChannel, IYouTubeVideo } from '@types';
+import {
+  IAlert,
+  IJob,
+  IJobUpdateInput,
+  IPrompt,
+  IPromptUpdateInput,
+  IYouTubeChannel,
+  IYouTubeVideo,
+} from '@types';
 
 export interface IUseJobsHelper {
   alert: IAlert | null;
   loading: boolean;
   getJobs: () => Promise<void>;
+  updateJob: (jobId: string, data: IJobUpdateInput) => Promise<boolean>;
   jobs: IJob[];
   processJobs: (jobs: IJob[]) => Record<string, number>;
 }

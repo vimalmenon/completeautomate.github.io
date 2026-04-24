@@ -9,11 +9,13 @@ import {
   getJobsApi,
   getPromptsApi,
   getVideosApi,
+  updateJobApi,
   updatePromptApi,
 } from '@data';
 import {
   IAdminContext,
   IJob,
+  IJobUpdateInput,
   IPrompt,
   IPromptUpdateInput,
   IYouTubeChannel,
@@ -65,6 +67,26 @@ export const useJobsHelper = (): IUseJobsHelper => {
     setJobs(response);
     setLoading(false);
   };
+
+  const updateJob = async (jobId: string, data: IJobUpdateInput): Promise<boolean> => {
+    setLoading(true);
+    setAlert(null);
+
+    const { error, response } = await ApiService<IJob>(updateJobApi(jobId, data));
+    if (error) {
+      setAlert({
+        message: typeof error === 'string' ? error : 'Unable to update job right now.',
+        severity: 'error',
+      });
+      setLoading(false);
+      return false;
+    }
+
+    setJobs((currentJobs) => currentJobs.map((job) => (job.id === jobId ? response : job)));
+    setLoading(false);
+    return true;
+  };
+
   const processJobs = (jobs: IJob[]): Record<string, number> =>
     jobs.reduce<Record<string, number>>((result, job) => {
       result[job.status] = result[job.status] ? +result[job.status] + 1 : 1;
@@ -76,6 +98,7 @@ export const useJobsHelper = (): IUseJobsHelper => {
     jobs,
     loading,
     processJobs,
+    updateJob,
   };
 };
 

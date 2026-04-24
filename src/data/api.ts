@@ -1,5 +1,5 @@
 import { Env } from '@constants';
-import { IApiData, IPromptUpdateInput, IYouTubeVideoUpdateInput } from '@types';
+import { IApiData, IJobUpdateInput, IPromptUpdateInput, IYouTubeVideoUpdateInput } from '@types';
 
 export const getChannelsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
@@ -50,6 +50,13 @@ export const getJobsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
   method: 'GET',
   url: `/api/v1/jobs`,
+});
+
+export const updateJobApi = (jobId: string, data: IJobUpdateInput): IApiData<IJobUpdateInput> => ({
+  baseUrl: Env.API_URL,
+  data,
+  method: 'PATCH',
+  url: `/api/v1/jobs/${jobId}`,
 });
 
 export const getHealthApi = (): IApiData => ({
