@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { ErrorMessage, LoadingIndicator } from '@common';
 import { getVideoApi, updateVideoApi } from '@data';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { useQuery } from '@tanstack/react-query';
 import { IYouTubeVideo, IYouTubeVideoUpdateInput } from '@types';
 import { ApiService } from '@utility';
 import { Check, ChevronDown } from 'lucide-react';
@@ -88,10 +89,8 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
   channelId,
   videoId,
 }) => {
-  const [video, setVideo] = useState<IYouTubeVideo | null>(null);
-  const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState<IYouTubeVideoUpdateInput>({
     description: '',
@@ -103,45 +102,47 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
   });
   const [tagsText, setTagsText] = useState('');
 
-  useEffect(() => {
-    const loadVideo = async (): Promise<void> => {
-      setLoading(true);
-      setError(null);
-      setSaveMessage(null);
-
+  // Fetch video data using TanStack Query
+  const {
+    data: video,
+    error: fetchError,
+    isLoading,
+  } = useQuery<IYouTubeVideo>({
+    enabled: !!channelId && !!videoId,
+    queryFn: async () => {
       const { error: requestError, response } = await ApiService<IYouTubeVideo>(
         getVideoApi(channelId, videoId)
       );
 
       if (requestError) {
-        setError(
+        throw new Error(
           typeof requestError === 'string'
             ? requestError
             : 'Unable to load the selected video right now.'
         );
-        setLoading(false);
-        return;
       }
 
-      setVideo(response);
-      setFormData({
-        description: response.description,
-        status: response.status,
-        tags: response.tags,
-        taskStatus: response.taskStatus,
-        title: response.title,
-        userMessage: response.userMessage ?? '',
-      });
-      setTagsText(response.tags.join(', '));
-      setLoading(false);
-    };
+      return response;
+    },
+    queryKey: ['youtube-video', channelId, videoId],
+  });
 
-    void loadVideo();
-  }, [channelId, videoId]);
+  // Initialize form data when video is loaded
+  if (video && formData.title === '' && formData.description === '') {
+    setFormData({
+      description: video.description,
+      status: video.status,
+      tags: video.tags,
+      taskStatus: video.taskStatus,
+      title: video.title,
+      userMessage: video.userMessage ?? '',
+    });
+    setTagsText(video.tags.join(', '));
+  }
 
   const handleSave = async (event: { preventDefault: () => void }): Promise<void> => {
     event.preventDefault();
-    setError(null);
+    setSaveError(null);
     setSaveMessage(null);
 
     const title = formData.title.trim();
@@ -152,7 +153,7 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
       .filter(Boolean);
 
     if (!title || !description) {
-      setError('Title and description are required.');
+      setSaveError('Title and description are required.');
       return;
     }
 
@@ -170,7 +171,7 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
       updateVideoApi(channelId, videoId, payload)
     );
     if (requestError) {
-      setError(
+      setSaveError(
         typeof requestError === 'string'
           ? requestError
           : 'Unable to update the selected video right now.'
@@ -179,7 +180,6 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
       return;
     }
 
-    setVideo(response);
     setFormData({
       description: response.description,
       status: response.status,
@@ -212,12 +212,12 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
           </Link>
         </div>
 
-        {loading ? <LoadingIndicator className="mt-6" label="Loading video…" /> : null}
+        {isLoading ? <LoadingIndicator className="mt-6" label="Loading video…" /> : null}
 
-        {!loading && error ? (
+        {!isLoading && fetchError ? (
           <ErrorMessage
             className="mt-6"
-            message={error}
+            message={fetchError instanceof Error ? fetchError.message : 'Unable to load video'}
             onAction={() => {
               globalThis.location.reload();
             }}
@@ -226,7 +226,7 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
           />
         ) : null}
 
-        {!loading && video ? (
+        {!isLoading && video ? (
           <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]">
             <form
               className="rounded-2xl border border-border/60 bg-background p-5"
@@ -320,8 +320,8 @@ export const YouTubeVideoEditorPage: React.FC<YouTubeVideoEditorPageProps> = ({
                 </div>
               ) : null}
 
-              {error ? (
-                <ErrorMessage className="mt-4" message={error} title="Cannot update video" />
+              {saveError ? (
+                <ErrorMessage className="mt-4" message={saveError} title="Cannot update video" />
               ) : null}
 
               <div className="mt-5 flex justify-end">
