@@ -13,7 +13,9 @@
 ### To Do
 
 - Next
-  - [ ] Edit Prompt, Add Prompt, View Prompts
+  - [x] Edit Prompt
+  - [x] View Prompts
+  - [ ] Add Prompt
   - [ ] Admin Page to show Health
   - [ ] Set up Google Analytics
 
