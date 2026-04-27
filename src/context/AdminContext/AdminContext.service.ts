@@ -211,9 +211,8 @@ export const useYouTubeHelper = (): IUseYouTubeHelper => {
 
 export const useAdminHelper = (): IUseAdminHelper => {
   const [syncStatus, setSyncStatus] = React.useState<boolean | null>(null);
-  const [syncStatusMessage, setSyncStatusMessage] = React.useState<string>(
-    'Status not checked yet.'
-  );
+  const [syncStatusMessage, setSyncStatusMessage] =
+    React.useState<string>('Status not checked yet.');
 
   const checkSyncFile = React.useCallback(async (): Promise<void> => {
     const { error, response } = await ApiService<{ synced: boolean }>(fileSyncedApi());
@@ -227,7 +226,9 @@ export const useAdminHelper = (): IUseAdminHelper => {
     }
 
     setSyncStatus(response.synced);
-    setSyncStatusMessage(response.synced ? 'Files are currently in sync.' : 'Files are out of sync.');
+    setSyncStatusMessage(
+      response.synced ? 'Files are currently in sync.' : 'Files are out of sync.'
+    );
   }, []);
   const downloadToLocal = React.useCallback(async (): Promise<void> => {
     const { error } = await ApiService(downloadToLocalApi());

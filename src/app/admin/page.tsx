@@ -3,8 +3,8 @@
 import { JSX, useEffect } from 'react';
 
 import { Button } from '@component';
-import { AdminNavigation } from '@data';
 import { useAdminHelper } from '@context';
+import { AdminNavigation } from '@data';
 
 import Link from 'next/link';
 
@@ -99,16 +99,25 @@ export default function AdminPage(): JSX.Element {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <button className={checkSyncButtonClassName} onClick={checkSyncFile}>
+            <Button
+              className={checkSyncButtonClassName}
+              loadingText="Checking..."
+              onClick={checkSyncFile}
+            >
               Is File Synced
-            </button>
-            <Button onClick={downloadToLocal}>Sync File</Button>
+            </Button>
+            <Button loadingText="Syncing..." onClick={downloadToLocal}>
+              Sync File
+            </Button>
           </div>
         </div>
 
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {dashboardHighlights.map((highlight) => (
-            <article key={highlight.label} className="rounded-xl border border-border bg-muted/10 p-4">
+            <article
+              key={highlight.label}
+              className="rounded-xl border border-border bg-muted/10 p-4"
+            >
               <p className="text-xs uppercase tracking-wider text-muted">{highlight.label}</p>
               <p className="mt-2 text-2xl font-semibold">{highlight.value}</p>
             </article>
@@ -166,19 +175,24 @@ export default function AdminPage(): JSX.Element {
       <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Operator Notes</h2>
         <p className="mt-1 text-sm text-muted">
-          Use this page as the entry point, then move into the section that owns the actual data
-          and actions.
+          Use this page as the entry point, then move into the section that owns the actual data and
+          actions.
         </p>
 
         <div className="mt-4 space-y-3">
           <div className="rounded-xl border border-border bg-muted/10 p-4">
-            <p className="text-sm font-medium text-foreground">Start with sync when data feels stale.</p>
+            <p className="text-sm font-medium text-foreground">
+              Start with sync when data feels stale.
+            </p>
             <p className="mt-1 text-sm text-muted">
-              A quick file check avoids chasing outdated local assets before reviewing jobs or prompts.
+              A quick file check avoids chasing outdated local assets before reviewing jobs or
+              prompts.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-muted/10 p-4">
-            <p className="text-sm font-medium text-foreground">Use the section pages for real edits.</p>
+            <p className="text-sm font-medium text-foreground">
+              Use the section pages for real edits.
+            </p>
             <p className="mt-1 text-sm text-muted">
               Jobs, prompts, and YouTube each keep their own detailed tables, cards, and actions.
             </p>
