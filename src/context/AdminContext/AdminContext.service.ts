@@ -210,14 +210,41 @@ export const useYouTubeHelper = (): IUseYouTubeHelper => {
 };
 
 export const useAdminHelper = (): IUseAdminHelper => {
-  const checkSyncFile = async (): Promise<void> => {
-    await ApiService<IYouTubeChannel[]>(fileSyncedApi());
-  };
-  const downloadToLocal = async (): Promise<void> => {
-    await ApiService(downloadToLocalApi());
-  };
+  const [syncStatus, setSyncStatus] = React.useState<boolean | null>(null);
+  const [syncStatusMessage, setSyncStatusMessage] = React.useState<string>(
+    'Status not checked yet.'
+  );
+
+  const checkSyncFile = React.useCallback(async (): Promise<void> => {
+    const { error, response } = await ApiService<{ synced: boolean }>(fileSyncedApi());
+
+    if (error) {
+      setSyncStatus(null);
+      setSyncStatusMessage(
+        typeof error === 'string' ? error : 'Unable to check file sync status right now.'
+      );
+      return;
+    }
+
+    setSyncStatus(response.synced);
+    setSyncStatusMessage(response.synced ? 'Files are currently in sync.' : 'Files are out of sync.');
+  }, []);
+  const downloadToLocal = React.useCallback(async (): Promise<void> => {
+    const { error } = await ApiService(downloadToLocalApi());
+
+    if (error) {
+      setSyncStatusMessage(
+        typeof error === 'string' ? error : 'Unable to sync files to local right now.'
+      );
+      return;
+    }
+
+    await checkSyncFile();
+  }, [checkSyncFile]);
   return {
     checkSyncFile,
     downloadToLocal,
+    syncStatus,
+    syncStatusMessage,
   };
 };

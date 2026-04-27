@@ -37,6 +37,8 @@ export interface IUseYouTubeHelper {
 }
 
 export interface IUseAdminHelper {
+  syncStatus: boolean | null;
+  syncStatusMessage: string;
   checkSyncFile: () => Promise<void>;
   downloadToLocal: () => Promise<void>;
 }
