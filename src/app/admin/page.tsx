@@ -99,14 +99,10 @@ export default function AdminPage(): JSX.Element {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button
-              className={checkSyncButtonClassName}
-              loadingText="Checking..."
-              onClick={checkSyncFile}
-            >
+            <Button className={checkSyncButtonClassName} onClick={checkSyncFile}>
               Is File Synced
             </Button>
-            <Button loadingText="Syncing..." onClick={downloadToLocal}>
+            <Button onClick={downloadToLocal}>
               Sync File
             </Button>
           </div>
