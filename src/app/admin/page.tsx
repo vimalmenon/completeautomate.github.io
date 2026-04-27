@@ -102,9 +102,7 @@ export default function AdminPage(): JSX.Element {
             <Button className={checkSyncButtonClassName} onClick={checkSyncFile}>
               Is File Synced
             </Button>
-            <Button onClick={downloadToLocal}>
-              Sync File
-            </Button>
+            <Button onClick={downloadToLocal}>Sync File</Button>
           </div>
         </div>
 
