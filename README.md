@@ -15,8 +15,9 @@
 - Next
   - [x] Edit Prompt
   - [x] View Prompts
+  - [x] Admin Page to show Health
   - [ ] Add Prompt
-  - [ ] Admin Page to show Health
+  - [ ] Add Jobs
   - [ ] Set up Google Analytics
 
 - [ ] Bugs
