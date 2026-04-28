@@ -16,9 +16,12 @@
   - [x] Edit Prompt
   - [x] View Prompts
   - [x] Admin Page to show Health
+  - [x] Use radix-ui
+  - [x] Create Popup Component (@radix-ui/react-dialog)
   - [ ] Add Prompt
   - [ ] Add Jobs
   - [ ] Set up Google Analytics
+  - [ ] Set Up feature branch
 
 - [ ] Bugs
   - [ ] [1] Navigation to book now is going to admin page
@@ -34,9 +37,6 @@
 - [ ] Other
   - [ ] [2] Make pages static as much as possible
   - [ ] [3] Have proper Title and Description for page
-  - [ ] [4] use radix-ui
-    - [ ] Create Popup Component (@radix-ui/react-dialog)
-    - [x] Create React Dropdown (@radix-ui/react-dropdown-menu)
   - [ ] Set up Auth
 
 - [ ] Social Media SetUp
