@@ -5,9 +5,9 @@
 
 - Next
   - [x] Add Prompt
-  - [ ] Add Jobs
-  - [ ] Set up Google Analytics
-  - [ ] Set Up feature branch
+  - [ ][3] Add Jobs
+  - [ ][3] Set up Google Analytics
+  - [ ][1] Set Up feature branch
 
 - [ ] Bugs
   - [ ] [1] Navigation to book now is going to admin page
@@ -24,6 +24,7 @@
   - [ ] [2] Make pages static as much as possible
   - [ ] [3] Have proper Title and Description for page
   - [ ] Set up Auth
+  - [ ] Set Up Hero Section
 
 - [ ] Social Media SetUp
   - [ ] Twitter Account
