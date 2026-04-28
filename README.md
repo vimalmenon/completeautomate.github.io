@@ -1,24 +1,10 @@
 # [Complete Automate](http://completeautomate.com/)
 
-### What we do?
-
-- We assist companies with automation
-- We automate menial tasks
-
-### Styles
-
-- Background : White
-- Theme : Yellow / Black
 
 ### To Do
 
 - Next
-  - [x] Edit Prompt
-  - [x] View Prompts
-  - [x] Admin Page to show Health
-  - [x] Use radix-ui
-  - [x] Create Popup Component (@radix-ui/react-dialog)
-  - [ ] Add Prompt
+  - [x] Add Prompt
   - [ ] Add Jobs
   - [ ] Set up Google Analytics
   - [ ] Set Up feature branch
