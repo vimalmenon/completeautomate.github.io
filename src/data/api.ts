@@ -1,5 +1,11 @@
 import { Env } from '@constants';
-import { IApiData, IJobUpdateInput, IPromptUpdateInput, IYouTubeVideoUpdateInput } from '@types';
+import {
+  IApiData,
+  IJobUpdateInput,
+  IPromptCreateInput,
+  IPromptUpdateInput,
+  IYouTubeVideoUpdateInput,
+} from '@types';
 
 export const getChannelsApi = (): IApiData => ({
   baseUrl: Env.API_URL,
@@ -44,6 +50,13 @@ export const updatePromptApi = (
   data,
   method: 'PUT',
   url: `/api/v1/prompts/${task}`,
+});
+
+export const createPromptApi = (data: IPromptCreateInput): IApiData<IPromptCreateInput> => ({
+  baseUrl: Env.API_URL,
+  data,
+  method: 'POST',
+  url: '/api/v1/prompts',
 });
 
 export const getJobsApi = (): IApiData => ({

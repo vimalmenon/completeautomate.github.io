@@ -3,6 +3,7 @@
 import React from 'react';
 
 import {
+  createPromptApi,
   downloadToLocalApi,
   fileSyncedApi,
   getChannelsApi,
@@ -17,6 +18,7 @@ import {
   IJob,
   IJobUpdateInput,
   IPrompt,
+  IPromptCreateInput,
   IPromptUpdateInput,
   IYouTubeChannel,
   IYouTubeVideo,
@@ -104,6 +106,25 @@ export const useJobsHelper = (): IUseJobsHelper => {
 
 export const usePromptsHelper = (): IUsePromptsHelper => {
   const { alert, loading, prompts, setAlert, setLoading, setPrompts } = useAdminContext();
+  const addPrompt = async (data: IPromptCreateInput): Promise<boolean> => {
+    setLoading(true);
+    setAlert(null);
+
+    const { error, response } = await ApiService<IPrompt>(createPromptApi(data));
+    if (error) {
+      setAlert({
+        message: typeof error === 'string' ? error : 'Unable to add prompt right now.',
+        severity: 'error',
+      });
+      setLoading(false);
+      return false;
+    }
+
+    setPrompts((currentPrompts) => [...currentPrompts, response]);
+    setLoading(false);
+    return true;
+  };
+
   const getPrompts = async (): Promise<void> => {
     setLoading(true);
     setAlert(null);
@@ -142,6 +163,7 @@ export const usePromptsHelper = (): IUsePromptsHelper => {
   };
 
   return {
+    addPrompt,
     alert,
     getPrompts,
     loading,

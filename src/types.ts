@@ -131,6 +131,13 @@ export interface IPromptUpdateInput {
   currentVersion: IPromptVersionUpdateInput;
 }
 
+export interface IPromptCreateInput {
+  task: string;
+  description: string;
+  comment?: string | null;
+  currentVersion: IPromptVersionUpdateInput;
+}
+
 export interface IPrompt {
   task: string;
   description: string;

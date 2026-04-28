@@ -3,6 +3,7 @@ import {
   IJob,
   IJobUpdateInput,
   IPrompt,
+  IPromptCreateInput,
   IPromptUpdateInput,
   IYouTubeChannel,
   IYouTubeVideo,
@@ -20,6 +21,7 @@ export interface IUseJobsHelper {
 export interface IUsePromptsHelper {
   alert: IAlert | null;
   loading: boolean;
+  addPrompt: (data: IPromptCreateInput) => Promise<boolean>;
   getPrompts: () => Promise<void>;
   prompts: IPrompt[];
   updatePrompt: (task: string, data: IPromptUpdateInput) => Promise<boolean>;
