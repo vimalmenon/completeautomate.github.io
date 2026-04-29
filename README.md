@@ -4,9 +4,9 @@
 ### To Do
 
 - Next
+  - [x][1] Set Up feature branch
   - [ ][3] Add Jobs
   - [ ][3] Set up Google Analytics
-  - [ ][1] Set Up feature branch
 
 - [ ] Bugs
   - [ ] [1] Navigation to book now is going to admin page
