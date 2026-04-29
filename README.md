@@ -4,7 +4,6 @@
 ### To Do
 
 - Next
-  - [x] Add Prompt
   - [ ][3] Add Jobs
   - [ ][3] Set up Google Analytics
   - [ ][1] Set Up feature branch
