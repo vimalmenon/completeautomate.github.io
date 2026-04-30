@@ -1,148 +1,309 @@
-# CompleteAutomate Frontend - Guidance
+# CompleteAutomate - Frontend Project Guidance
 
-## Project Overview
+## Overview
 
-**CompleteAutomate** is an automation solutions platform that provides ready-to-use automation scripts and tools to streamline workflows and boost productivity. The frontend is built with Next.js 16, React 19, and TypeScript, styled with Tailwind CSS 4, featuring responsive design and accessibility-first component architecture.
+This is the frontend project for CompleteAutomate - a web interface and dashboard built with Next.js and TypeScript.
 
-- **Tech Stack**: Next.js 16, React 19, TypeScript 5, Tailwind CSS 4, Lucide React
-- **Purpose**: Modern, responsive web interface for automation services
-- **Status**: Under active development
-- **Key Features**: Responsive header with mobile menu, accessible components, icon library integration
+---
+
+## Project Structure
+
+```
+completeautomate.github.io/
+├── src/
+│   ├── app/                    # App directory (pages, layouts)
+│   │   ├── globals.css        # Global styles
+│   │   ├── layout.tsx         # Root layout
+│   │   └── page.tsx           # Home page
+│   ├── common/                # Shared components
+│   │   ├── Header/            # Header component
+│   │   │   ├── Header.component.tsx
+│   │   │   └── index.ts
+│   │   └── index.ts
+│   └── types/                 # TypeScript type definitions
+│       ├── cache-life.d.ts
+│       ├── routes.d.ts
+│       └── validator.ts
+├── public/                    # Static assets
+├── package.json              # Dependencies
+├── tsconfig.json             # TypeScript config
+├── next.config.ts            # Next.js config
+├── postcss.config.mjs         # PostCSS config
+└── eslint.config.mjs         # ESLint config
+```
 
 ---
 
 ## Setup & Installation
 
-### 1. Install Dependencies
+### Prerequisites
+- Node.js 18+ and npm
+- Git
+
+
+
+### Frontend Setup
+
 ```bash
+cd completeautomate.github.io
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Type checking
+npm run tsc
+
+# Run linter
+npm run lint
+```
+
+---
+
+## Components
+
+### Header Component
+Navigation header for the web interface.
+
+**Location:** `src/common/Header/Header.component.tsx`
+
+---
+
+## Development Guidelines
+
+### Best Practices
+
+- **Create a new branch** for each feature: `git checkout -b feature/your-feature`
+- **Use Tailwind CSS** for styling
+- **Type everything** in TypeScript - no `any` types unless absolutely necessary
+- **Write descriptive commit messages** explaining what and why
+- **Test locally** before pushing changes
+- **Run type checking** before committing: `npm run tsc`
+
+### Code Style
+
+- **TypeScript**: Use ESLint configuration provided
+- **Naming**: Use camelCase for variables and functions
+- **Components**: Use functional components with hooks
+- **Files**: Use PascalCase for component files
+
+---
+
+## Common Workflows
+
+### Adding a New Page
+
+1. Create a new directory in `src/app/`
+2. Add `page.tsx` file
+3. Use Next.js App Router conventions
+4. Type your props using TypeScript
+
+```tsx
+// src/app/my-page/page.tsx
+export default function MyPage() {
+  return (
+    <div className="p-8">
+      <h1 className="text-2xl font-bold">My Page</h1>
+    </div>
+  );
+}
+```
+
+### Creating a New Component
+
+1. Create directory in `src/common/`
+2. Add component file
+3. Add index.ts for exports
+4. Use Tailwind for styling
+
+```tsx
+// src/common/MyComponent/MyComponent.tsx
+interface Props {
+  title: string;
+}
+
+export const MyComponent = ({ title }: Props) => {
+  return <div className="p-4">{title}</div>;
+};
+```
+
+```ts
+// src/common/MyComponent/index.ts
+export { MyComponent } from './MyComponent';
+```
+
+### Adding Types
+
+Create type definitions in `src/types/` for shared types across the application.
+
+```ts
+// src/types/user.ts
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+```
+
+---
+
+## Useful Commands
+
+```bash
+# Development server (runs on http://localhost:3000)
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build locally
+npm run preview
+
+# Type checking
+npm run tsc
+
+# Run linter
+npm run lint
+
+# Format code
+npm run format
+
+# Git operations
+git add .
+git commit -m "Your message"
+git push origin main
+```
+
+---
+
+## Development Tips
+
+### Environment Variables
+
+Create a `.env.local` file in the project root for local configuration:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+DATABASE_URL=your_database_url
+```
+
+Use `NEXT_PUBLIC_` prefix for variables that should be exposed to the browser.
+
+### Hot Reload
+
+The development server automatically reloads when you make changes to your code.
+
+### Debugging
+
+- **Browser DevTools**: Use the browser's built-in DevTools (F12)
+- **Next.js Debugging**: Check the terminal output for errors
+- **Type Errors**: Run `npm run tsc` to catch TypeScript errors
+
+### Performance
+
+- **Image Optimization**: Use Next.js `Image` component for images
+- **Code Splitting**: Components are automatically code-split by route
+- **CSS**: Tailwind purges unused styles in production
+
+---
+
+## Resources & Links
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [React Documentation](https://react.dev)
+- [ESLint Documentation](https://eslint.org/docs/)
+
+---
+
+## Troubleshooting
+
+### Port Already in Use
+```bash
+# Find process using port 3000
+lsof -i :3000
+
+# Kill process
+kill -9 <PID>
+```
+
+### Dependencies Issues
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
 npm install
 ```
 
-### 2. Development Server
+### Build Errors
 ```bash
-npm run dev
-```
-Visit `http://localhost:3000`
+# Clean build
+rm -rf .next
+npm run build
 
-### 3. Build for Production
-```bash
-npm run build && npm start
-```
-
-## Key Technologies
-
-- **Next.js 16.1.1** - React framework
-- **React 19.2.3** - UI library
-- **Tailwind CSS 4** - Styling
-- **Lucide React 0.562.0** - Icons
-- **TypeScript 5** - Type safety
-
-## Component Guidelines
-
-- Use `src/common/` folder for shared components
-- Each component in its own folder with `index.ts` barrel export
-- Use CSS Modules for scoped styling
-- Add ARIA labels for accessibility
-
-## Development Commands
-
-```bash
-npm run dev      # Start dev server
-npm run lint     # Run ESLint
-npm run tsc      # Check TypeScript types
-npm run build    # Production build
-npm start        # Start production server
+# Check for TypeScript errors
+npm run tsc
 ```
 
-## Bash Guide: Creating Files with Text
+### Module Not Found
+Make sure all imports use correct relative paths. Check that the file exists and is properly exported.
 
-### Method 1: Using `echo` (Single Line)
-```bash
-echo "Your text here" > filename.txt
-```
-**Example**:
-```bash
-echo "Hello World" > greeting.txt
-```
+---
 
-### Method 2: Using `echo` with Append (Multiple Lines)
-```bash
-echo "Line 1" > filename.txt
-echo "Line 2" >> filename.txt
-echo "Line 3" >> filename.txt
-```
-**Note**: Use `>` for first line (overwrites), `>>` for subsequent lines (appends)
+## Contributing
 
-### Method 3: Using `cat` with Here-Document (Multi-line)
-```bash
-cat > filename.txt << EOF
-Your text content here
-Can be multiple lines
-No need to escape quotes
-EOF
-```
-**Example**:
-```bash
-cat > config.json << EOF
-{
-  "name": "MyApp",
-  "version": "1.0.0"
-}
-EOF
-```
+### Important Rules
 
-### Method 4: Using `tee` (Write & Display)
-```bash
-echo "Your text here" | tee filename.txt
-```
-**Example**:
-```bash
-echo "Installation complete" | tee install.log
-```
+⚠️ **NEVER commit directly to the main branch**
+- All work must be done on feature branches
+- Main branch should only be updated through pull requests
+- Use feature branches: `feature/your-feature` or `fix/bug-fix`
 
-### Method 5: Create with `touch` (Empty File)
+### Workflow
+
+1. Ensure you're on main and up to date: `git checkout main && git pull origin main`
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Make changes and test thoroughly
+4. Run type checking: `npm run tsc`
+5. Commit with clear messages: `git commit -m "Add feature description"`
+6. Push: `git push origin feature/your-feature`
+7. Create a pull request with description of changes
+8. Request review from team members
+9. Ensure all checks pass before merging
+10. Delete feature branch after merge: `git branch -d feature/your-feature`
+
+### Branch Naming Conventions
+
+- `feature/feature-name` - For new features
+- `fix/bug-name` - For bug fixes
+- `docs/update-docs` - For documentation updates
+- `refactor/refactor-name` - For refactoring code
+
+**Example:**
 ```bash
-touch filename.txt
+# Good branch names
+git checkout -b feature/add-user-dashboard
+git checkout -b fix/header-styling
+git checkout -b docs/update-readme
+
+# Bad branch names
+git checkout -b my-changes
+git checkout -b test
+git checkout -b new-feature
 ```
 
-### Method 6: Using `printf` (Formatted Content)
-```bash
-printf "Line 1\nLine 2\nLine 3\n" > filename.txt
-```
+---
 
-### Common Tips
+## License & Contact
 
-| Action | Command |
-|--------|---------|
-| Create/overwrite file | `echo "text" > file.txt` |
-| Append to file | `echo "text" >> file.txt` |
-| View file content | `cat file.txt` |
-| Edit file | `nano file.txt` or `vim file.txt` |
-| Create multi-line | `cat > file.txt << EOF` ... `EOF` |
-| Delete file | `rm file.txt` |
-| Copy file | `cp source.txt destination.txt` |
+For questions or support, reach out to the project maintainers.
 
-## Contributing Rules
-
-### ⚠️ CRITICAL: Never Commit to Main
-Always create a feature branch before making changes:
-
-```bash
-git checkout -b feature/your-feature-name
-git add .
-git commit -m "feat: description"
-git push origin feature/your-feature-name
-```
-
-**Branch Naming**:
-- `feature/*` - New features
-- `fix/*` - Bug fixes
-- `docs/*` - Documentation
-- `refactor/*` - Code refactoring
-
-## Resources
-
-- [Next.js Docs](https://nextjs.org/docs)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [Lucide React Icons](https://lucide.dev)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs)
+Last Updated: January 2026

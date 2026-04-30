@@ -1,165 +1,119 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { HeaderNavigation } from '../../data';
+import { ThemeToggle } from '../ThemeToggle';
 
 export const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
-  // Handle scroll for sticky header
   useEffect(() => {
-    // Guard for SSR: only run in the browser
-    if (typeof window === 'undefined') return;
-
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    setMounted(true);
   }, []);
 
-  // Close menu when link is clicked
-  const handleNavClick = () => {
-    setIsMenuOpen(false);
-  };
-
-  // Handle keyboard escape
-  useEffect(() => {
-    // Guard for SSR: only run in the browser
-    if (typeof window === 'undefined') return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    // Guard for SSR: only run in the browser
-    if (typeof document === 'undefined') return;
-
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
-
-  const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
-  ];
+  const isActive = (href: string): boolean =>
+    mounted && (href === '/' ? pathname === '/' : pathname.startsWith(href));
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 w-full bg-white shadow-md z-50 transition-all duration-300 ${isSticky ? 'shadow-lg' : ''}`}
-      role="banner"
-    >
-      <nav
-        className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto"
-        role="navigation"
-        aria-label="Main navigation"
-      >
-        {/* Logo Section */}
-        <div>
-          <Link
-            href="/"
-            className="flex items-center gap-1 text-2xl font-bold focus:outline-none"
-            aria-label="CompleteAutomate Home"
-            onClick={handleNavClick}
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
+        <Link href="/" className="flex flex-col leading-none">
+          <span className="text-2xl font-semibold tracking-[-0.04em] text-foreground">
+            CompleteAutomate
+          </span>
+          <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
+            AI-Powered Automation
+          </span>
+        </Link>
+
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+
+          <button
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
           >
-            <span className="text-gray-900">Complete</span>
-            <span className="text-blue-600">Automate</span>
-          </Link>
+            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          <ul className="flex items-center gap-8" role="menubar">
-            {navItems.map((item) => (
-              <li key={item.label} role="none">
-                <Link
-                  href={item.href}
-                  className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                  role="menuitem"
-                  tabIndex={0}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+        <nav className="hidden md:block">
+          <ul className="flex space-x-6">
+            {HeaderNavigation.map((navigation) => {
+              if (!navigation.hidden) {
+                return (
+                  <li key={navigation.url}>
+                    <Link
+                      href={navigation.url}
+                      className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 after:absolute after:bottom-1 after:left-3 after:h-px after:bg-primary after:transition-all after:duration-200 hover:text-primary hover:after:w-[calc(100%-1.5rem)] ${
+                        isActive(navigation.url)
+                          ? 'bg-surface/70 text-primary after:w-[calc(100%-1.5rem)]'
+                          : 'after:w-0'
+                      }`}
+                    >
+                      {navigation.label}
+                    </Link>
+                  </li>
+                );
+              }
+              return null;
+            })}
           </ul>
-        </div>
+        </nav>
+      </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 cursor-pointer"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-menu"
-          type="button"
-          tabIndex={0}
-        >
-          <span
-            className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-gray-900 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
-          ></span>
-        </button>
-      </nav>
-
-      {/* Mobile Navigation Menu */}
       <nav
-        id="mobile-menu"
-        className={`md:hidden fixed left-0 right-0 top-20 bg-white shadow-lg transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-96' : 'max-h-0'}`}
-        role="navigation"
-        aria-label="Mobile navigation"
-        aria-hidden={!isMenuOpen}
+        className={`overflow-hidden border-t border-border/60 bg-background/95 transition-all duration-300 md:hidden ${
+          menuOpen ? 'max-h-64' : 'max-h-0'
+        }`}
       >
-        <ul className="flex flex-col gap-4 p-6" role="menubar">
-          {navItems.map((item) => (
-            <li key={item.label} role="none">
-              <Link
-                href={item.href}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium block"
-                role="menuitem"
-                onClick={handleNavClick}
-                tabIndex={isMenuOpen ? 0 : -1}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+        <ul className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-4">
+          {HeaderNavigation.map((navigation) => {
+            if (!navigation.hidden) {
+              return (
+                <li key={navigation.url}>
+                  <Link
+                    href={navigation.url}
+                    className={`block rounded-2xl border px-4 py-3 text-sm transition-colors duration-200 ${
+                      isActive(navigation.url)
+                        ? 'border-primary/40 bg-primary/10 font-semibold text-primary'
+                        : 'border-border/60 bg-surface/60 hover:border-primary/30 hover:text-primary'
+                    }`}
+                    onClick={(): void => setMenuOpen(false)}
+                  >
+                    {navigation.label}
+                  </Link>
+                </li>
+              );
+            }
+            return null;
+          })}
         </ul>
       </nav>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div
-          className="md:hidden fixed inset-0 bg-black/30 top-20 z-40"
-          onClick={() => setIsMenuOpen(false)}
-          aria-hidden="true"
-          tabIndex={-1}
-        ></div>
-      )}
     </header>
   );
 };

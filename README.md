@@ -1,36 +1,43 @@
-# Complete Automate
+# [Complete Automate](http://completeautomate.com/)
 
 
-## TODO
-- [ ] Create a Layout for Admin Layout
-- [ ] Library for react component
-- [ ] Support Server Side Rendering
-- [ ] Set up linting
-- [ ] Set up prettify
-- [ ] Set up CI
-- [ ] Pages
-    - [ ] Create Home Page
-    - [ ] Create Blog Page
-    - [ ] Create Admin Page
+### To Do
 
-## 📦 Installation
+- Next
+  - [x][1] Set Up feature branch
+  - [ ][3] Add Jobs
+  - [ ][3] Set up Google Analytics
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/completeautomate.github.io.git
+- [ ] Bugs
+  - [ ] [1] Navigation to book now is going to admin page
+- [ ] Images
+  - [ ] [5] Image for Website
+  - [ ] [5] Favicon for Website
+  - [ ] [5] Logo for Website
+- [ ] Set Up Blogs
+  - [ ] [8] Add pages for blogs
+  - [ ] [5] Admin pages to show Jobs
+  - [ ] [5] Admin pages to show Prompts
+  - [ ] [5] Admin pages to show YouTube
+- [ ] Other
+  - [ ] [2] Make pages static as much as possible
+  - [ ] [3] Have proper Title and Description for page
+  - [ ] Set up Auth
+  - [ ] Set Up Hero Section
 
-# Navigate to directory
-cd completeautomate.github.io
+- [ ] Social Media SetUp
+  - [ ] Twitter Account
+  - [ ] Instagram Account
+  - [ ] Dedicated YouTube Channel
 
-# Install dependencies
-npm install
+### Links
 
-# Run development server
-npm run dev
+- [Complete Automate](http://completeautomate.com/)
+- [YouTube](https://www.youtube.com/@real_vimal_menon)
+- [GitHub](https://github.com/vimalmenon/vimalmenon.github.io/blob/ui-rewrite/package.json)
 
-# Build for production
-npm run build
+---
 
-# Start production server
-npm start
-```
+#### Version
+
+v0.0.01

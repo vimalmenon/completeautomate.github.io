@@ -5,7 +5,6 @@ import pluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginReact from 'eslint-plugin-react';
 import sort from 'eslint-plugin-sort';
-import storybook from 'eslint-plugin-storybook';
 import tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -33,22 +32,12 @@ export default [
     plugins: {
       import: pluginImport,
     },
-    settings: {
-      'import/resolver': {
-        node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        },
-        typescript: {
-          alwaysTryTypes: true,
-          project: './tsconfig.json',
-        },
-      },
-    },
   },
   {
     ignores: [
       'node_modules/*',
       '.next/*',
+      'next-env.d.ts',
       '/pages/api/**/*.ts',
       'out/*',
       'jest.setup.js',
@@ -170,5 +159,4 @@ export default [
       'sort/imports': 'off',
     },
   },
-  ...storybook.configs['flat/recommended'],
 ];

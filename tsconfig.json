@@ -20,8 +20,13 @@
     ],
     "paths": {
       "@common": ["./src/common"],
+      "@types": ["./src/types"],
+      "@constants": ["./src/constants"],
+      "@page": ["./src/page"],
+      "@utility": ["./src/utility"],
+      "@data": ["./src/data"],
       "@context": ["./src/context"],
-      "@types": ["./types/types"]
+      "@component": ["./src/component"]
     }
   },
   "include": [
@@ -29,8 +34,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "jest.config.js",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules", "types"]
 }
