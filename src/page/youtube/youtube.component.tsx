@@ -1,10 +1,22 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { ErrorMessage, LoadingIndicator } from '@common';
 import { useYouTubeHelper } from '@context';
 import { IYouTubeChannel, IYouTubeVideo } from '@types';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 import Link from 'next/link';
 
@@ -21,6 +33,12 @@ const formatDate = (iso: string): string => {
     month: 'short',
     year: 'numeric',
   });
+};
+
+const formatCompactNumber = (value: number): string => {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+  return `${value}`;
 };
 
 interface ChannelCardProps {
@@ -134,6 +152,37 @@ export const YoutubePage: React.FC = () => {
   const { alert, channels, getChannels, loading, selectChannel, selectedChannel, videos } =
     useYouTubeHelper();
 
+  const channelStatsChartData = useMemo(
+    () =>
+      [...(selectedChannel?.stats ?? [])]
+        .sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime())
+        .map((stat) => ({
+          label: new Date(stat.timestamp).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+          }),
+          subscriberCount: stat.subscriberCount,
+          videoCount: stat.videoCount,
+          viewCount: stat.viewCount,
+        })),
+    [selectedChannel?.stats]
+  );
+
+  const videoTaskStatusChartData = useMemo(() => {
+    const statusCounts = videos.reduce<Record<string, number>>((acc, video) => {
+      const key = video.taskStatus || 'Unknown';
+      acc[key] = (acc[key] ?? 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.entries(statusCounts)
+      .map(([taskStatus, count]) => ({
+        count,
+        taskStatus,
+      }))
+      .sort((a, b) => b.count - a.count);
+  }, [videos]);
+
   useEffect(() => {
     getChannels().catch(() => undefined);
   }, []);
@@ -192,6 +241,100 @@ export const YoutubePage: React.FC = () => {
             <div>
               <h2 className="text-xl font-semibold">{selectedChannel.title}</h2>
               <p className="text-sm text-muted">Videos</p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid grid-cols-1 gap-4 xl:grid-cols-2">
+            <div className="rounded-xl border border-border/70 bg-background/60 p-4">
+              <h3 className="text-sm font-semibold text-foreground">YouTube Channel Stats Trend</h3>
+              <p className="mt-1 text-xs text-muted">
+                Subscribers, total views, and video count over time.
+              </p>
+              {channelStatsChartData.length > 0 ? (
+                <div className="mt-4 h-64 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={channelStatsChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="label" minTickGap={24} />
+                      <YAxis yAxisId="left" tickFormatter={formatCompactNumber} width={48} />
+                      <YAxis yAxisId="right" orientation="right" allowDecimals={false} width={40} />
+                      <Tooltip
+                        formatter={(value, name) => [
+                          typeof value === 'number' ? formatCompactNumber(value) : String(value ?? ''),
+                          name === 'subscriberCount'
+                            ? 'Subscribers'
+                            : name === 'viewCount'
+                              ? 'Views'
+                              : 'Videos',
+                        ]}
+                      />
+                      <Legend
+                        formatter={(value: string) =>
+                          value === 'subscriberCount'
+                            ? 'Subscribers'
+                            : value === 'viewCount'
+                              ? 'Views'
+                              : 'Videos'
+                        }
+                      />
+                      <Line
+                        yAxisId="left"
+                        type="monotone"
+                        dataKey="subscriberCount"
+                        stroke="#0ea5e9"
+                        strokeWidth={2}
+                        dot={false}
+                      />
+                      <Line
+                        yAxisId="left"
+                        type="monotone"
+                        dataKey="viewCount"
+                        stroke="#14b8a6"
+                        strokeWidth={2}
+                        dot={false}
+                      />
+                      <Line
+                        yAxisId="right"
+                        type="monotone"
+                        dataKey="videoCount"
+                        stroke="#f59e0b"
+                        strokeWidth={2}
+                        dot={false}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              ) : (
+                <p className="mt-3 text-sm text-muted">No channel stats history available yet.</p>
+              )}
+            </div>
+
+            <div className="rounded-xl border border-border/70 bg-background/60 p-4">
+              <h3 className="text-sm font-semibold text-foreground">YouTube Video Status</h3>
+              <p className="mt-1 text-xs text-muted">
+                Count of videos grouped by current workflow status.
+              </p>
+              {videoTaskStatusChartData.length > 0 ? (
+                <div className="mt-4 h-64 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={videoTaskStatusChartData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis
+                        dataKey="taskStatus"
+                        interval={0}
+                        angle={-20}
+                        textAnchor="end"
+                        height={72}
+                      />
+                      <YAxis allowDecimals={false} />
+                      <Tooltip />
+                      <Bar dataKey="count" name="Videos" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              ) : (
+                <p className="mt-3 text-sm text-muted">No video status data available yet.</p>
+              )}
             </div>
           </div>
 
