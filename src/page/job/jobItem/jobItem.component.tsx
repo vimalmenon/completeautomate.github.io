@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useJobsHelper } from '@context';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { JobStatusType } from '@types';
 import { Eye, MoreHorizontal, Pencil, X } from 'lucide-react';
+
+import { JOB_QUERY_KEYS } from '../jobQueryParams';
 
 import { IJobItemProps } from './jobItem';
 
@@ -41,7 +43,13 @@ const formatDateTime = (value?: string): string => {
   return date.toLocaleString();
 };
 
-export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
+export const JobItem: React.FC<IJobItemProps> = ({
+  clearJobQueryParams,
+  job,
+  selectedJobId,
+  selectedMode,
+  setJobQueryParams,
+}) => {
   const { loading, updateJob } = useJobsHelper();
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -50,12 +58,67 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
   const [editTaskData, setEditTaskData] = useState(JSON.stringify(job.taskData ?? {}, null, 2));
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  const openEditDialog = (): void => {
+  const resetEditForm = (): void => {
     setEditStatus(job.status);
     setEditDescription(job.description ?? '');
     setEditTaskData(JSON.stringify(job.taskData ?? {}, null, 2));
     setSaveError(null);
-    setIsEditOpen(true);
+  };
+
+  useEffect(() => {
+    setIsViewOpen(selectedJobId === job.id && selectedMode === 'view');
+  }, [job.id, selectedJobId, selectedMode]);
+
+  useEffect(() => {
+    const shouldOpenEdit = selectedJobId === job.id && selectedMode === 'edit';
+
+    if (shouldOpenEdit) {
+      resetEditForm();
+    }
+
+    setIsEditOpen(shouldOpenEdit);
+  }, [job.description, job.id, job.status, job.taskData, selectedJobId, selectedMode]);
+
+  const setJobMode = (mode: 'view' | 'edit'): void => {
+    setJobQueryParams({
+      [JOB_QUERY_KEYS.jobId]: job.id,
+      [JOB_QUERY_KEYS.mode]: mode,
+    });
+  };
+
+  const clearJobMode = (): void => {
+    if (selectedJobId !== job.id) {
+      return;
+    }
+
+    clearJobQueryParams([JOB_QUERY_KEYS.jobId, JOB_QUERY_KEYS.mode]);
+  };
+
+  const handleViewOpenChange = (open: boolean): void => {
+    setIsViewOpen(open);
+
+    if (open) {
+      setJobMode('view');
+      return;
+    }
+
+    clearJobMode();
+  };
+
+  const openEditDialog = (): void => {
+    resetEditForm();
+    setJobMode('edit');
+  };
+
+  const handleEditOpenChange = (open: boolean): void => {
+    setIsEditOpen(open);
+
+    if (open) {
+      setJobMode('edit');
+      return;
+    }
+
+    clearJobMode();
   };
 
   const saveJobChanges = async (): Promise<void> => {
@@ -83,6 +146,7 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
     }
 
     setIsEditOpen(false);
+    clearJobMode();
   };
 
   return (
@@ -114,7 +178,7 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
                 className="z-50 min-w-44 rounded-lg border border-border bg-surface p-1.5 shadow-lg"
               >
                 <DropdownMenu.Item
-                  onSelect={() => setIsViewOpen(true)}
+                  onSelect={() => setJobMode('view')}
                   className="flex cursor-pointer items-center gap-2 rounded-md px-3 py-2 text-sm text-foreground outline-none transition hover:bg-muted/20 focus:bg-muted/20"
                 >
                   <Eye className="h-4 w-4" />
@@ -134,11 +198,11 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
         </td>
       </tr>
 
-      <Dialog.Root open={isViewOpen} onOpenChange={setIsViewOpen}>
+      <Dialog.Root open={isViewOpen} onOpenChange={handleViewOpenChange}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-[2px]" />
           <Dialog.Content className="fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-border bg-background p-0 shadow-2xl">
-            <div className="rounded-t-2xl border-b border-border bg-gradient-to-r from-surface via-surface to-muted/20 px-6 py-5">
+            <div className="rounded-t-2xl border-b border-border bg-linear-to-r from-surface via-surface to-muted/20 px-6 py-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <Dialog.Title className="text-xl font-semibold tracking-tight">
@@ -221,7 +285,7 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
         </Dialog.Portal>
       </Dialog.Root>
 
-      <Dialog.Root open={isEditOpen} onOpenChange={setIsEditOpen}>
+      <Dialog.Root open={isEditOpen} onOpenChange={handleEditOpenChange}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 backdrop-blur-[2px]" />
           <Dialog.Content className="fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-xl border border-border bg-background p-5 shadow-2xl">
@@ -240,10 +304,14 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
 
             <div className="mt-4 space-y-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <label
+                  htmlFor={`job-status-${job.id}`}
+                  className="text-xs font-semibold uppercase tracking-wide text-muted"
+                >
                   Status
                 </label>
                 <select
+                  id={`job-status-${job.id}`}
                   value={editStatus}
                   onChange={(event): void => setEditStatus(event.target.value as JobStatusType)}
                   className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/30"
@@ -257,10 +325,14 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <label
+                  htmlFor={`job-description-${job.id}`}
+                  className="text-xs font-semibold uppercase tracking-wide text-muted"
+                >
                   Description
                 </label>
                 <textarea
+                  id={`job-description-${job.id}`}
                   value={editDescription}
                   onChange={(event): void => setEditDescription(event.target.value)}
                   rows={3}
@@ -269,10 +341,14 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <label
+                  htmlFor={`job-task-data-${job.id}`}
+                  className="text-xs font-semibold uppercase tracking-wide text-muted"
+                >
                   Task Data
                 </label>
                 <textarea
+                  id={`job-task-data-${job.id}`}
                   value={editTaskData}
                   onChange={(event): void => setEditTaskData(event.target.value)}
                   rows={10}
@@ -285,7 +361,7 @@ export const JobItem: React.FC<IJobItemProps> = ({ job }) => {
               <div className="flex items-center justify-end gap-2">
                 <button
                   type="button"
-                  onClick={() => setIsEditOpen(false)}
+                  onClick={() => handleEditOpenChange(false)}
                   className="rounded-lg border border-border px-4 py-2 text-sm"
                 >
                   Cancel
