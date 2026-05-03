@@ -260,7 +260,9 @@ export const YoutubePage: React.FC = () => {
                       <YAxis yAxisId="right" orientation="right" allowDecimals={false} width={40} />
                       <Tooltip
                         formatter={(value, name) => [
-                          typeof value === 'number' ? formatCompactNumber(value) : String(value ?? ''),
+                          typeof value === 'number'
+                            ? formatCompactNumber(value)
+                            : String(value ?? ''),
                           name === 'subscriberCount'
                             ? 'Subscribers'
                             : name === 'viewCount'
