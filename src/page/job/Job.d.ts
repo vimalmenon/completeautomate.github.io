@@ -7,8 +7,11 @@ export interface IJobPageQuery {
 }
 
 export interface IUseJobQueryParams {
-  clearQuery: () => void;
-  setQueryParams: (data: Record<IJobPageQueryType, JobStatusType>) => void;
-  type: JobStatusType;
+  clearQueryParams: (keys: string[]) => void;
+  getQueryParam: (key: string) => string | null;
   jobs: IJob[];
+  jobId: string | null;
+  mode: JobQueryMode;
+  setQueryParams: (updates: QueryParamUpdates) => void;
+  getFilteredJobs: () => Promise<void>;
 }

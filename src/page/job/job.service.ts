@@ -7,7 +7,7 @@ import { IJob } from '@types';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-// import { IUseJobQueryParams } from './Job';
+import { IUseJobQueryParams } from './Job';
 
 type QueryParamValue = string | number | null | undefined;
 type QueryParamUpdates = Record<string, QueryParamValue>;
@@ -18,15 +18,7 @@ export const JOB_QUERY_KEYS = {
   mode: 'mode',
 } as const;
 
-export const useJobQueryParams = (): {
-  clearQueryParams: (keys: string[]) => void;
-  getQueryParam: (key: string) => string | null;
-  jobs: IJob[];
-  jobId: string | null;
-  mode: JobQueryMode;
-  setQueryParams: (updates: QueryParamUpdates) => void;
-  getFilteredJobs: () => Promise<void>;
-} => {
+export const useJobQueryParams = (): IUseJobQueryParams => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -40,12 +32,12 @@ export const useJobQueryParams = (): {
 
   const getFilteredJobs = async (): Promise<void> => {
     const jobs = await fetchJobs();
-    const query = getQueryParam("type")
-    console.log(query)
+    const query = getQueryParam('type');
+    if (query) {
+      setFilteredJob(jobs.filter((job) => job.status === query));
+    }
     setFilteredJob(jobs);
   };
-
-
 
   const setQueryParams = useCallback(
     (updates: QueryParamUpdates): void => {

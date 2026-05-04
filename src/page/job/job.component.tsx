@@ -9,8 +9,8 @@ import { JOB_QUERY_KEYS, useJobQueryParams } from './job.service';
 import { JobItem } from './jobItem';
 
 export const JobPage: React.FC = () => {
-  const { alert, jobs, loading, processJobs } = useJobsHelper();
-  const { clearQueryParams, getFilteredJobs, getQueryParam, jobId, mode, setQueryParams } =
+  const { alert, loading, processJobs } = useJobsHelper();
+  const { clearQueryParams, getFilteredJobs, getQueryParam, jobId, jobs, mode, setQueryParams } =
     useJobQueryParams();
 
   useEffect(() => {
