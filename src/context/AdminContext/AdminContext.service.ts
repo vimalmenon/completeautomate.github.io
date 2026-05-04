@@ -90,23 +90,11 @@ export const useJobsHelper = (): IUseJobsHelper => {
     return true;
   };
 
-  const processJobs = (jobs: IJob[]): Record<string, number> =>
-    jobs.reduce<Record<string, number>>(
-      (result, job) => {
-        result[job.status] = result[job.status] ? +result[job.status] + 1 : 1;
-        return result;
-      },
-      {
-        ALL: jobs.length,
-      }
-    );
-
   return {
     alert,
     fetchJobs,
     jobs,
     loading,
-    processJobs,
     updateJob,
   };
 };

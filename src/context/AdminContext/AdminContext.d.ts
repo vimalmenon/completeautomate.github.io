@@ -15,7 +15,6 @@ export interface IUseJobsHelper {
   fetchJobs: () => Promise<IJob[]>;
   updateJob: (jobId: string, data: IJobUpdateInput) => Promise<boolean>;
   jobs: IJob[];
-  processJobs: (jobs: IJob[]) => Record<string, number>;
 }
 
 export interface IUsePromptsHelper {
