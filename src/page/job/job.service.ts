@@ -24,6 +24,7 @@ export const useJobQueryParams = (): IUseJobQueryParams => {
   const searchParams = useSearchParams();
   const { fetchJobs } = useJobsHelper();
   const [filteredJob, setFilteredJob] = useState<IJob[]>([]);
+  const { jobs } = useJobsHelper();
 
   const getQueryParam = useCallback(
     (key: string): string | null => searchParams.get(key),
@@ -38,6 +39,17 @@ export const useJobQueryParams = (): IUseJobQueryParams => {
     }
     setFilteredJob(jobs);
   };
+
+  const processJobs = (): Record<string, number> =>
+    jobs.reduce<Record<string, number>>(
+      (result, job) => {
+        result[job.status] = result[job.status] ? +result[job.status] + 1 : 1;
+        return result;
+      },
+      {
+        ALL: jobs.length,
+      }
+    );
 
   const setQueryParams = useCallback(
     (updates: QueryParamUpdates): void => {
@@ -75,6 +87,7 @@ export const useJobQueryParams = (): IUseJobQueryParams => {
     jobId: getQueryParam(JOB_QUERY_KEYS.jobId),
     jobs: filteredJob,
     mode,
+    processJobs,
     setQueryParams,
   };
 };

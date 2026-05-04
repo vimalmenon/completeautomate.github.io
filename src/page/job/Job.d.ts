@@ -14,4 +14,5 @@ export interface IUseJobQueryParams {
   mode: JobQueryMode;
   setQueryParams: (updates: QueryParamUpdates) => void;
   getFilteredJobs: () => Promise<void>;
+  processJobs: () => Record<string, number>;
 }

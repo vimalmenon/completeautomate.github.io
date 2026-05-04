@@ -9,15 +9,23 @@ import { JOB_QUERY_KEYS, useJobQueryParams } from './job.service';
 import { JobItem } from './jobItem';
 
 export const JobPage: React.FC = () => {
-  const { alert, loading, processJobs } = useJobsHelper();
-  const { clearQueryParams, getFilteredJobs, getQueryParam, jobId, jobs, mode, setQueryParams } =
-    useJobQueryParams();
+  const { alert, loading } = useJobsHelper();
+  const {
+    clearQueryParams,
+    getFilteredJobs,
+    getQueryParam,
+    jobId,
+    jobs,
+    mode,
+    processJobs,
+    setQueryParams,
+  } = useJobQueryParams();
 
   useEffect(() => {
     getFilteredJobs();
   }, []);
 
-  const items = processJobs(jobs);
+  const items = processJobs();
   const selectedJobId = getQueryParam(JOB_QUERY_KEYS.jobId);
   const visibleJobs = selectedJobId ? jobs.filter((job) => job.id === selectedJobId) : jobs;
 
