@@ -6,7 +6,7 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { JobStatusType } from '@types';
 import { Eye, MoreHorizontal, Pencil, X } from 'lucide-react';
 
-import { JOB_QUERY_KEYS } from '../jobQueryParams';
+import { JOB_QUERY_KEYS } from "../job.service";
 
 import { IJobItemProps } from './jobItem';
 

@@ -5,16 +5,17 @@ import { useEffect } from 'react';
 import { ErrorMessage, LoadingIndicator } from '@common';
 import { useJobsHelper } from '@context';
 
+import { JOB_QUERY_KEYS, useJobQueryParams } from './job.service';
 import { JobItem } from './jobItem';
-import { JOB_QUERY_KEYS, useJobQueryParams } from './jobQueryParams';
 
 export const JobPage: React.FC = () => {
-  const { alert, getJobs, jobs, loading, processJobs } = useJobsHelper();
-  const { clearQueryParams, getQueryParam, jobId, mode, setQueryParams } = useJobQueryParams();
+  const { alert, jobs, loading, processJobs } = useJobsHelper();
+  const { clearQueryParams, getFilteredJobs, getQueryParam, jobId, mode, setQueryParams } =
+    useJobQueryParams();
 
   useEffect(() => {
-    void getJobs();
-  }, [getJobs]);
+    getFilteredJobs();
+  }, []);
 
   const items = processJobs(jobs);
   const selectedJobId = getQueryParam(JOB_QUERY_KEYS.jobId);
@@ -37,7 +38,11 @@ export const JobPage: React.FC = () => {
 
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {Object.keys(items).map((item) => (
-            <article key={item} className="rounded-xl border border-border bg-muted/10 p-4">
+            <article
+              key={item}
+              className="rounded-xl border border-border bg-muted/10 p-4"
+              onClick={() => setQueryParams({ type: item })}
+            >
               <p className="text-xs uppercase tracking-wider text-muted">{item}</p>
               <p className="mt-2 text-2xl font-semibold">{items[item]}</p>
             </article>
@@ -72,8 +77,8 @@ export const JobPage: React.FC = () => {
             className="mt-4"
             message={alert.message}
             actionLabel="Try again"
-            onAction={() => {
-              void getJobs();
+            onAction={async () => {
+              await getFilteredJobs();
             }}
             title="Could not load jobs"
           />

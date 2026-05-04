@@ -12,7 +12,7 @@ import {
 export interface IUseJobsHelper {
   alert: IAlert | null;
   loading: boolean;
-  getJobs: () => Promise<void>;
+  fetchJobs: () => Promise<IJob[]>;
   updateJob: (jobId: string, data: IJobUpdateInput) => Promise<boolean>;
   jobs: IJob[];
   processJobs: (jobs: IJob[]) => Record<string, number>;
