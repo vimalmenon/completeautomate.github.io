@@ -34,10 +34,15 @@ export const useJobQueryParams = (): IUseJobQueryParams => {
   const getFilteredJobs = async (): Promise<void> => {
     const jobs = await fetchJobs();
     const query = getQueryParam('type');
+    filterJobs(jobs, query);
+  };
+
+  const filterJobs = (jobs: IJob[], query: string | null): void => {
     if (query) {
       setFilteredJob(jobs.filter((job) => job.status === query));
+    } else {
+      setFilteredJob(jobs);
     }
-    setFilteredJob(jobs);
   };
 
   const processJobs = (): Record<string, number> =>
@@ -64,8 +69,14 @@ export const useJobQueryParams = (): IUseJobQueryParams => {
         nextParams.set(key, String(value));
       });
 
-      const nextQuery = nextParams.toString();
-      router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, { scroll: false });
+      if (updates.type == 'ALL') {
+        router.replace(pathname, { scroll: false });
+        filterJobs(jobs, null);
+      } else {
+        const nextQuery = nextParams.toString();
+        router.replace(nextQuery ? `${pathname}?${nextQuery}` : pathname, { scroll: false });
+        filterJobs(jobs, String(updates.type));
+      }
     },
     [pathname, router, searchParams]
   );
