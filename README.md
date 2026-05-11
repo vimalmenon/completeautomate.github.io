@@ -4,10 +4,6 @@
 ### To Do
 
 - Next
-  - [x][5] Admin pages to show Jobs
-  - [x][5] Admin pages to show Prompts
-  - [x][5] Admin pages to show YouTube
-  - [x][3] Add Jobs
   - [ ][2] Check if Update Job is working 
   - [ ][3] Set up Google Analytics
 
