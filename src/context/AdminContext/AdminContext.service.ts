@@ -54,7 +54,7 @@ export const useAdminContext = (): IAdminContext =>
 
 export const useJobsHelper = (): IUseJobsHelper => {
   const { alert, jobs, loading, setAlert, setJobs, setLoading } = useAdminContext();
-  const getJobs = async (): Promise<void> => {
+  const fetchJobs = async (): Promise<IJob[]> => {
     setLoading(true);
     setAlert(null);
 
@@ -64,10 +64,11 @@ export const useJobsHelper = (): IUseJobsHelper => {
         message: typeof error === 'string' ? error : 'Unable to load jobs right now.',
         severity: 'error',
       });
-      return;
+      return [];
     }
     setJobs(response);
     setLoading(false);
+    return response;
   };
 
   const updateJob = async (jobId: string, data: IJobUpdateInput): Promise<boolean> => {
@@ -89,17 +90,11 @@ export const useJobsHelper = (): IUseJobsHelper => {
     return true;
   };
 
-  const processJobs = (jobs: IJob[]): Record<string, number> =>
-    jobs.reduce<Record<string, number>>((result, job) => {
-      result[job.status] = result[job.status] ? +result[job.status] + 1 : 1;
-      return result;
-    }, {});
   return {
     alert,
-    getJobs,
+    fetchJobs,
     jobs,
     loading,
-    processJobs,
     updateJob,
   };
 };

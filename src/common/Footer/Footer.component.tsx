@@ -39,6 +39,12 @@ export const Footer: React.FC = () => (
         <p className="mt-2 max-w-sm text-sm leading-6 text-muted">
           Intelligent automation systems for teams that want cleaner operations and faster output.
         </p>
+        <a
+          href="mailto:hello@completeautomate.com"
+          className="mt-3 inline-flex text-sm font-medium text-foreground transition hover:text-primary"
+        >
+          hello@completeautomate.com
+        </a>
         <div className="mt-4 flex gap-4">
           {socialLinks.map((link) => (
             <a
