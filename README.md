@@ -12,7 +12,7 @@
   - [ ] [1] Navigation to book now is going to admin page
   - [ ] [4] Book Consultation should navigate to Email Address (For Now)
 - [ ] Images
-  - [ ] [5] Image for Website
+  - [ ] [5] Images for Website
   - [ ] [5] Favicon for Website
   - [ ] [5] Logo for Website
 - [ ] Set Up Blogs
