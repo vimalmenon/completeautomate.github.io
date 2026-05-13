@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 
 import { Footer, Header } from '@common';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from 'next-themes';
 
 import type { Metadata } from 'next';
@@ -47,6 +48,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-M0XBLGNSN6" />
     </html>
   );
 }
