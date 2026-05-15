@@ -4,7 +4,7 @@
 ### To Do
 
 - Next
-  - [ ][2] Check if Update Job is working 
+  - [x][2] Check if update job is working 
   - [ ][3] Set up Google Analytics
 
 
