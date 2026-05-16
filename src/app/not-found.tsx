@@ -13,23 +13,15 @@ export default function NotFound() {
         </p>
         <div className="mt-10">
           <div className="mx-auto max-w-md rounded-[2rem] border border-border/60 bg-surface/75 p-6 shadow backdrop-blur-xl">
-            <p className="text-sm font-medium text-muted">
-              You might be looking for:
-            </p>
+            <p className="text-sm font-medium text-muted">You might be looking for:</p>
             <ul className="mt-4 space-y-2">
               <li>
-                <Link
-                  href="/"
-                  className="text-sm font-semibold text-primary hover:underline"
-                >
+                <Link href="/" className="text-sm font-semibold text-primary hover:underline">
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blogs"
-                  className="text-sm font-semibold text-primary hover:underline"
-                >
+                <Link href="/blogs" className="text-sm font-semibold text-primary hover:underline">
                   Blogs
                 </Link>
               </li>
