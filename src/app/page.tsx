@@ -1,5 +1,7 @@
 import { JSX } from 'react';
 
+import type { Metadata } from 'next';
+
 const services = [
   {
     description:
@@ -32,6 +34,22 @@ const stats = [
   { label: 'Businesses Automated', value: '50+' },
   { label: 'Client Satisfaction', value: '98%' },
 ];
+
+export const metadata: Metadata = {
+  description:
+    'AI automation consulting that removes repetitive work and tightens your operations. Workflow automation, AI assistance, and consultancy services.',
+  openGraph: {
+    description:
+      'AI automation consulting that removes repetitive work and tightens your operations. Workflow automation, AI assistance, and consultancy services.',
+    title: 'Complete Automate — AI Automation Consulting',
+  },
+  title: 'AI Automation Consulting',
+  twitter: {
+    description:
+      'AI automation consulting that removes repetitive work and tightens your operations.',
+    title: 'Complete Automate — AI Automation Consulting',
+  },
+};
 
 export default function Home(): JSX.Element {
   return (

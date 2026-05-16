@@ -9,8 +9,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
-  description: 'This is the website for Complete Automate',
-  title: 'Admin | Complete Automate',
+  robots: { follow: false, index: false },
+  title: 'Admin',
 };
 
 export default function RootLayout({

@@ -1,6 +1,24 @@
 import { JSX } from 'react';
 
+import type { Metadata } from 'next';
+
 import { BlogCollections } from '@data';
+
+export const metadata: Metadata = {
+  description:
+    'Browse CompleteAutomate blog collections on AI automation strategy, AI systems, and implementation — organized by topic for cleaner navigation.',
+  openGraph: {
+    description:
+      'Browse CompleteAutomate blog collections on AI automation strategy, AI systems, and implementation.',
+    title: 'Blog — Complete Automate',
+  },
+  title: 'Blog',
+  twitter: {
+    description:
+      'Browse CompleteAutomate blog collections on AI automation strategy, AI systems, and implementation.',
+    title: 'Blog — Complete Automate',
+  },
+};
 
 export default function BlogsPage(): JSX.Element {
   return (

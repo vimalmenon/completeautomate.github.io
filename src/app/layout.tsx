@@ -32,14 +32,25 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.ico',
   },
+  metadataBase: new URL('https://completeautomate.com'),
   openGraph: {
     description:
       'AI automation consulting — CompleteAutomate designs AI workflows that remove repetitive work and tighten your operations.',
+    locale: 'en_US',
     siteName: 'Complete Automate',
     title: 'Complete Automate',
     type: 'website',
   },
-  title: 'Complete Automate',
+  title: {
+    default: 'Complete Automate',
+    template: '%s | Complete Automate',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    description:
+      'AI automation consulting — CompleteAutomate designs AI workflows that remove repetitive work and tighten your operations.',
+    title: 'Complete Automate',
+  },
 };
 
 export default function RootLayout({
