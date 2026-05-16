@@ -1,64 +1,50 @@
-import { NextPage } from 'next';
-
 import Link from 'next/link';
 
-export const NotFound: NextPage = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white px-6">
-    <div className="max-w-2xl mx-auto text-center">
-      {/* 404 Number */}
-      <h1 className="text-9xl font-bold text-blue-600 mb-4">404</h1>
-
-      {/* Error Message */}
-      <h2 className="text-3xl font-bold text-gray-900 mb-4">Page Not Found</h2>
-
-      <p className="text-lg text-gray-600 mb-8">
-        Sorry, we couldn&apos;t find the page you&apos;re looking for. The page might have been
-        moved, deleted, or never existed.
-      </p>
-
-      {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link
-          href="/"
-          className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          Go to Homepage
-        </Link>
-
-        <Link
-          href="/contact"
-          className="bg-gray-100 text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium"
-        >
-          Contact Support
-        </Link>
-      </div>
-
-      {/* Helpful Links */}
-      <div className="mt-12 pt-8 border-t border-gray-200">
-        <p className="text-sm text-gray-500 mb-4">You might be looking for:</p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link
-            href="/services"
-            className="text-blue-600 hover:text-blue-700 transition-colors text-sm"
-          >
-            Services
-          </Link>
-          <Link
-            href="/about"
-            className="text-blue-600 hover:text-blue-700 transition-colors text-sm"
-          >
-            About Us
-          </Link>
-          <Link
-            href="/contact"
-            className="text-blue-600 hover:text-blue-700 transition-colors text-sm"
-          >
-            Contact
-          </Link>
+export default function NotFound() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 py-24 sm:py-32 lg:px-8">
+      <div className="text-center">
+        <p className="text-base font-semibold text-primary">404</p>
+        <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+          Page not found
+        </h1>
+        <p className="mt-6 text-base leading-7 text-muted">
+          Sorry, we couldn&apos;t find the page you&apos;re looking for.
+        </p>
+        <div className="mt-10">
+          <div className="mx-auto max-w-md rounded-[2rem] border border-border/60 bg-surface/75 p-6 shadow backdrop-blur-xl">
+            <p className="text-sm font-medium text-muted">
+              You might be looking for:
+            </p>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link
+                  href="/"
+                  className="text-sm font-semibold text-primary hover:underline"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blogs"
+                  className="text-sm font-semibold text-primary hover:underline"
+                >
+                  Blogs
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="mt-6">
+            <a
+              href="mailto:hello@completeautomate.com"
+              className="inline-flex items-center justify-center rounded-2xl bg-primary px-4 py-2.5 text-sm font-semibold text-background shadow-sm hover:bg-primary-dark"
+            >
+              Email Support
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-);
-
-export default NotFound;
+    </main>
+  );
+}

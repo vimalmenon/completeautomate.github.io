@@ -51,7 +51,7 @@ export default function Home(): JSX.Element {
             </p>
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
               <a
-                href="/admin"
+                href="#services"
                 className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-dark"
               >
                 Start Building
@@ -174,7 +174,7 @@ export default function Home(): JSX.Element {
             faster AI workflows.
           </p>
           <a
-            href="/admin"
+            href="mailto:hello@completeautomate.com"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
           >
             Book a Consultation
