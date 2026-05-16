@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Site maintained with help from Elara (Hermes Agent)
