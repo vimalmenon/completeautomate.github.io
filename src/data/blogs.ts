@@ -22,7 +22,7 @@ export const BlogCollections: IBlogCollection[] = [
       {
         description:
           'A practical workflow for mapping bottlenecks, handoffs, and high-friction tasks before building anything.',
-        href: '#workflow-audit',
+        href: '/blogs/workflow-audit',
         id: 'workflow-audit',
         readTime: '6 min read',
         status: 'Live',
@@ -31,7 +31,7 @@ export const BlogCollections: IBlogCollection[] = [
       {
         description:
           'A decision model for spotting which processes are stable enough for automation and which still need cleanup first.',
-        href: '#automation-readiness',
+        href: '/blogs/automation-readiness',
         id: 'automation-readiness',
         readTime: '5 min read',
         status: 'Live',
@@ -74,7 +74,7 @@ export const BlogCollections: IBlogCollection[] = [
       {
         description:
           'Patterns for combining automations with human checkpoints so you keep trust, quality, and accountability.',
-        href: '#human-review',
+        href: '/blogs/human-review',
         id: 'human-review',
         readTime: '6 min read',
         status: 'Live',
