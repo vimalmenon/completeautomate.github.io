@@ -5,7 +5,7 @@
 
 - Next
   - [x][2] Check if update job is working 
-  - [ ][3] Set up Google Analytics
+  - [x][3] Set up Google Analytics
 
 
 - [ ] Bugs
@@ -24,7 +24,7 @@
   - [ ] Set Up Hero Section
 
 - [ ] Social Media SetUp
-  - [ ] Twitter Account
+  - [x] Twitter Account
   - [ ] Instagram Account
   - [ ] Dedicated YouTube Channel
 
