@@ -59,10 +59,10 @@ export const AuthContext: React.FC<{ children: React.ReactNode }> = ({
         const token = session.tokens?.idToken?.toString() ?? null;
 
         if (token) {
-          localStorage.setItem(AUTH_KEY, token);
+          sessionStorage.setItem(AUTH_KEY, token);
         } else {
-          // Try localStorage fallback
-          const stored = localStorage.getItem(AUTH_KEY);
+          // Try sessionStorage fallback
+          const stored = sessionStorage.getItem(AUTH_KEY);
           if (stored) {
             setIdToken(stored);
           }
@@ -75,8 +75,8 @@ export const AuthContext: React.FC<{ children: React.ReactNode }> = ({
           username: cognitoUser.username,
         });
       } catch {
-        // No valid session — try localStorage fallback
-        const stored = localStorage.getItem(AUTH_KEY);
+        // No valid session — try sessionStorage fallback
+        const stored = sessionStorage.getItem(AUTH_KEY);
         if (stored) {
           setIdToken(stored);
         }
@@ -98,7 +98,7 @@ export const AuthContext: React.FC<{ children: React.ReactNode }> = ({
 
   /* ---- Sign out ---- */
   const signOut = useCallback(async () => {
-    localStorage.removeItem(AUTH_KEY);
+    sessionStorage.removeItem(AUTH_KEY);
     setUser(null);
     setIdToken(null);
     if (configured && Env.NEXT_PUBLIC_COGNITO_DOMAIN) {

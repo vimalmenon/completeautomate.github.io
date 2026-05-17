@@ -20,6 +20,7 @@ export function configureAmplify(): void {
     Cognito: {
       userPoolClientId: Env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
       userPoolId: Env.NEXT_PUBLIC_COGNITO_USER_POOL_ID,
+      region: Env.NEXT_PUBLIC_COGNITO_REGION,
     },
   };
 

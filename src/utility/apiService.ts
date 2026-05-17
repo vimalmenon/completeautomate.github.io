@@ -5,7 +5,7 @@ const AUTH_KEY = 'cognito_id_token';
 
 function getAuthToken(): string | null {
   try {
-    return localStorage.getItem(AUTH_KEY);
+    return sessionStorage.getItem(AUTH_KEY);
   } catch {
     return null;
   }
