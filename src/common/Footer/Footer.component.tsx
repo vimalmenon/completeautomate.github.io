@@ -21,6 +21,15 @@ const socialLinks = [
     label: 'YouTube',
   },
   {
+    href: 'https://x.com/TotalAutomate',
+    icon: (
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M18.244 2H21l-6.558 7.495L22.16 22h-6.04l-4.73-6.177L5.984 22H3.226l7.014-8.014L2 2h6.193l4.276 5.633zM17.277 20.35h1.527L7.36 3.563H5.721z" />
+      </svg>
+    ),
+    label: 'X',
+  },
+  {
     href: 'https://reddit.com/r/completeautomate',
     icon: (
       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
