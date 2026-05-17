@@ -33,6 +33,14 @@ export const blogsNavigation: INavigation = {
   label: 'Blogs',
   url: '/blogs',
 };
+export const contactNavigation: INavigation = {
+  label: 'Contact',
+  url: '/contact',
+};
+export const aboutNavigation: INavigation = {
+  label: 'About',
+  url: '/about',
+};
 
 export const AdminNavigation: INavigation[] = [
   adminNavigation,
@@ -41,4 +49,10 @@ export const AdminNavigation: INavigation[] = [
   youtubeNavigation,
 ];
 
-export const HeaderNavigation: INavigation[] = [homeNavigation, blogsNavigation, adminNavigation];
+export const HeaderNavigation: INavigation[] = [
+  homeNavigation,
+  blogsNavigation,
+  contactNavigation,
+  aboutNavigation,
+  adminNavigation,
+];

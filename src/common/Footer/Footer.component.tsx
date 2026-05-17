@@ -1,8 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/blogs', label: 'Blogs' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/about', label: 'About' },
   { href: '/admin', label: 'Admin' },
 ];
 
@@ -12,9 +16,9 @@ const socialLinks = [
     icon: (
       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
-          fillRule="evenodd"
-          d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C22 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 01-1.768 1.768C18.254 19 12 19 12 19s-6.254 0-7.814-.418a2.504 2.504 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.418-4.814a2.504 2.504 0 011.768-1.768C5.746 5 12 5 12 5s6.254 0 7.814.418zM10 15l5.197-3L10 9v6z"
           clipRule="evenodd"
+          d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C22 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 01-1.768 1.768C18.254 19 12 19 12 19s-6.254 0-7.814-.418a2.504 2.504 0 01-1.768-1.768C2 15.255 2 12 2 12s0-3.255.418-4.814a2.504 2.504 0 011.768-1.768C5.746 5 12 5 12 5s6.254 0 7.814.418zM10 15l5.197-3L10 9v6z"
+          fillRule="evenodd"
         />
       </svg>
     ),
@@ -49,8 +53,8 @@ export const Footer: React.FC = () => (
           Intelligent automation systems for teams that want cleaner operations and faster output.
         </p>
         <a
-          href="mailto:hello@completeautomate.com"
           className="mt-3 inline-flex text-sm font-medium text-foreground transition hover:text-primary"
+          href="mailto:hello@completeautomate.com"
         >
           hello@completeautomate.com
         </a>
@@ -58,11 +62,11 @@ export const Footer: React.FC = () => (
           {socialLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
               aria-label={link.label}
               className="rounded-full border border-border/60 bg-background/60 p-2 text-muted transition hover:border-primary/40 hover:text-primary"
+              href={link.href}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               {link.icon}
             </a>
@@ -75,7 +79,7 @@ export const Footer: React.FC = () => (
         <ul className="flex flex-col gap-2 text-sm">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="transition hover:text-primary">
+              <Link className="transition hover:text-primary" href={link.href}>
                 {link.label}
               </Link>
             </li>
