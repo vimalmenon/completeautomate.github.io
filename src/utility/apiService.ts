@@ -1,15 +1,34 @@
+import { Env } from '@constants';
 import { IApiData, IMakeRequest } from '../types';
+
+const AUTH_KEY = 'cognito_id_token';
+
+function getAuthToken(): string | null {
+  try {
+    return localStorage.getItem(AUTH_KEY);
+  } catch {
+    return null;
+  }
+}
 
 export const ApiService = async <T, E = unknown>(
   data: IApiData<unknown>
 ): Promise<IMakeRequest<T, E>> => {
   const url = `${data.baseUrl}${data.url}`;
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+
+  // Add auth token if available
+  const token = getAuthToken();
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
   try {
     const response = fetch(url, {
       body: data.data ? JSON.stringify(data.data) : undefined,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
       method: data.method,
     });
     const newResponse = await response;

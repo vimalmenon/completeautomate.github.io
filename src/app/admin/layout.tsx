@@ -1,25 +1,33 @@
+'use client';
+
 import { JSX } from 'react';
 
 import { AdminSideNavigation } from '@component';
 import { Env } from '@constants';
-import { AdminContext } from '@context';
+import { AdminContext, AuthContext, useAuthContext } from '@context';
 
-import type { Metadata } from 'next';
+import { notFound, useRouter } from 'next/navigation';
 
-import { notFound } from 'next/navigation';
+function AdminGuard({ children }: { children: React.ReactNode }): JSX.Element {
+  const { configured, loading, user } = useAuthContext();
+  const router = useRouter();
 
-export const metadata: Metadata = {
-  description: 'This is the website for Complete Automate',
-  title: 'Admin | Complete Automate',
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>): JSX.Element {
   if (!Env.ADMIN_ENABLED) {
     notFound();
+  }
+
+  if (loading) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-foreground border-t-transparent" />
+      </main>
+    );
+  }
+
+  // Auth is configured but user isn't logged in — redirect to login
+  if (configured && !user) {
+    router.replace('/login');
+    return <></>;
   }
 
   return (
@@ -33,5 +41,17 @@ export default function RootLayout({
         </section>
       </main>
     </AdminContext>
+  );
+}
+
+export default function AdminLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>): JSX.Element {
+  return (
+    <AuthContext>
+      <AdminGuard>{children}</AdminGuard>
+    </AuthContext>
   );
 }
