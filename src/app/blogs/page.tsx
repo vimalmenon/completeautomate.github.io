@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 
 import { BlogCollections } from '@data';
+import Link from 'next/link';
 
 export default function BlogsPage(): JSX.Element {
   return (
@@ -47,12 +48,12 @@ export default function BlogsPage(): JSX.Element {
                     <ul className="mt-3 space-y-2 border-l border-border/60 pl-4">
                       {collection.entries.map((entry) => (
                         <li key={entry.id}>
-                          <a
-                            href={entry.href}
+                          <Link
                             className="block text-sm leading-6 text-muted transition hover:text-primary"
+                            href={`/blogs/${entry.id}`}
                           >
                             {entry.title}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -108,18 +109,19 @@ export default function BlogsPage(): JSX.Element {
                       </div>
 
                       <div className="mt-5 flex items-center justify-between gap-4 border-t border-border/50 pt-4">
-                        <a
-                          href={`#${collection.id}`}
-                          className="text-xs font-semibold tracking-[0.26em] text-muted uppercase transition hover:text-primary"
-                        >
-                          Back To {collection.title}
-                        </a>
-                        <a
-                          href={entry.href}
-                          className="text-sm font-semibold text-primary transition hover:text-primary-dark"
-                        >
-                          Deep Link
-                        </a>
+                        {entry.content.length > 0 ? (
+                          <Link
+                            className="text-sm font-semibold tracking-[0.08em] text-primary transition hover:text-primary/80 uppercase"
+                            href={`/blogs/${entry.id}`}
+                          >
+                            Read Article
+                          </Link>
+                        ) : (
+                          <span className="text-sm font-medium italic text-muted">
+                            Coming soon
+                          </span>
+                        )}
+                        <span className="text-xs text-muted">{entry.readTime}</span>
                       </div>
                     </article>
                   ))}
