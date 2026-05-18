@@ -181,6 +181,65 @@ export default function Home(): JSX.Element {
           </a>
         </div>
       </section>
+
+      {/* ── Contact Section ── */}
+      <section className="px-6 py-16 sm:py-20" id="contact">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold tracking-[0.32em] text-primary uppercase">
+              Contact Us
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
+              Let&apos;s automate something together.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-muted sm:text-lg">
+              Reach out directly or follow along on X for updates, tips, and automation insights.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <a
+              className="group flex items-center gap-5 rounded-[1.75rem] border border-border/60 bg-surface/75 p-7 shadow-[0_18px_45px_rgb(15_23_42/0.08)] backdrop-blur transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_26px_60px_rgb(8_145_178/0.14)]"
+              href="mailto:hello@completeautomate.com"
+            >
+              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
+                <svg className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </span>
+              <div>
+                <p className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
+                  Email
+                </p>
+                <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-foreground group-hover:text-primary">
+                  hello@completeautomate.com
+                </p>
+              </div>
+            </a>
+
+            <a
+              className="group flex items-center gap-5 rounded-[1.75rem] border border-border/60 bg-surface/75 p-7 shadow-[0_18px_45px_rgb(15_23_42/0.08)] backdrop-blur transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_26px_60px_rgb(8_145_178/0.14)]"
+              href="https://x.com/TotalAutomate"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </span>
+              <div>
+                <p className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
+                  X (Twitter)
+                </p>
+                <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-foreground group-hover:text-primary">
+                  @TotalAutomate
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
