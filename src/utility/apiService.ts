@@ -1,4 +1,3 @@
-import { Env } from '@constants';
 import { IApiData, IMakeRequest } from '../types';
 
 const AUTH_KEY = 'cognito_id_token';

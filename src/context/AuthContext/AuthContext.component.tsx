@@ -10,11 +10,7 @@ import {
   signOut as amplifySignOut,
 } from 'aws-amplify/auth';
 
-import {
-  AuthContextProvider,
-  IAuthContext,
-  IAuthUser,
-} from './AuthContext.service';
+import { AuthContextProvider, IAuthContext, IAuthUser } from './AuthContext.service';
 import { configureAmplify } from './AuthContext.setup';
 
 /* ------------------------------------------------------------------ */
@@ -27,16 +23,13 @@ const AUTH_KEY = 'cognito_id_token';
 /*  Component                                                         */
 /* ------------------------------------------------------------------ */
 
-export const AuthContext: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}): JSX.Element => {
+export const AuthContext: React.FC<{ children: React.ReactNode }> = ({ children }): JSX.Element => {
   const [user, setUser] = useState<IAuthUser | null>(null);
   const [idToken, setIdToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const configured = Boolean(
-    Env.NEXT_PUBLIC_COGNITO_USER_POOL_ID &&
-      Env.NEXT_PUBLIC_COGNITO_CLIENT_ID
+    Env.NEXT_PUBLIC_COGNITO_USER_POOL_ID && Env.NEXT_PUBLIC_COGNITO_CLIENT_ID
   );
 
   /* ---- Initialise Amplify once ---- */
@@ -70,8 +63,8 @@ export const AuthContext: React.FC<{ children: React.ReactNode }> = ({
 
         setIdToken(token);
         setUser({
-          sub: cognitoUser.userId,
           email: cognitoUser.signInDetails?.loginId,
+          sub: cognitoUser.userId,
           username: cognitoUser.username,
         });
       } catch {
@@ -113,14 +106,10 @@ export const AuthContext: React.FC<{ children: React.ReactNode }> = ({
     configured,
     idToken,
     loading,
-    user,
     signIn,
     signOut,
+    user,
   };
 
-  return (
-    <AuthContextProvider.Provider value={value}>
-      {children}
-    </AuthContextProvider.Provider>
-  );
+  return <AuthContextProvider.Provider value={value}>{children}</AuthContextProvider.Provider>;
 };

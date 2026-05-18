@@ -18,9 +18,9 @@ export function configureAmplify(): void {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const authConfig: any = {
     Cognito: {
+      region: Env.NEXT_PUBLIC_COGNITO_REGION,
       userPoolClientId: Env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
       userPoolId: Env.NEXT_PUBLIC_COGNITO_USER_POOL_ID,
-      region: Env.NEXT_PUBLIC_COGNITO_REGION,
     },
   };
 
@@ -29,12 +29,10 @@ export function configureAmplify(): void {
     authConfig.Cognito.loginWith = {
       oauth: {
         domain: Env.NEXT_PUBLIC_COGNITO_DOMAIN,
-        scopes: ['openid', 'email', 'profile'],
-        redirectSignIn: [
-          redirectUrl || `${window.location.origin}/auth/callback`,
-        ],
+        redirectSignIn: [redirectUrl || `${window.location.origin}/auth/callback`],
         redirectSignOut: [signoutUrl || `${window.location.origin}/`],
         responseType: 'code',
+        scopes: ['openid', 'email', 'profile'],
       },
     };
   }

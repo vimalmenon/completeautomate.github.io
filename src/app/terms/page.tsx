@@ -13,8 +13,8 @@ export default function TermsPage(): JSX.Element {
           </h1>
           <div className="mt-10 space-y-6 text-base leading-8 text-muted">
             <p>
-              Welcome to CompleteAutomate. By accessing our website or using our services, you
-              agree to be bound by these Terms &amp; Conditions. Please read them carefully.
+              Welcome to CompleteAutomate. By accessing our website or using our services, you agree
+              to be bound by these Terms &amp; Conditions. Please read them carefully.
             </p>
 
             <h2 className="text-xl font-semibold tracking-[-0.04em] text-foreground">Services</h2>
@@ -29,33 +29,27 @@ export default function TermsPage(): JSX.Element {
             </h2>
             <p>By using our services, you agree to:</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>
-                Provide accurate and complete information necessary for service delivery
-              </li>
-              <li>
-                Use our services in compliance with all applicable laws and regulations
-              </li>
+              <li>Provide accurate and complete information necessary for service delivery</li>
+              <li>Use our services in compliance with all applicable laws and regulations</li>
               <li>
                 Not misuse our systems, attempt unauthorized access, or disrupt service operations
               </li>
-              <li>
-                Maintain the confidentiality of any access credentials or API keys we provide
-              </li>
+              <li>Maintain the confidentiality of any access credentials or API keys we provide</li>
             </ul>
 
             <h2 className="text-xl font-semibold tracking-[-0.04em] text-foreground">
               Intellectual Property
             </h2>
             <p>
-              All content, software, documentation, and deliverables provided by CompleteAutomate
-              — including code, designs, workflows, and methodologies — are the intellectual
-              property of CompleteAutomate unless otherwise specified in a written agreement.
-              Upon full payment, clients receive a license to use deliverables for their intended
-              business purpose.
+              All content, software, documentation, and deliverables provided by CompleteAutomate —
+              including code, designs, workflows, and methodologies — are the intellectual property
+              of CompleteAutomate unless otherwise specified in a written agreement. Upon full
+              payment, clients receive a license to use deliverables for their intended business
+              purpose.
             </p>
 
             <h2 className="text-xl font-semibold tracking-[-0.04em] text-foreground">
-                Limitation of Liability
+              Limitation of Liability
             </h2>
             <p>
               CompleteAutomate shall not be liable for any indirect, incidental, special,
@@ -69,27 +63,27 @@ export default function TermsPage(): JSX.Element {
             </h2>
             <p>
               We reserve the right to suspend or terminate access to our services at any time,
-              without notice, for conduct that violates these terms or is otherwise harmful to
-              our operations or other users. Clients may terminate engagements per the terms of
-              their individual agreement.
+              without notice, for conduct that violates these terms or is otherwise harmful to our
+              operations or other users. Clients may terminate engagements per the terms of their
+              individual agreement.
             </p>
 
             <h2 className="text-xl font-semibold tracking-[-0.04em] text-foreground">
               Governing Law
             </h2>
             <p>
-              These terms are governed by and construed in accordance with the laws of the State
-              of Delaware, without regard to its conflict of law provisions. Any disputes shall
-              be resolved in the courts of Delaware.
+              These terms are governed by and construed in accordance with the laws of the State of
+              Delaware, without regard to its conflict of law provisions. Any disputes shall be
+              resolved in the courts of Delaware.
             </p>
 
             <h2 className="text-xl font-semibold tracking-[-0.04em] text-foreground">
               Changes to Terms
             </h2>
             <p>
-              We may update these Terms &amp; Conditions from time to time. Changes will be
-              posted on this page with an updated &quot;Last updated&quot; date. Continued use of
-              our services after changes constitutes acceptance of the new terms.
+              We may update these Terms &amp; Conditions from time to time. Changes will be posted
+              on this page with an updated &quot;Last updated&quot; date. Continued use of our
+              services after changes constitutes acceptance of the new terms.
             </p>
 
             <hr className="my-8 border-border/40" />

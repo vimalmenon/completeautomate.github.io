@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 
 import { BlogSidebar } from '@component';
+
 import Link from 'next/link';
 
 export default function BlogsLayout({

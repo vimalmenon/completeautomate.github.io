@@ -1,8 +1,6 @@
 'use client';
 
-import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-
-import { configureAmplify } from './AuthContext.setup';
+import { createContext, useContext } from 'react';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                             */
@@ -41,12 +39,11 @@ const fallbackContext: IAuthContext = {
   configured: false,
   idToken: null,
   loading: false,
-  user: null,
   signIn: notImplemented,
   signOut: notImplemented,
+  user: null,
 };
 
 export const AuthContextProvider = createContext<IAuthContext>(fallbackContext);
 
-export const useAuthContext = (): IAuthContext =>
-  useContext<IAuthContext>(AuthContextProvider);
+export const useAuthContext = (): IAuthContext => useContext<IAuthContext>(AuthContextProvider);

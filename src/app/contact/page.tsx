@@ -1,7 +1,5 @@
 import { JSX } from 'react';
 
-import Link from 'next/link';
-
 export default function ContactPage(): JSX.Element {
   return (
     <div className="px-6 py-16 sm:py-20">
@@ -14,8 +12,8 @@ export default function ContactPage(): JSX.Element {
             Let&apos;s talk about your automation goals.
           </h1>
           <p className="mt-4 text-base leading-7 text-muted sm:text-lg">
-            Whether you have a project in mind or just want to explore what&apos;s possible, send
-            us a message and we&apos;ll get back to you within 24 hours.
+            Whether you have a project in mind or just want to explore what&apos;s possible, send us
+            a message and we&apos;ll get back to you within 24 hours.
           </p>
 
           <form

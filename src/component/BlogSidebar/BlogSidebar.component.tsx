@@ -3,6 +3,7 @@
 import { JSX } from 'react';
 
 import { BlogCollections } from '@data';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -39,9 +40,7 @@ export default function BlogSidebar(): JSX.Element {
                   <li key={entry.id}>
                     <Link
                       className={`block text-sm leading-6 transition ${
-                        isActive
-                          ? 'font-semibold text-primary'
-                          : 'text-muted hover:text-primary'
+                        isActive ? 'font-semibold text-primary' : 'text-muted hover:text-primary'
                       }`}
                       href={`/blogs/${entry.id}`}
                     >

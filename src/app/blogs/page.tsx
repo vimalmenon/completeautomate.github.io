@@ -1,6 +1,7 @@
 import { JSX } from 'react';
 
 import { BlogCollections } from '@data';
+
 import Link from 'next/link';
 
 export default function BlogsPage(): JSX.Element {

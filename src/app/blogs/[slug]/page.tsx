@@ -1,9 +1,10 @@
 import { JSX } from 'react';
 
 import { BlogCollections } from '@data';
-import type { Metadata } from 'next';
-import Link from 'next/link';
 
+import type { Metadata } from 'next';
+
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams(): { slug: string }[] {
@@ -12,11 +13,7 @@ export function generateStaticParams(): { slug: string }[] {
   );
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const entry = BlogCollections.flatMap((collection) => collection.entries).find(
     (e) => e.id === params.slug
   );
@@ -32,11 +29,7 @@ export function generateMetadata({
   };
 }
 
-export default function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
-}): JSX.Element {
+export default function BlogPostPage({ params }: { params: { slug: string } }): JSX.Element {
   const entry = BlogCollections.flatMap((collection) => collection.entries).find(
     (e) => e.id === params.slug
   );
@@ -70,18 +63,14 @@ export default function BlogPostPage({
               {entry.title}
             </h1>
 
-            <p className="mt-4 text-sm leading-7 text-muted sm:text-base">
-              {entry.description}
-            </p>
+            <p className="mt-4 text-sm leading-7 text-muted sm:text-base">{entry.description}</p>
           </header>
 
           <hr className="my-8 border-border/40" />
 
           <div className="space-y-6 text-base leading-8 text-foreground">
             {entry.content.length > 0 ? (
-              entry.content.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))
+              entry.content.map((paragraph, index) => <p key={index}>{paragraph}</p>)
             ) : (
               <p className="italic text-muted">
                 This article is still being written. Check back soon.

@@ -3,6 +3,7 @@
 import { JSX, useEffect } from 'react';
 
 import { useAuthContext } from '@context';
+
 import Link from 'next/link';
 
 export default function LoginPage(): JSX.Element {

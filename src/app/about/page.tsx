@@ -28,9 +28,7 @@ export default function AboutPage(): JSX.Element {
     <div className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-4xl">
         <div className="rounded-[2rem] border border-border/60 bg-surface/75 p-8 shadow-[0_24px_60px_rgb(15_23_42/0.12)] backdrop-blur-xl sm:p-12">
-          <p className="text-xs font-semibold tracking-[0.34em] text-primary uppercase">
-            About
-          </p>
+          <p className="text-xs font-semibold tracking-[0.34em] text-primary uppercase">About</p>
           <h1 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
             We build the invisible infrastructure that makes your business run better.
           </h1>
@@ -38,8 +36,8 @@ export default function AboutPage(): JSX.Element {
           <div className="mt-10 space-y-6 text-base leading-8 text-muted">
             <p>
               CompleteAutomate was founded on a simple observation: most teams spend more time
-              managing their tools than doing the work those tools were meant to enable. We exist
-              to change that.
+              managing their tools than doing the work those tools were meant to enable. We exist to
+              change that.
             </p>
             <p>
               We design and deploy AI-powered automation systems that eliminate repetitive work,
@@ -57,9 +55,7 @@ export default function AboutPage(): JSX.Element {
 
           <hr className="my-10 border-border/40" />
 
-          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-foreground">
-            How We Work
-          </h2>
+          <h2 className="text-2xl font-semibold tracking-[-0.04em] text-foreground">How We Work</h2>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {values.map((value) => (
