@@ -10,6 +10,11 @@ const navLinks = [
   { href: '/admin', label: 'Admin' },
 ];
 
+const legalLinks = [
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms & Conditions' },
+];
+
 const socialLinks = [
   {
     href: 'https://youtube.com/@real_vimal_menon',
@@ -78,6 +83,19 @@ export const Footer: React.FC = () => (
         <p className="mb-3 text-xs font-semibold tracking-[0.32em] text-muted uppercase">Links</p>
         <ul className="flex flex-col gap-2 text-sm">
           {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link className="transition hover:text-primary" href={link.href}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav>
+        <p className="mb-3 text-xs font-semibold tracking-[0.32em] text-muted uppercase">Legal</p>
+        <ul className="flex flex-col gap-2 text-sm">
+          {legalLinks.map((link) => (
             <li key={link.href}>
               <Link className="transition hover:text-primary" href={link.href}>
                 {link.label}
