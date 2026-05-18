@@ -22,8 +22,32 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  description: 'This is the website for Complete Automate',
+  description:
+    'AI-powered automation consulting — Complete Automate designs AI workflows that remove repetitive work, tighten operations, and give your team a calmer system to run the business on.',
+  icons: {
+    apple: '/apple-touch-icon.png',
+    icon: [
+      { sizes: '16x16', type: 'image/png', url: '/favicon-16.png' },
+      { sizes: '32x32', type: 'image/png', url: '/favicon-32.png' },
+      { sizes: '192x192', type: 'image/png', url: '/favicon-192.png' },
+      { type: 'image/svg+xml', url: '/icon.svg' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  openGraph: {
+    description:
+      'AI-powered automation consulting — we design AI workflows that remove repetitive work and tighten your operations.',
+    siteName: 'Complete Automate',
+    title: 'Complete Automate',
+    type: 'website',
+  },
   title: 'Complete Automate',
+  twitter: {
+    card: 'summary_large_image',
+    description:
+      'AI-powered automation consulting — design AI workflows that remove repetitive work.',
+    title: 'Complete Automate',
+  },
 };
 
 export default function RootLayout({

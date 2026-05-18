@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { HeaderNavigation } from '../../data';
+import { Logo } from '../Logo';
 import { ThemeToggle } from '../ThemeToggle';
 
 export const Header: React.FC = () => {
@@ -23,13 +24,16 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="flex flex-col leading-none">
-          <span className="text-2xl font-semibold tracking-[-0.04em] text-foreground">
-            CompleteAutomate
-          </span>
-          <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
-            AI-Powered Automation
-          </span>
+        <Link href="/" className="flex items-center gap-3 leading-none">
+          <Logo size={36} />
+          <div className="flex flex-col">
+            <span className="text-2xl font-semibold tracking-[-0.04em] text-foreground">
+              CompleteAutomate
+            </span>
+            <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
+              AI-Powered Automation
+            </span>
+          </div>
         </Link>
 
         <div className="flex items-center gap-4">
