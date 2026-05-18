@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 
-import { Footer, Header } from '@common';
+import { CookieConsent, Footer, Header } from '@common';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from 'next-themes';
 
@@ -47,6 +47,7 @@ export default function RootLayout({
           <main className="relative z-10 flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
+        <CookieConsent />
       </body>
       <GoogleAnalytics gaId="G-M0XBLGNSN6" />
     </html>
