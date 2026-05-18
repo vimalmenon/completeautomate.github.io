@@ -67,6 +67,56 @@ Tasks organized by priority (P0 = critical, P1 = important, P2 = nice-to-have).
 - **Why:** The YouTube social media entry has empty `icon` and `link` fields. This data isn't consumed anywhere yet, but should be populated for future use.
 - **Data:** YouTube channel: `https://youtube.com/@real_vimal_menon`
 
+#### [ ] Services page (`/services`)
+- **Files:** `src/app/services/page.tsx` (new)
+- **Why:** Home page has hero-level service cards (Workflow Automation, AI Assistance, Consultancy, AI Productivity) but no dedicated page. A `/services` page would let visitors dive into each offering with details, use cases, and CTAs.
+- **Priority:** P1
+
+#### [ ] Case studies / Portfolio page
+- **Files:** `src/app/case-studies/page.tsx` (new), `src/data/case-studies.ts` (new)
+- **Why:** The testimonial on the home page hints at past wins ("cut invoice processing time by 80%"). A dedicated case studies page builds trust and shows real outcomes.
+- **Scope:** 3-4 case studies with problem → solution → results format.
+- **Priority:** P1
+
+#### [ ] FAQ page (`/faq`)
+- **Files:** `src/app/faq/page.tsx` (new), `src/data/faq.ts` (new)
+- **Why:** Common questions about automation timelines, process, costs, and scope. Reduces friction for visitors considering booking.
+- **Priority:** P2
+
+#### [ ] Newsletter signup section
+- **Files:** `src/app/page.tsx` (add section), `src/common/NewsletterSignup/` (new component)
+- **Why:** Capture visitors who aren't ready to book but want updates. Complements the blog and X presence.
+- **Tech:** Could use a simple mailto form or integrate with an email service.
+- **Priority:** P2
+
+#### [ ] Scroll-triggered animations
+- **Files:** `src/app/page.tsx` (add animation classes), global CSS or a lightweight animation library
+- **Why:** Home page sections (services, testimonial, CTA) currently appear all at once. Fade-in/slide-up on scroll makes the page feel more polished.
+- **Tech:** Tailwind `animate-*` utilities, `framer-motion`, or native Intersection Observer.
+- **Priority:** P2
+
+#### [ ] Pricing / Packages section
+- **Files:** `src/app/page.tsx` or dedicated `/pricing` route
+- **Why:** Even a simple "Get a quote" section with service tiers gives visitors a frame of reference for investment.
+- **Priority:** P2
+
+#### [ ] XML sitemap
+- **Files:** `public/sitemap.xml` (new) or Next.js `generateSitemaps`
+- **Why:** Improves SEO by telling search engines about all pages. Currently only the home page may be indexed well.
+- **Priority:** P2
+
+#### [ ] Live automation stats widget (public)
+- **Files:** `src/page/job/` (reuse admin stats), new section on home page
+- **Why:** Show real metrics from the backend — hours saved, jobs completed, videos processed. Social proof that the system is active.
+- **Tech:** Calls `GET /api/v1/jobs` from the backend API.
+- **Priority:** P2/P3
+
+#### [ ] Blog polish: categories, search, read time
+- **Files:** `src/app/blogs/`, `src/data/blogs.ts`
+- **Why:** Current blog listing is flat — no categories, no search, no estimated read time. These improvements make the blog more usable and sticky.
+- **Scope:** Add tag-based filtering, client-side search, auto-calculated read time from content length.
+- **Priority:** P2
+
 #### [ ] Write actual blog content pages
 - **Files:** `src/app/blogs/[slug]/page.tsx` (new), `src/data/blogs.ts` (update hrefs)
 - **Why:** Blog listings show 6 planned/draft/live entries, but they all link to `#fragment` anchors. No actual content pages exist.
