@@ -30,7 +30,7 @@ export const BlogCollections: IBlogCollection[] = [
           'Finally, prioritize by pain, not by ease. The task that frustrates your team the most is almost always the best place to start. That frustration is a signal that the workflow is misaligned with how people actually think and work. Fix that alignment first, wrap automation around it second, and you will have a system that people trust rather than tolerate.',
         ],
         description:
-          'A practical workflow for mapping bottlenecks, handoffs, and high-friction tasks before building anything.',
+          'Learn how to audit a manual workflow before automating it. A practical guide for small business owners on mapping bottlenecks, finding high-friction tasks, and choosing the right processes for AI workflow automation.',
         href: '/blogs/workflow-audit',
         id: 'workflow-audit',
         readTime: '6 min read',
@@ -47,7 +47,7 @@ export const BlogCollections: IBlogCollection[] = [
           'Processes that pass all three filters are ready for automation. Processes that fail one or two need cleanup before code touches them. And processes that fail all three? Those are opportunities not for automation but for redesign. Fix the process, then automate it.',
         ],
         description:
-          'A decision model for spotting which processes are stable enough for automation and which still need cleanup first.',
+          'An automation readiness checklist for small teams. Use this decision framework to spot which business processes are stable enough for AI automation and which still need cleanup first.',
         href: '/blogs/automation-readiness',
         id: 'automation-readiness',
         readTime: '5 min read',
@@ -63,23 +63,34 @@ export const BlogCollections: IBlogCollection[] = [
       'Playbooks for using AI to tighten operations, speed up content workflows, and remove repetitive decisions.',
     entries: [
       {
-        content: [],
+        content: [
+          'AI content pipelines can transform how small teams produce and manage content, but only if the quality controls are baked in from the start. Without intentional design, AI-generated content quickly becomes generic, inconsistent, or worse — factually wrong.',
+          'The key is building a pipeline with clear stages: brief creation, AI drafting, human review, and final polish. Each stage has a specific purpose and a specific gate. The brief defines tone, audience, structure, and key messages. The AI draft follows the brief closely — use a lower temperature setting (0.3–0.5) for consistency. The human review catches brand voice drift, factual errors, and structural issues. The final polish handles formatting, links, and publication.',
+          'Where most pipelines fail is the review stage. If reviewers are asked to edit raw AI output without a structured checklist, quality degrades quickly. Create a review rubric: check accuracy, brand voice, structure, call-to-action alignment, and readability score. Limit the review pass to these items and nothing else. If you try to review everything, you will review nothing well.',
+          'For operations teams, the real win is not speed — it is consistency. A well-designed AI content pipeline ensures every piece of content meets the same quality bar, every time. That is the difference between AI that produces volume and AI that produces value.',
+          'Start small. Pick one content type — blog posts, social updates, or email newsletters. Build the brief, draft, review, and polish pipeline for that type first. Prove the quality, then expand to other formats.',
+        ],
         description:
-          'A clean architecture for turning briefs, prompts, approvals, and publishing into one reliable operating loop.',
+          'How to design an AI content pipeline without losing quality. A practical guide for operations teams on AI-powered content workflows with structured human review and quality control.',
         href: '/blogs/content-pipeline',
         id: 'content-pipeline',
         readTime: '8 min read',
-        status: 'Draft',
+        status: 'Live',
         title: 'Designing an AI Content Pipeline Without Losing Quality',
       },
       {
-        content: [],
+        content: [
+          'AI copilots promise to save time, but the reality depends entirely on where you deploy them. Put a copilot on the wrong task and you create more work — reviewing, correcting, and redoing output that would have been faster to do yourself.',
+          'The best places for AI copilots in operations teams are tasks that are high-volume, low-variance, and have clear success criteria. Think: drafting standard responses, summarizing meeting notes, extracting data from documents, generating status reports, and triaging incoming requests.',
+          'The worst places are tasks that require deep context, subjective judgment, or creative direction. AI copilots cannot read between the lines of a client email, understand office politics, or make a strategic call about which project to prioritize. When teams force copilots into these roles, they introduce hidden rework — the AI produces something, a human has to redo it, and the net time saved is negative.',
+          'The winning pattern is simple: use copilots for the first 80% of structured, repetitive work. Keep humans for the last 20% — the judgment, the context, and the decisions. When done right, the copilot becomes a force multiplier that handles the grunt work so your team can focus on the work that actually needs human attention.',
+        ],
         description:
-          'How to use AI copilots to assist teams without introducing hidden rework or inconsistent outputs.',
+          'Where AI copilots actually save time for operations teams. Learn which tasks benefit from AI assistance and where to keep human judgment for maximum productivity.',
         href: '/blogs/team-copilots',
         id: 'team-copilots',
         readTime: '7 min read',
-        status: 'Planned',
+        status: 'Live',
         title: 'Where AI Copilots Actually Save Time for Operations Teams',
       },
     ],
@@ -99,7 +110,7 @@ export const BlogCollections: IBlogCollection[] = [
           'The pattern that works: let automation handle the volume and the repetition, let humans handle the variance and the judgment. Build checkpoints that are fast to review (one click to approve, a text box to override) so they do not become bottlenecks themselves. When done well, the human review layer becomes not a drag on speed but a quality amplifier that makes your automation trustworthy.',
         ],
         description:
-          'Patterns for combining automations with human checkpoints so you keep trust, quality, and accountability.',
+          'Where human review should stay in automated systems. Patterns for combining AI automation with human checkpoints to maintain trust, quality, and accountability in business workflows.',
         href: '/blogs/human-review',
         id: 'human-review',
         readTime: '6 min read',
@@ -107,13 +118,18 @@ export const BlogCollections: IBlogCollection[] = [
         title: 'Where Human Review Should Stay in an Automated System',
       },
       {
-        content: [],
+        content: [
+          'Observability is what separates a calm automated system from one that burns your team\'s time in fire drills. Without good observability, every failure is a mystery — you find out about it from a customer complaint, then spend hours tracing through logs to understand what broke.',
+          'Start with three layers of observability. First, job-level monitoring: every automated task should report whether it succeeded, failed, or timed out, along with a reason. Second, business-level alerts: not every failure matters equally. A failed invoice sync is urgent. A failed analytics report can wait. Route alerts based on business impact, not technical error codes. Third, audit trails: every action an automation takes should leave a traceable record — who triggered it, what data it used, what decision it made, and what the outcome was.',
+          'Retries need a sane policy. Automations should retry transient failures (network timeouts, rate limits) up to three times with exponential backoff. But non-transient failures (bad data, missing permissions) should never retry — they should surface for human review immediately.',
+          'The simplest observability setup that works: a dashboard showing the last 24 hours of automation runs, a log aggregator searchable by job ID, and a notification channel (email or Slack) for business-level failures. Start with that and add detail as the system grows.',
+        ],
         description:
-          'A monitoring baseline for jobs, retries, alerts, and logs so automated workflows remain calm under load.',
+          'A monitoring baseline for AI-driven workflows — learn how to set up job monitoring, retry policies, business-level alerts, and audit logs so your automated workflows stay calm under load.',
         href: '/blogs/observability',
         id: 'observability',
         readTime: '9 min read',
-        status: 'Planned',
+        status: 'Live',
         title: 'Operational Observability for AI-Driven Workflows',
       },
     ],
@@ -132,7 +148,7 @@ export const BlogCollections: IBlogCollection[] = [
           'Tokens are how AI models count and charge for text. A token is roughly a word or sub-word. When you send a prompt, the model converts it into tokens, processes them, and generates a response — also measured in tokens. Pricing is typically per million tokens. DeepSeek, for instance, charges $0.26 per million input tokens and $0.38 per million output tokens. Understanding tokens helps you estimate costs and optimise your prompts.',
         ],
         description:
-          'What is the difference between plain AI, AI agents with tools, and automated workflows? Plus, a simple explanation of tokens and how AI pricing works.',
+          'AI vs agents vs workflows explained simply. Understand the difference between AI, AI agents with tool calling, and automated workflows. Plus tokens explained and how AI pricing works.',
         href: '/blogs/ai-vs-agents-vs-workflows-tokens',
         id: 'ai-vs-agents-vs-workflows-tokens',
         readTime: '14 min video',
@@ -148,7 +164,7 @@ export const BlogCollections: IBlogCollection[] = [
           'Tool calling (or function calling) is what transforms a basic AI into an agent. When a user asks a question that requires live data — "what time is it in Hong Kong?" — the AI checks whether it has tools available. If it has a search tool, it calls it, retrieves the data, and returns the answer. If no tools are available, the AI relies solely on its training data, which is often outdated. Tool calling is the mechanism that lets AI perform actions, query APIs, and interact with external systems.',
         ],
         description:
-          'How temperature controls AI creativity, why context windows matter, what hallucination is, and how tool calling makes AI agents possible.',
+          'AI terms explained simply — what temperature does, why context windows matter, how hallucination happens, and how tool calling creates AI agents. Perfect for beginners learning AI concepts.',
         href: '/blogs/ai-terms-temperature-context-tool-calling',
         id: 'ai-terms-temperature-context-tool-calling',
         readTime: '25 min video',
@@ -164,7 +180,7 @@ export const BlogCollections: IBlogCollection[] = [
           'The spectrum is clear: AI answers questions, agents perform actions using tools, and agentic AI orchestrates entire workflows autonomously. Most modern AI tools are moving toward the agentic end of this spectrum — reducing the need for human hand-holding and letting the system plan, execute, and refine its own work.',
         ],
         description:
-          'A clear breakdown of three tiers: AI (knowledge without action), AI agents (knowledge with tools), and agentic AI (autonomous task orchestration).',
+          'AI vs AI agents vs agentic AI explained. Understand the three tiers: plain AI (knowledge without action), AI agents with tools, and autonomous agentic AI that orchestrates entire workflows.',
         href: '/blogs/ai-agents-vs-agentic-ai',
         id: 'ai-agents-vs-agentic-ai',
         readTime: '17 min video',
@@ -180,7 +196,7 @@ export const BlogCollections: IBlogCollection[] = [
           'Not all models support tool calling (or function calling). If you plan to build an AI agent that interacts with APIs, databases, or external services, make sure the model you choose explicitly supports tool calling. This is often listed alongside other model capabilities like context size and supported input types. Tool calling is what turns a static AI model into a dynamic, action-oriented agent.',
         ],
         description:
-          'What model parameters mean, how multimodal models handle images and audio, why context size matters, and how to choose the right model for your task.',
+          'AI models explained: what parameters mean, how multimodal models work with images and audio, why context size matters, and how to choose the right model for your task. Beginner-friendly guide.',
         href: '/blogs/ai-models-parameters-multimodal-context',
         id: 'ai-models-parameters-multimodal-context',
         readTime: '9 min video',

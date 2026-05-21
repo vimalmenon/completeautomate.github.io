@@ -24,7 +24,7 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://completeautomate.com'),
   description:
-    'AI-powered automation consulting — Complete Automate designs AI workflows that remove repetitive work, tighten operations, and give your team a calmer system to run the business on.',
+    'AI workflow automation for small business — Complete Automate designs AI systems that eliminate repetitive work, tighten operations, and give your team calmer systems to run on. Workflow automation, AI assistants, and consultancy.',
   icons: {
     apple: '/apple-touch-icon.png',
     icon: [
@@ -35,21 +35,33 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.ico',
   },
+  keywords: [
+    'AI workflow automation',
+    'AI automation for small business',
+    'business automation services',
+    'AI assistant for small business',
+    'workflow automation consulting',
+    'AI productivity tools',
+    'automate business workflows',
+  ],
   openGraph: {
     description:
-      'AI-powered automation consulting — we design AI workflows that remove repetitive work and tighten your operations.',
+      'AI workflow automation for small business — Complete Automate designs AI systems that eliminate repetitive work, tighten your operations, and reduce friction.',
     images: [{ height: 630, url: '/logo.svg', width: 1200 }],
     siteName: 'Complete Automate',
-    title: 'Complete Automate',
+    title: 'Complete Automate — AI Workflow Automation for Small Business',
     type: 'website',
     url: 'https://completeautomate.com',
   },
-  title: 'Complete Automate',
+  title: {
+    default: 'Complete Automate — AI Workflow Automation for Small Business',
+    template: '%s | Complete Automate',
+  },
   twitter: {
     card: 'summary_large_image',
     description:
-      'AI-powered automation consulting — design AI workflows that remove repetitive work.',
-    title: 'Complete Automate',
+      'AI workflow automation for small business — design AI systems that remove repetitive work and tighten operations.',
+    title: 'Complete Automate — AI Workflow Automation for Small Business',
   },
 };
 

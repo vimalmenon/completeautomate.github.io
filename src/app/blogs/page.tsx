@@ -11,19 +11,19 @@ export const metadata: Metadata = {
     canonical: 'https://completeautomate.com/blogs/',
   },
   description:
-    'Browse guides on workflow automation, AI systems, and AI terminology explained. Each post pairs written content with video explanations from Vimal Menon.',
+    'Browse guides on AI workflow automation for small business, AI terms explained, and AI systems design. Written guides paired with video explanations from Vimal Menon covering workflow automation, AI agents, and automation strategy.',
   openGraph: {
     description:
-      'Browse guides on workflow automation, AI systems, and AI terminology explained. Each post pairs written content with video explanations from Vimal Menon.',
+      'Browse guides on AI workflow automation, AI terms, and AI systems design. Written guides paired with video explanations from Vimal Menon.',
     siteName: 'Complete Automate',
-    title: 'Blog | Complete Automate',
+    title: 'Blog — AI Automation Guides for Small Business | Complete Automate',
     type: 'website',
   },
-  title: 'Blog | Complete Automate',
+  title: 'Blog — AI Automation Guides for Small Business | Complete Automate',
   twitter: {
     card: 'summary_large_image',
-    description: 'Browse guides on workflow automation, AI systems, and AI terminology explained.',
-    title: 'Blog | Complete Automate',
+    description: 'Browse guides on AI workflow automation, AI terms, and AI systems design.',
+    title: 'Blog — AI Automation Guides for Small Business | Complete Automate',
   },
 };
 

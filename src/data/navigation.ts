@@ -41,6 +41,10 @@ export const aboutNavigation: INavigation = {
   label: 'About',
   url: '/about',
 };
+export const servicesNavigation: INavigation = {
+  label: 'Services',
+  url: '/services',
+};
 
 export const AdminNavigation: INavigation[] = [
   adminNavigation,
@@ -51,6 +55,7 @@ export const AdminNavigation: INavigation[] = [
 
 export const HeaderNavigation: INavigation[] = [
   homeNavigation,
+  servicesNavigation,
   blogsNavigation,
   contactNavigation,
   aboutNavigation,
