@@ -1,16 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Metadata } from "next";
+import { Metadata } from 'next';
+
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "CompleteAutomate — AI Automation Systems",
   description:
-    "AI-powered automation that eliminates repetitive work, tightens operations, and gives your team calmer systems to run on.",
+    'AI-powered automation that eliminates repetitive work, tightens operations, and gives your team calmer systems to run on.',
   openGraph: {
-    title: "CompleteAutomate — AI Automation Systems",
     description:
-      "AI-powered automation that eliminates repetitive work, tightens operations, and gives your team calmer systems to run on.",
+      'AI-powered automation that eliminates repetitive work, tightens operations, and gives your team calmer systems to run on.',
+    title: 'CompleteAutomate — AI Automation Systems',
   },
+  title: 'CompleteAutomate — AI Automation Systems',
 };
 
 export default function Home() {
@@ -33,9 +34,8 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-              We design AI workflows that remove repetitive work, tighten your
-              operations, and give your team a calmer system to run the business
-              on.
+              We design AI workflows that remove repetitive work, tighten your operations, and give
+              your team a calmer system to run the business on.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
@@ -70,25 +70,19 @@ export default function Home() {
 
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
             <div className="text-center">
-              <p className="text-4xl font-bold text-zinc-900 dark:text-white">
-                500+
-              </p>
+              <p className="text-4xl font-bold text-zinc-900 dark:text-white">500+</p>
               <p className="mt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
                 Hours Saved
               </p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-zinc-900 dark:text-white">
-                50+
-              </p>
+              <p className="text-4xl font-bold text-zinc-900 dark:text-white">50+</p>
               <p className="mt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
                 Businesses Automated
               </p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-zinc-900 dark:text-white">
-                98%
-              </p>
+              <p className="text-4xl font-bold text-zinc-900 dark:text-white">98%</p>
               <p className="mt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
                 Client Satisfaction
               </p>
@@ -100,8 +94,8 @@ export default function Home() {
               Manual work is where momentum leaks.
             </p>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              We rebuild repetitive processes into AI-backed systems with clear
-              handoffs, reliable outputs, and visible business impact.
+              We rebuild repetitive processes into AI-backed systems with clear handoffs, reliable
+              outputs, and visible business impact.
             </p>
           </div>
         </div>
@@ -115,12 +109,11 @@ export default function Home() {
               What We Do
             </p>
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              Systems designed to look simple on the surface and do serious work
-              underneath.
+              Systems designed to look simple on the surface and do serious work underneath.
             </h2>
             <p className="mt-4 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Every engagement is built around operational clarity: fewer
-              clicks, fewer delays, and cleaner execution for your team.
+              Every engagement is built around operational clarity: fewer clicks, fewer delays, and
+              cleaner execution for your team.
             </p>
           </div>
 
@@ -132,8 +125,8 @@ export default function Home() {
                 Workflow Automation
               </h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Eliminate manual processes. From data entry to approvals, we
-                automate the workflows that slow you down.
+                Eliminate manual processes. From data entry to approvals, we automate the workflows
+                that slow you down.
               </p>
             </div>
 
@@ -144,8 +137,7 @@ export default function Home() {
                 AI Assistance
               </h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Smart assistants that handle inquiries, draft content, and
-                support your team 24/7.
+                Smart assistants that handle inquiries, draft content, and support your team 24/7.
               </p>
             </div>
 
@@ -156,8 +148,8 @@ export default function Home() {
                 Consultancy
               </h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Not sure where to start? We audit your operations and build a
-                custom AI automation roadmap.
+                Not sure where to start? We audit your operations and build a custom AI automation
+                roadmap.
               </p>
             </div>
 
@@ -168,8 +160,8 @@ export default function Home() {
                 AI Productivity
               </h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Supercharge your team with AI tools that draft, summarize, and
-                analyze — so your people focus on what matters.
+                Supercharge your team with AI tools that draft, summarize, and analyze — so your
+                people focus on what matters.
               </p>
             </div>
           </div>
@@ -190,9 +182,8 @@ export default function Home() {
 
           <blockquote className="mt-12 mx-auto max-w-3xl text-center">
             <p className="text-xl sm:text-2xl font-medium text-zinc-700 dark:text-zinc-300 italic leading-relaxed">
-              &ldquo;CompleteAutomate cut our invoice processing time by 80%. It
-              removed the bottleneck without making the workflow harder for the
-              team.&rdquo;
+              &ldquo;CompleteAutomate cut our invoice processing time by 80%. It removed the
+              bottleneck without making the workflow harder for the team.&rdquo;
             </p>
             <footer className="mt-6 text-sm font-semibold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
               Small Business Owner
@@ -211,8 +202,8 @@ export default function Home() {
             Move from manual operations to a system your team can trust.
           </h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Book a consultation and map the highest-friction parts of your
-            business into cleaner, faster AI workflows.
+            Book a consultation and map the highest-friction parts of your business into cleaner,
+            faster AI workflows.
           </p>
 
           <div className="mt-10">
@@ -237,8 +228,7 @@ export default function Home() {
               Let&apos;s automate something together.
             </h2>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
-              Reach out directly or follow along on X for updates, tips, and
-              automation insights.
+              Reach out directly or follow along on X for updates, tips, and automation insights.
             </p>
           </div>
 
@@ -281,9 +271,7 @@ export default function Home() {
                 <p className="text-xs font-semibold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
                   X (Twitter)
                 </p>
-                <p className="text-sm font-medium text-zinc-900 dark:text-white">
-                  @TotalAutomate
-                </p>
+                <p className="text-sm font-medium text-zinc-900 dark:text-white">@TotalAutomate</p>
               </div>
             </a>
           </div>

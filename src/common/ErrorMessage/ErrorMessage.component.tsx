@@ -42,7 +42,9 @@ export const ErrorMessage: React.FC<ErrorMessageProps> = ({
 
           <div>
             <p className="text-base font-semibold tracking-[-0.03em]">{title}</p>
-            <p className="mt-1 max-w-2xl text-sm leading-6 text-rose-800 dark:text-rose-100">{message}</p>
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-rose-800 dark:text-rose-100">
+              {message}
+            </p>
           </div>
         </div>
 
