@@ -2,7 +2,27 @@ import { JSX } from 'react';
 
 import { BlogCollections } from '@data';
 
+import type { Metadata } from 'next';
+
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  description:
+    'Browse guides on workflow automation, AI systems, and AI terminology explained. Each post pairs written content with video explanations from Vimal Menon.',
+  openGraph: {
+    description:
+      'Browse guides on workflow automation, AI systems, and AI terminology explained. Each post pairs written content with video explanations from Vimal Menon.',
+    siteName: 'Complete Automate',
+    title: 'Blog | Complete Automate',
+    type: 'website',
+  },
+  title: 'Blog | Complete Automate',
+  twitter: {
+    card: 'summary_large_image',
+    description: 'Browse guides on workflow automation, AI systems, and AI terminology explained.',
+    title: 'Blog | Complete Automate',
+  },
+};
 
 export default function BlogsPage(): JSX.Element {
   return (

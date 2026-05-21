@@ -29,8 +29,19 @@ export async function generateMetadata({
 
   return {
     description: entry.description,
-    openGraph: { description: entry.description, title: entry.title },
+    openGraph: {
+      description: entry.description,
+      siteName: 'Complete Automate',
+      title: entry.title,
+      type: 'article',
+      url: `https://completeautomate.com/blogs/${slug}`,
+    },
     title: `${entry.title} | Complete Automate`,
+    twitter: {
+      card: 'summary_large_image',
+      description: entry.description,
+      title: `${entry.title} | Complete Automate`,
+    },
   };
 }
 
