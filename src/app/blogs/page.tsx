@@ -7,6 +7,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://completeautomate.com/blogs/',
+  },
   description:
     'Browse guides on workflow automation, AI systems, and AI terminology explained. Each post pairs written content with video explanations from Vimal Menon.',
   openGraph: {

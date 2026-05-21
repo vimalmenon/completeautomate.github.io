@@ -28,6 +28,9 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: {
+      canonical: `https://completeautomate.com/blogs/${slug}/`,
+    },
     description: entry.description,
     openGraph: {
       description: entry.description,
@@ -59,9 +62,68 @@ export default async function BlogPostPage({
     notFound();
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    author: {
+      '@type': 'Person',
+      name: 'Vimal Menon',
+      sameAs: 'https://youtube.com/@real_vimal_menon',
+      url: 'https://completeautomate.com/about',
+    },
+    description: entry.description,
+    headline: entry.title,
+    mainEntityOfPage: {
+      '@id': `https://completeautomate.com/blogs/${slug}/`,
+      '@type': 'WebPage',
+    },
+    publisher: {
+      '@type': 'Organization',
+      logo: { '@type': 'ImageObject', url: 'https://completeautomate.com/logo.svg' },
+      name: 'Complete Automate',
+    },
+    ...(entry.youtubeId && {
+      video: {
+        '@type': 'VideoObject',
+        description: entry.description,
+        embedUrl: `https://www.youtube.com/embed/${entry.youtubeId}`,
+        name: entry.title,
+        thumbnailUrl: `https://img.youtube.com/vi/${entry.youtubeId}/maxresdefault.jpg`,
+      },
+    }),
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', item: 'https://completeautomate.com/', name: 'Home', position: 1 },
+      {
+        '@type': 'ListItem',
+        item: 'https://completeautomate.com/blogs/',
+        name: 'Blog',
+        position: 2,
+      },
+      {
+        '@type': 'ListItem',
+        item: `https://completeautomate.com/blogs/${slug}/`,
+        name: entry.title,
+        position: 3,
+      },
+    ],
+  };
+
   return (
     <div className="px-6 pb-20 pt-16 sm:pt-20">
       <div className="mx-auto max-w-4xl">
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          type="application/ld+json"
+        />
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+          type="application/ld+json"
+        />
         <Link
           className="text-sm font-semibold tracking-[0.08em] text-primary transition hover:text-primary/80 uppercase"
           href="/blogs"

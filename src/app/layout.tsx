@@ -22,6 +22,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://completeautomate.com'),
   description:
     'AI-powered automation consulting — Complete Automate designs AI workflows that remove repetitive work, tighten operations, and give your team a calmer system to run the business on.',
   icons: {
@@ -37,9 +38,11 @@ export const metadata: Metadata = {
   openGraph: {
     description:
       'AI-powered automation consulting — we design AI workflows that remove repetitive work and tighten your operations.',
+    images: [{ height: 630, url: '/logo.svg', width: 1200 }],
     siteName: 'Complete Automate',
     title: 'Complete Automate',
     type: 'website',
+    url: 'https://completeautomate.com',
   },
   title: 'Complete Automate',
   twitter: {
