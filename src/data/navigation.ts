@@ -32,6 +32,13 @@ export const homeNavigation: INavigation = {
 export const blogsNavigation: INavigation = {
   label: 'Blogs',
   url: '/blogs',
+  children: [
+    { label: 'All Blogs', url: '/blogs' },
+    { label: 'Strategy', url: '/blogs#strategy' },
+    { label: 'AI Systems', url: '/blogs#ai-systems' },
+    { label: 'Implementation', url: '/blogs#implementation' },
+    { label: 'AI Terms', url: '/blogs#ai-terms' },
+  ],
 };
 export const contactNavigation: INavigation = {
   label: 'Contact',

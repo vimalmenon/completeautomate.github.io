@@ -163,6 +163,7 @@ export interface INavigation {
   url: string;
   label: string;
   hidden?: boolean;
+  children?: { label: string; url: string }[];
 }
 
 export type ReactSetState<T> = Dispatch<SetStateAction<T>>;

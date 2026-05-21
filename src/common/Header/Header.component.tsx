@@ -11,6 +11,7 @@ import { ThemeToggle } from '../ThemeToggle';
 
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedNav, setExpandedNav] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
@@ -18,8 +19,32 @@ export const Header: React.FC = () => {
     setMounted(true);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+    setExpandedNav(null);
+  }, [pathname]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   const isActive = (href: string): boolean =>
     mounted && (href === '/' ? pathname === '/' : pathname.startsWith(href));
+
+  const toggleExpand = (label: string): void => {
+    setExpandedNav((prev) => (prev === label ? null : label));
+  };
+
+  const visibleNav = HeaderNavigation.filter((n) => !n.hidden);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
@@ -40,11 +65,11 @@ export const Header: React.FC = () => {
           <div className="hidden sm:block">
             <ThemeToggle />
           </div>
-          {/* Mobile: simplified single-button theme toggle */}
           <div className="sm:hidden">
             <ThemeToggle />
           </div>
 
+          {/* Hamburger */}
           <button
             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -71,62 +96,148 @@ export const Header: React.FC = () => {
           </button>
         </div>
 
+        {/* Desktop nav */}
         <nav className="hidden md:block">
           <ul className="flex space-x-6">
-            {HeaderNavigation.map((navigation) => {
-              if (!navigation.hidden) {
-                return (
-                  <li key={navigation.url}>
-                    <Link
-                      href={navigation.url}
-                      className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 after:absolute after:bottom-1 after:left-3 after:h-px after:bg-primary after:transition-all after:duration-200 hover:text-primary hover:after:w-[calc(100%-1.5rem)] ${
-                        isActive(navigation.url)
-                          ? 'bg-surface/70 text-primary after:w-[calc(100%-1.5rem)]'
-                          : 'after:w-0'
-                      }`}
-                    >
-                      {navigation.label}
-                    </Link>
-                  </li>
-                );
-              }
-              return null;
-            })}
+            {visibleNav.map((navigation) => (
+              <li key={navigation.url}>
+                <Link
+                  href={navigation.url}
+                  className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 after:absolute after:bottom-1 after:left-3 after:h-px after:bg-primary after:transition-all after:duration-200 hover:text-primary hover:after:w-[calc(100%-1.5rem)] ${
+                    isActive(navigation.url)
+                      ? 'bg-surface/70 text-primary after:w-[calc(100%-1.5rem)]'
+                      : 'after:w-0'
+                  }`}
+                >
+                  {navigation.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
 
-      {/* Mobile navigation */}
+      {/* Mobile: slide-in overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile: side drawer */}
       <div
-        className={`grid transition-all duration-300 ease-in-out md:hidden ${
-          menuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        className={`fixed right-0 top-0 z-50 flex h-full w-72 flex-col border-l border-border/60 bg-background shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="overflow-hidden">
-          <nav className="border-t border-border/60 bg-background/95 px-4 py-2">
-            <ul className="flex flex-col gap-1">
-              {HeaderNavigation.map((navigation) => {
-                if (!navigation.hidden) {
-                  return (
-                    <li key={navigation.url}>
-                      <Link
-                        href={navigation.url}
-                        className={`block rounded-xl border px-4 py-3 text-sm transition-colors duration-200 ${
-                          isActive(navigation.url)
-                            ? 'border-primary/40 bg-primary/10 font-semibold text-primary'
-                            : 'border-border/60 bg-surface/60 hover:border-primary/30 hover:text-primary'
+        {/* Drawer header */}
+        <div className="flex items-center justify-between border-b border-border/60 px-5 py-4">
+          <span className="text-sm font-semibold tracking-[0.08em] text-foreground uppercase">
+            Menu
+          </span>
+          <button
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/70 text-foreground transition hover:border-primary/50 hover:text-primary"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Drawer nav items */}
+        <nav className="flex-1 overflow-y-auto px-3 py-4">
+          <ul className="space-y-1">
+            {visibleNav.map((navigation) => {
+              const hasChildren = navigation.children && navigation.children.length > 0;
+              const active = isActive(navigation.url);
+              const isExpanded = expandedNav === navigation.label;
+
+              if (hasChildren) {
+                return (
+                  <li key={navigation.url}>
+                    <button
+                      onClick={() => toggleExpand(navigation.label)}
+                      className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+                        active
+                          ? 'bg-primary/10 font-semibold text-primary'
+                          : 'text-foreground hover:bg-surface/70 hover:text-primary'
+                      }`}
+                    >
+                      <span>{navigation.label}</span>
+                      <svg
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          isExpanded ? 'rotate-180' : ''
                         }`}
-                        onClick={(): void => setMenuOpen(false)}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        {navigation.label}
-                      </Link>
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-          </nav>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                    {isExpanded && (
+                      <ul className="ml-3 mt-1 space-y-0.5 border-l border-border/50 pl-3">
+                        {navigation.children!.map((child) => {
+                          const childActive =
+                            mounted && pathname.startsWith(child.url.split('#')[0]);
+                          return (
+                            <li key={child.url}>
+                              <Link
+                                href={child.url}
+                                onClick={() => setMenuOpen(false)}
+                                className={`block rounded-lg px-4 py-2.5 text-sm transition-colors duration-200 ${
+                                  childActive
+                                    ? 'bg-primary/8 font-medium text-primary'
+                                    : 'text-muted hover:bg-surface/70 hover:text-foreground'
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </li>
+                );
+              }
+
+              return (
+                <li key={navigation.url}>
+                  <Link
+                    href={navigation.url}
+                    onClick={() => setMenuOpen(false)}
+                    className={`block rounded-xl px-4 py-3 text-sm font-medium transition-colors duration-200 ${
+                      active
+                        ? 'bg-primary/10 font-semibold text-primary'
+                        : 'text-foreground hover:bg-surface/70 hover:text-primary'
+                    }`}
+                  >
+                    {navigation.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Drawer footer */}
+        <div className="border-t border-border/60 px-5 py-4">
+          <p className="text-xs text-muted">&copy; {new Date().getFullYear()} CompleteAutomate</p>
         </div>
       </div>
     </header>
