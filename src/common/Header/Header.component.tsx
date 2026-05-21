@@ -47,77 +47,79 @@ export const Header: React.FC = () => {
   const visibleNav = HeaderNavigation.filter((n) => !n.hidden);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
-        <Link href="/" className="flex items-center gap-2 leading-none sm:gap-3">
-          <Logo size={36} />
-          <div className="flex flex-col">
-            <span className="text-lg font-semibold tracking-[-0.04em] text-foreground sm:text-2xl">
-              CompleteAutomate
-            </span>
-            <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
-              AI-Powered Automation
-            </span>
-          </div>
-        </Link>
+    <>
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+          <Link href="/" className="flex items-center gap-2 leading-none sm:gap-3">
+            <Logo size={36} />
+            <div className="flex flex-col">
+              <span className="text-lg font-semibold tracking-[-0.04em] text-foreground sm:text-2xl">
+                CompleteAutomate
+              </span>
+              <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
+                AI-Powered Automation
+              </span>
+            </div>
+          </Link>
 
-        <div className="flex items-center gap-2 sm:gap-4">
-          <div className="hidden sm:block">
-            <ThemeToggle />
-          </div>
-          <div className="sm:hidden">
-            <ThemeToggle />
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
+            <div className="sm:hidden">
+              <ThemeToggle />
+            </div>
+
+            {/* Hamburger */}
+            <button
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
           </div>
 
-          {/* Hamburger */}
-          <button
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {menuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+          {/* Desktop nav */}
+          <nav className="hidden md:block">
+            <ul className="flex space-x-6">
+              {visibleNav.map((navigation) => (
+                <li key={navigation.url}>
+                  <Link
+                    href={navigation.url}
+                    className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 after:absolute after:bottom-1 after:left-3 after:h-px after:bg-primary after:transition-all after:duration-200 hover:text-primary hover:after:w-[calc(100%-1.5rem)] ${
+                      isActive(navigation.url)
+                        ? 'bg-surface/70 text-primary after:w-[calc(100%-1.5rem)]'
+                        : 'after:w-0'
+                    }`}
+                  >
+                    {navigation.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
+      </header>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:block">
-          <ul className="flex space-x-6">
-            {visibleNav.map((navigation) => (
-              <li key={navigation.url}>
-                <Link
-                  href={navigation.url}
-                  className={`relative rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 after:absolute after:bottom-1 after:left-3 after:h-px after:bg-primary after:transition-all after:duration-200 hover:text-primary hover:after:w-[calc(100%-1.5rem)] ${
-                    isActive(navigation.url)
-                      ? 'bg-surface/70 text-primary after:w-[calc(100%-1.5rem)]'
-                      : 'after:w-0'
-                  }`}
-                >
-                  {navigation.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-      {/* Mobile: slide-in overlay */}
+      {/* Mobile: slide-in overlay — OUTSIDE header so backdrop-blur doesn't break fixed positioning */}
       {menuOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
@@ -126,7 +128,7 @@ export const Header: React.FC = () => {
         />
       )}
 
-      {/* Mobile: side drawer */}
+      {/* Mobile: side drawer — also outside header for same reason */}
       <div
         className={`fixed right-0 top-0 z-50 flex h-full w-72 flex-col border-l border-border/60 bg-background shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
           menuOpen ? 'translate-x-0' : 'translate-x-full'
@@ -240,6 +242,6 @@ export const Header: React.FC = () => {
           <p className="text-xs text-muted">&copy; {new Date().getFullYear()} CompleteAutomate</p>
         </div>
       </div>
-    </header>
+    </>
   );
 };
