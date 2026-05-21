@@ -149,7 +149,7 @@ const services = [
   },
   {
     description:
-      'Smart AI assistants that handle inquiries, draft content, and support your team 24/7. These aren\'t simple chatbots — they\'re AI agents with access to your data, tools, and workflows, capable of taking action on your behalf.',
+      "Smart AI assistants that handle inquiries, draft content, and support your team 24/7. These aren't simple chatbots — they're AI agents with access to your data, tools, and workflows, capable of taking action on your behalf.",
     detailPoints: [
       'Customer support AI agents for common inquiries',
       'Internal Q&A assistants trained on your knowledge base',
@@ -191,7 +191,10 @@ const services = [
 export default function ServicesPage(): JSX.Element {
   return (
     <div className="px-6 py-16 sm:py-20">
-      <script dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} type="application/ld+json" />
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        type="application/ld+json"
+      />
       <div className="mx-auto max-w-6xl">
         {/* Hero */}
         <ScrollReveal>
@@ -205,7 +208,8 @@ export default function ServicesPage(): JSX.Element {
             <p className="mt-6 max-w-3xl text-lg leading-8 text-muted sm:text-xl">
               We design and deploy AI-powered automation systems that eliminate repetitive work,
               tighten operations, and help your team scale without adding headcount. From workflow
-              automation to AI assistants, every system is built around how your team actually works.
+              automation to AI assistants, every system is built around how your team actually
+              works.
             </p>
           </div>
         </ScrollReveal>
@@ -251,7 +255,10 @@ export default function ServicesPage(): JSX.Element {
                     </h3>
                     <ul className="mt-4 space-y-3">
                       {service.detailPoints.map((point) => (
-                        <li key={point} className="flex items-start gap-3 text-sm leading-6 text-foreground">
+                        <li
+                          key={point}
+                          className="flex items-start gap-3 text-sm leading-6 text-foreground"
+                        >
                           <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                           {point}
                         </li>

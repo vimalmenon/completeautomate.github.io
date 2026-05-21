@@ -8,7 +8,12 @@ const SITE_URL = 'https://completeautomate.com';
 
 const staticRoutes = [
   { changeFrequency: 'monthly' as const, lastModified: new Date(), priority: 1, url: '/' },
-  { changeFrequency: 'monthly' as const, lastModified: new Date(), priority: 0.9, url: '/services' },
+  {
+    changeFrequency: 'monthly' as const,
+    lastModified: new Date(),
+    priority: 0.9,
+    url: '/services',
+  },
   { changeFrequency: 'weekly' as const, lastModified: new Date(), priority: 0.9, url: '/blogs' },
   { changeFrequency: 'monthly' as const, lastModified: new Date(), priority: 0.7, url: '/about' },
   { changeFrequency: 'monthly' as const, lastModified: new Date(), priority: 0.7, url: '/contact' },
