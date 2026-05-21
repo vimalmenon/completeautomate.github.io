@@ -13,9 +13,14 @@ export function generateStaticParams(): { slug: string }[] {
   );
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
   const entry = BlogCollections.flatMap((collection) => collection.entries).find(
-    (e) => e.id === params.slug
+    (e) => e.id === slug
   );
 
   if (!entry) {
@@ -29,9 +34,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }): JSX.Element {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<JSX.Element> {
+  const { slug } = await params;
   const entry = BlogCollections.flatMap((collection) => collection.entries).find(
-    (e) => e.id === params.slug
+    (e) => e.id === slug
   );
 
   if (!entry) {
