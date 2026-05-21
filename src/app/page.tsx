@@ -1,294 +1,282 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Metadata } from "next";
+import { JSX } from 'react';
 
-export const metadata: Metadata = {
-  title: "CompleteAutomate — AI Automation Systems",
-  description:
-    "AI-powered automation that eliminates repetitive work, tightens operations, and gives your team calmer systems to run on.",
-  openGraph: {
-    title: "CompleteAutomate — AI Automation Systems",
+import { ScrollReveal } from '@common';
+
+const services = [
+  {
     description:
-      "AI-powered automation that eliminates repetitive work, tightens operations, and gives your team calmer systems to run on.",
+      'Eliminate manual processes. From data entry to approvals, we automate the workflows that slow you down.',
+    icon: '⚙️',
+    title: 'Workflow Automation',
   },
-};
+  {
+    description:
+      'Smart assistants that handle inquiries, draft content, and support your team 24/7.',
+    icon: '🤖',
+    title: 'AI Assistance',
+  },
+  {
+    description:
+      'Not sure where to start? We audit your operations and build a custom AI automation roadmap.',
+    icon: '🧭',
+    title: 'Consultancy',
+  },
+  {
+    description:
+      'Supercharge your team with AI tools that draft, summarize, and analyze — so your people focus on what matters.',
+    icon: '🚀',
+    title: 'AI Productivity',
+  },
+];
 
-export default function Home() {
+const stats = [
+  { label: 'Hours Saved', value: '500+' },
+  { label: 'Businesses Automated', value: '50+' },
+  { label: 'Client Satisfaction', value: '98%' },
+];
+
+export default function Home(): JSX.Element {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 via-white to-indigo-50/30 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900" />
-
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="max-w-3xl">
-            {/* Eyebrow */}
-            <p className="inline-block rounded-full border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/50 px-4 py-1.5 text-xs font-semibold tracking-widest text-blue-700 dark:text-blue-300 uppercase">
-              sleek automation systems
-            </p>
-
-            <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white">
+      <section className="px-6 pb-16 pt-20 sm:pt-24">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-semibold tracking-[0.28em] text-primary uppercase">
+              Sleek Automation Systems
+            </div>
+            <h1 className="mt-6 max-w-3xl text-5xl font-semibold tracking-[-0.06em] text-foreground sm:text-6xl lg:text-7xl">
               AI automation that feels precise, fast, and invisible.
             </h1>
-
-            <p className="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-              We design AI workflows that remove repetitive work, tighten your
-              operations, and give your team a calmer system to run the business
-              on.
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
+              We design AI workflows that remove repetitive work, tighten your operations, and give
+              your team a calmer system to run the business on.
             </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/admin"
-                className="inline-flex items-center justify-center rounded-lg bg-zinc-900 dark:bg-white px-6 py-3 text-sm font-semibold text-white dark:text-zinc-900 shadow-sm hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
+            <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-dark"
               >
                 Start Building
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-6 py-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center rounded-full border border-border/70 bg-surface/70 px-8 py-3.5 text-sm font-semibold text-foreground transition hover:border-primary/40 hover:text-primary"
               >
                 Explore Services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Live Stats Section */}
-      <section className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-          <div className="text-center">
-            <p className="text-xs font-semibold tracking-widest text-blue-600 dark:text-blue-400 uppercase">
-              Operations Snapshot
-            </p>
-            <p className="mt-1 text-[10px] font-bold tracking-[0.3em] text-green-600 dark:text-green-400 uppercase">
-              Live
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-zinc-900 dark:text-white">
-                500+
-              </p>
-              <p className="mt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                Hours Saved
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-zinc-900 dark:text-white">
-                50+
-              </p>
-              <p className="mt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                Businesses Automated
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-zinc-900 dark:text-white">
-                98%
-              </p>
-              <p className="mt-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                Client Satisfaction
-              </p>
+              </a>
             </div>
           </div>
 
-          <div className="mt-12 max-w-2xl mx-auto text-center">
-            <p className="text-lg font-semibold text-zinc-900 dark:text-white">
-              Manual work is where momentum leaks.
-            </p>
-            <p className="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              We rebuild repetitive processes into AI-backed systems with clear
-              handoffs, reliable outputs, and visible business impact.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Do Section */}
-      <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-widest text-blue-600 dark:text-blue-400 uppercase">
-              What We Do
-            </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              Systems designed to look simple on the surface and do serious work
-              underneath.
-            </h2>
-            <p className="mt-4 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Every engagement is built around operational clarity: fewer
-              clicks, fewer delays, and cleaner execution for your team.
-            </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Card 1 */}
-            <div className="group rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 p-6 transition-colors hover:border-blue-200 dark:hover:border-blue-800">
-              <span className="text-3xl">⚙️</span>
-              <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">
-                Workflow Automation
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Eliminate manual processes. From data entry to approvals, we
-                automate the workflows that slow you down.
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="group rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 p-6 transition-colors hover:border-blue-200 dark:hover:border-blue-800">
-              <span className="text-3xl">🤖</span>
-              <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">
-                AI Assistance
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Smart assistants that handle inquiries, draft content, and
-                support your team 24/7.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="group rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 p-6 transition-colors hover:border-blue-200 dark:hover:border-blue-800">
-              <span className="text-3xl">🧭</span>
-              <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">
-                Consultancy
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Not sure where to start? We audit your operations and build a
-                custom AI automation roadmap.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="group rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 p-6 transition-colors hover:border-blue-200 dark:hover:border-blue-800">
-              <span className="text-3xl">🚀</span>
-              <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">
-                AI Productivity
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Supercharge your team with AI tools that draft, summarize, and
-                analyze — so your people focus on what matters.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial Section */}
-      <section className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="text-center">
-            <p className="text-xs font-semibold tracking-widest text-blue-600 dark:text-blue-400 uppercase">
-              Trusted Outcome
-            </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              Real business value, not automation theatre.
-            </h2>
-          </div>
-
-          <blockquote className="mt-12 mx-auto max-w-3xl text-center">
-            <p className="text-xl sm:text-2xl font-medium text-zinc-700 dark:text-zinc-300 italic leading-relaxed">
-              &ldquo;CompleteAutomate cut our invoice processing time by 80%. It
-              removed the bottleneck without making the workflow harder for the
-              team.&rdquo;
-            </p>
-            <footer className="mt-6 text-sm font-semibold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
-              Small Business Owner
-            </footer>
-          </blockquote>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
-          <p className="text-xs font-semibold tracking-widest text-blue-600 dark:text-blue-400 uppercase">
-            Ready to Automate
-          </p>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-            Move from manual operations to a system your team can trust.
-          </h2>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Book a consultation and map the highest-friction parts of your
-            business into cleaner, faster AI workflows.
-          </p>
-
-          <div className="mt-10">
-            <Link
-              href="/admin"
-              className="inline-flex items-center justify-center rounded-lg bg-zinc-900 dark:bg-white px-8 py-4 text-base font-semibold text-white dark:text-zinc-900 shadow-[0_4px_14px_rgb(0_0_0/0.15)] hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
-            >
-              Book a Consultation
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="text-center">
-            <p className="text-xs font-semibold tracking-widest text-blue-600 dark:text-blue-400 uppercase">
-              Contact Us
-            </p>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              Let&apos;s automate something together.
-            </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
-              Reach out directly or follow along on X for updates, tips, and
-              automation insights.
-            </p>
-          </div>
-
-          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
-            <a
-              href="mailto:hello@completeautomate.com"
-              className="group flex items-center gap-4 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 px-6 py-4 transition-colors hover:border-blue-200 dark:hover:border-blue-800"
-            >
-              <Image
-                src="/email.svg"
-                alt="Email"
-                width={24}
-                height={24}
-                className="opacity-60 dark:opacity-40 group-hover:opacity-100 transition-opacity"
-              />
-              <div className="text-left">
-                <p className="text-xs font-semibold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
-                  Email
-                </p>
-                <p className="text-sm font-medium text-zinc-900 dark:text-white">
-                  hello@completeautomate.com
-                </p>
+          <div className="relative">
+            <div className="absolute inset-x-12 top-8 h-32 rounded-full bg-primary/20 blur-3xl" />
+            <ScrollReveal delay={200} duration={700}>
+              <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-surface/75 p-6 shadow-[0_30px_80px_rgb(15_23_42/0.18)] backdrop-blur-xl">
+                <div className="rounded-[1.5rem] border border-border/50 bg-surface-dark/70 p-6">
+                  <div className="flex items-center justify-between text-xs font-medium tracking-[0.24em] text-muted uppercase">
+                    <span>Operations Snapshot</span>
+                    <span>Live</span>
+                  </div>
+                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                    {stats.map((stat) => (
+                      <div
+                        key={stat.label}
+                        className="rounded-2xl border border-border/50 bg-surface/80 p-5"
+                      >
+                        <p className="text-3xl font-semibold tracking-[-0.04em] text-foreground">
+                          {stat.value}
+                        </p>
+                        <p className="mt-2 text-xs font-semibold tracking-[0.24em] text-muted uppercase">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 rounded-2xl border border-primary/20 bg-primary/10 p-5">
+                    <p className="text-sm font-medium text-foreground">
+                      Manual work is where momentum leaks.
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                      We rebuild repetitive processes into AI-backed systems with clear handoffs,
+                      reliable outputs, and visible business impact.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </a>
-
-            <a
-              href="https://x.com/TotalAutomate"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 px-6 py-4 transition-colors hover:border-blue-200 dark:hover:border-blue-800"
-            >
-              <Image
-                src="/x.svg"
-                alt="X"
-                width={24}
-                height={24}
-                className="opacity-60 dark:opacity-40 group-hover:opacity-100 transition-opacity"
-              />
-              <div className="text-left">
-                <p className="text-xs font-semibold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
-                  X (Twitter)
-                </p>
-                <p className="text-sm font-medium text-zinc-900 dark:text-white">
-                  @TotalAutomate
-                </p>
-              </div>
-            </a>
+            </ScrollReveal>
           </div>
         </div>
       </section>
+
+      <section id="services" className="px-6 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <ScrollReveal>
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold tracking-[0.32em] text-primary uppercase">
+                What We Do
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
+                Systems designed to look simple on the surface and do serious work underneath.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-muted sm:text-lg">
+                Every engagement is built around operational clarity: fewer clicks, fewer delays,
+                and cleaner execution for your team.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            {services.map((service, index) => (
+              <ScrollReveal key={service.title} delay={100 * index} duration={500}>
+                <div className="group rounded-[1.75rem] border border-border/60 bg-surface/75 p-7 shadow-[0_18px_45px_rgb(15_23_42/0.08)] backdrop-blur transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_26px_60px_rgb(8_145_178/0.14)]">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
+                    {service.icon}
+                  </span>
+                  <h3 className="mt-5 text-xl font-semibold tracking-[-0.03em] text-foreground">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-muted">{service.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ScrollReveal>
+        <section className="px-6 py-8 sm:py-12">
+          <div className="mx-auto max-w-6xl rounded-[2rem] border border-border/60 bg-surface/70 p-8 shadow-[0_24px_60px_rgb(15_23_42/0.12)] backdrop-blur-xl sm:p-10">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <ScrollReveal delay={100} duration={600}>
+                <div>
+                  <p className="text-xs font-semibold tracking-[0.32em] text-primary uppercase">
+                    Trusted Outcome
+                  </p>
+                  <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-foreground">
+                    Real business value, not automation theatre.
+                  </h2>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={250} duration={600}>
+                <blockquote className="rounded-[1.5rem] border border-border/50 bg-background/60 p-8">
+                  <p className="text-lg leading-8 text-foreground/85">
+                    &ldquo;CompleteAutomate cut our invoice processing time by 80%. It removed the
+                    bottleneck without making the workflow harder for the team.&rdquo;
+                  </p>
+                  <cite className="mt-4 block text-sm font-medium tracking-[0.24em] text-muted uppercase not-italic">
+                    Small Business Owner
+                  </cite>
+                </blockquote>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section className="px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] border border-primary/20 bg-[linear-gradient(135deg,rgba(8,145,178,0.16),rgba(15,23,42,0.9))] px-8 py-12 text-center shadow-[0_30px_80px_rgb(8_145_178/0.18)] sm:px-12">
+            <ScrollReveal delay={100} duration={600}>
+              <p className="text-xs font-semibold tracking-[0.34em] text-primary-light uppercase">
+                Ready To Automate
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={200} duration={600}>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-white sm:text-5xl">
+                Move from manual operations to a system your team can trust.
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={300} duration={600}>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-200 sm:text-lg">
+                Book a consultation and map the highest-friction parts of your business into
+                cleaner, faster AI workflows.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={400} duration={600}>
+              <a
+                href="/contact"
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+              >
+                Book a Consultation
+              </a>
+            </ScrollReveal>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* ── Contact Section ── */}
+      <ScrollReveal>
+        <section className="px-6 py-16 sm:py-20" id="contact">
+          <div className="mx-auto max-w-6xl">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold tracking-[0.32em] text-primary uppercase">
+                Contact Us
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
+                Let&apos;s automate something together.
+              </h2>
+              <p className="mt-4 text-base leading-7 text-muted sm:text-lg">
+                Reach out directly or follow along on X for updates, tips, and automation insights.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              <ScrollReveal delay={100} duration={500}>
+                <a
+                  className="group flex items-center gap-5 rounded-[1.75rem] border border-border/60 bg-surface/75 p-7 shadow-[0_18px_45px_rgb(15_23_42/0.08)] backdrop-blur transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_26px_60px_rgb(8_145_178/0.14)]"
+                  href="mailto:hello@completeautomate.com"
+                >
+                  <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
+                    <svg
+                      className="h-7 w-7"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
+                      Email
+                    </p>
+                    <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-foreground group-hover:text-primary">
+                      hello@completeautomate.com
+                    </p>
+                  </div>
+                </a>
+              </ScrollReveal>
+
+              <ScrollReveal delay={250} duration={500}>
+                <a
+                  className="group flex items-center gap-5 rounded-[1.75rem] border border-border/60 bg-surface/75 p-7 shadow-[0_18px_45px_rgb(15_23_42/0.08)] backdrop-blur transition hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_26px_60px_rgb(8_145_178/0.14)]"
+                  href="https://x.com/TotalAutomate"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary">
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
+                      X (Twitter)
+                    </p>
+                    <p className="mt-1 text-lg font-semibold tracking-[-0.03em] text-foreground group-hover:text-primary">
+                      @TotalAutomate
+                    </p>
+                  </div>
+                </a>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
     </>
   );
 }

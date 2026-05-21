@@ -78,7 +78,7 @@ export const ThemeToggle: React.FC = () => {
         {options.map((option) => (
           <button
             key={option.value}
-            className="flex items-center gap-1 rounded-full px-1.5 py-1 text-xs font-medium text-zinc-400 dark:text-zinc-500 opacity-70 sm:px-3 sm:py-1.5"
+            className="flex items-center gap-1 rounded-full px-1.5 py-1 text-xs font-medium text-muted opacity-50 sm:px-3 sm:py-1.5"
             aria-label={option.label}
           >
             {option.icon}
@@ -98,7 +98,7 @@ export const ThemeToggle: React.FC = () => {
           className={`flex items-center gap-1 rounded-full px-1.5 py-1 text-xs font-medium transition-all sm:px-3 sm:py-1.5 ${
             theme === option.value
               ? 'bg-primary text-primary-foreground shadow-[0_10px_20px_rgb(8_145_178/0.25)]'
-              : 'text-zinc-500 dark:text-zinc-400 hover:text-foreground'
+              : 'text-muted hover:text-foreground'
           }`}
           aria-label={option.label}
         >
