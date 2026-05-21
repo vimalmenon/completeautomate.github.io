@@ -7,7 +7,12 @@ import { useTheme } from 'next-themes';
 const options = [
   {
     icon: (
-      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg
+        className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -21,7 +26,12 @@ const options = [
   },
   {
     icon: (
-      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg
+        className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -35,7 +45,12 @@ const options = [
   },
   {
     icon: (
-      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg
+        className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -59,11 +74,11 @@ export const ThemeToggle: React.FC = () => {
 
   if (!mounted) {
     return (
-      <div className="flex items-center gap-1 rounded-full border border-border/70 bg-surface/80 p-1 shadow-[0_12px_30px_rgb(15_23_42/0.08)]">
+      <div className="flex items-center gap-0.5 rounded-full border border-border/70 bg-surface/80 p-0.5 shadow-[0_12px_30px_rgb(15_23_42/0.08)] sm:gap-1 sm:p-1">
         {options.map((option) => (
           <button
             key={option.value}
-            className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-muted opacity-50"
+            className="flex items-center gap-1 rounded-full px-1.5 py-1 text-xs font-medium text-muted opacity-50 sm:px-3 sm:py-1.5"
             aria-label={option.label}
           >
             {option.icon}
@@ -75,12 +90,12 @@ export const ThemeToggle: React.FC = () => {
   }
 
   return (
-    <div className="flex items-center gap-1 rounded-full border border-border/70 bg-surface/80 p-1 shadow-[0_12px_30px_rgb(15_23_42/0.08)]">
+    <div className="flex items-center gap-0.5 rounded-full border border-border/70 bg-surface/80 p-0.5 shadow-[0_12px_30px_rgb(15_23_42/0.08)] sm:gap-1 sm:p-1">
       {options.map((option) => (
         <button
           key={option.value}
           onClick={() => setTheme(option.value)}
-          className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+          className={`flex items-center gap-1 rounded-full px-1.5 py-1 text-xs font-medium transition-all sm:px-3 sm:py-1.5 ${
             theme === option.value
               ? 'bg-primary text-primary-foreground shadow-[0_10px_20px_rgb(8_145_178/0.25)]'
               : 'text-muted hover:text-foreground'

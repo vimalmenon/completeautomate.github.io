@@ -23,11 +23,11 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 text-foreground backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-4">
-        <Link href="/" className="flex items-center gap-3 leading-none">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
+        <Link href="/" className="flex items-center gap-2 leading-none sm:gap-3">
           <Logo size={36} />
           <div className="flex flex-col">
-            <span className="text-2xl font-semibold tracking-[-0.04em] text-foreground">
+            <span className="text-lg font-semibold tracking-[-0.04em] text-foreground sm:text-2xl">
               CompleteAutomate
             </span>
             <span className="hidden text-[0.7rem] tracking-[0.32em] text-muted uppercase md:inline">
@@ -36,11 +36,17 @@ export const Header: React.FC = () => {
           </div>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
+          {/* Mobile: simplified single-button theme toggle */}
+          <div className="sm:hidden">
+            <ThemeToggle />
+          </div>
 
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border/70 bg-surface/70 text-foreground transition hover:border-primary/50 hover:text-primary md:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
@@ -90,34 +96,39 @@ export const Header: React.FC = () => {
         </nav>
       </div>
 
-      <nav
-        className={`overflow-hidden border-t border-border/60 bg-background/95 transition-all duration-300 md:hidden ${
-          menuOpen ? 'max-h-64' : 'max-h-0'
+      {/* Mobile navigation */}
+      <div
+        className={`grid transition-all duration-300 ease-in-out md:hidden ${
+          menuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
         }`}
       >
-        <ul className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-4">
-          {HeaderNavigation.map((navigation) => {
-            if (!navigation.hidden) {
-              return (
-                <li key={navigation.url}>
-                  <Link
-                    href={navigation.url}
-                    className={`block rounded-2xl border px-4 py-3 text-sm transition-colors duration-200 ${
-                      isActive(navigation.url)
-                        ? 'border-primary/40 bg-primary/10 font-semibold text-primary'
-                        : 'border-border/60 bg-surface/60 hover:border-primary/30 hover:text-primary'
-                    }`}
-                    onClick={(): void => setMenuOpen(false)}
-                  >
-                    {navigation.label}
-                  </Link>
-                </li>
-              );
-            }
-            return null;
-          })}
-        </ul>
-      </nav>
+        <div className="overflow-hidden">
+          <nav className="border-t border-border/60 bg-background/95 px-4 py-2">
+            <ul className="flex flex-col gap-1">
+              {HeaderNavigation.map((navigation) => {
+                if (!navigation.hidden) {
+                  return (
+                    <li key={navigation.url}>
+                      <Link
+                        href={navigation.url}
+                        className={`block rounded-xl border px-4 py-3 text-sm transition-colors duration-200 ${
+                          isActive(navigation.url)
+                            ? 'border-primary/40 bg-primary/10 font-semibold text-primary'
+                            : 'border-border/60 bg-surface/60 hover:border-primary/30 hover:text-primary'
+                        }`}
+                        onClick={(): void => setMenuOpen(false)}
+                      >
+                        {navigation.label}
+                      </Link>
+                    </li>
+                  );
+                }
+                return null;
+              })}
+            </ul>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 };

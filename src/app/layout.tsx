@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): JSX.Element {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-clip">
       <body
         suppressHydrationWarning
         className={`${sora.variable} ${mono.variable} relative flex min-h-screen flex-col overflow-x-clip bg-background text-foreground antialiased`}
