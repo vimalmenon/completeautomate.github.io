@@ -89,6 +89,7 @@ export default async function BlogPostPage({
         embedUrl: `https://www.youtube.com/embed/${entry.youtubeId}`,
         name: entry.title,
         thumbnailUrl: `https://img.youtube.com/vi/${entry.youtubeId}/maxresdefault.jpg`,
+        ...(entry.uploadDate && { uploadDate: entry.uploadDate }),
       },
     }),
   };

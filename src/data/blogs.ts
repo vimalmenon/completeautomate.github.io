@@ -7,6 +7,7 @@ export interface IBlogEntry {
   title: string;
   content: string[];
   youtubeId?: string;
+  uploadDate?: string;
 }
 
 export interface IBlogCollection {
@@ -155,6 +156,7 @@ export const BlogCollections: IBlogCollection[] = [
         status: 'Live',
         title: 'AI vs. Agents vs. Workflows | Tokens & Automation Explained',
         youtubeId: 'Vw_ilJWdzK8',
+        uploadDate: '2026-03-25',
       },
       {
         content: [
@@ -171,6 +173,7 @@ export const BlogCollections: IBlogCollection[] = [
         status: 'Live',
         title: 'AI Terms Explained | Temperature, Context & Tool Calling',
         youtubeId: 'd4j2OTJdO94',
+        uploadDate: '2026-04-01',
       },
       {
         content: [
@@ -187,6 +190,7 @@ export const BlogCollections: IBlogCollection[] = [
         status: 'Live',
         title: 'AI vs. AI Agents vs. Agentic AI: Understanding the Differences',
         youtubeId: '_HY4496idyk',
+        uploadDate: '2026-04-21',
       },
       {
         content: [
@@ -203,6 +207,7 @@ export const BlogCollections: IBlogCollection[] = [
         status: 'Live',
         title: 'AI Models Explained: Parameters, Multimodal & Context Size',
         youtubeId: 'zEBPv_KT6js',
+        uploadDate: '2026-04-28',
       },
       {
         content: [
@@ -221,6 +226,7 @@ export const BlogCollections: IBlogCollection[] = [
         status: 'Live',
         title: 'Vector Embeddings Explained Simply | AI Terms #5',
         youtubeId: 'zZwhT8GYj28',
+        uploadDate: '2026-06-04',
       },
     ],
     id: 'ai-terms',
