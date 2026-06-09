@@ -22,7 +22,6 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://completeautomate.com'),
   alternates: {
     canonical: '/',
   },
@@ -47,6 +46,7 @@ export const metadata: Metadata = {
     'AI productivity tools',
     'automate business workflows',
   ],
+  metadataBase: new URL('https://completeautomate.com'),
   openGraph: {
     description:
       'AI workflow automation for small business — Complete Automate designs AI systems that eliminate repetitive work, tighten your operations, and reduce friction.',
@@ -96,19 +96,17 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Complete Automate',
-              url: 'https://completeautomate.com',
-              logo: 'https://completeautomate.com/logo.svg',
-              description:
-                'AI workflow automation for small business — design AI systems that eliminate repetitive work, tighten operations, and give your team calmer systems to run on.',
-              sameAs: [
-                'https://youtube.com/@real_vimal_menon',
-              ],
               contactPoint: {
                 '@type': 'ContactPoint',
-                email: 'hello@completeautomate.com',
                 contactType: 'sales',
+                email: 'hello@completeautomate.com',
               },
+              description:
+                'AI workflow automation for small business — design AI systems that eliminate repetitive work, tighten operations, and give your team calmer systems to run on.',
+              logo: 'https://completeautomate.com/logo.svg',
+              name: 'Complete Automate',
+              sameAs: ['https://youtube.com/@real_vimal_menon'],
+              url: 'https://completeautomate.com',
             }),
           }}
         />

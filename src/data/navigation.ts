@@ -30,8 +30,6 @@ export const homeNavigation: INavigation = {
   url: '/',
 };
 export const blogsNavigation: INavigation = {
-  label: 'Blogs',
-  url: '/blogs',
   children: [
     { label: 'All Blogs', url: '/blogs' },
     { label: 'Strategy', url: '/blogs#strategy' },
@@ -39,6 +37,8 @@ export const blogsNavigation: INavigation = {
     { label: 'Implementation', url: '/blogs#implementation' },
     { label: 'AI Terms', url: '/blogs#ai-terms' },
   ],
+  label: 'Blogs',
+  url: '/blogs',
 };
 export const contactNavigation: INavigation = {
   label: 'Contact',
