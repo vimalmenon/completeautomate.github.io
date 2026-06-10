@@ -132,7 +132,7 @@ export default function ContactPage(): JSX.Element {
 
           <hr className="my-10 border-border/40" />
 
-          <div className="grid gap-8 sm:grid-cols-2">
+          <div className="grid gap-8 sm:grid-cols-3">
             <div>
               <h2 className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
                 Email
@@ -155,6 +155,19 @@ export default function ContactPage(): JSX.Element {
                 rel="noopener noreferrer"
               >
                 @TotalAutomate
+              </a>
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
+                YouTube
+              </h2>
+              <a
+                className="mt-2 block text-base font-medium text-foreground transition hover:text-primary"
+                href="https://youtube.com/@real_vimal_menon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @real_vimal_menon
               </a>
             </div>
           </div>
