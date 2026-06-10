@@ -1,6 +1,49 @@
-import { JSX } from 'react';
+'use client';
+
+import { JSX, useState, FormEvent } from 'react';
+
+const API_URL = 'https://api.completeautomate.com/messages';
 
 export default function ContactPage(): JSX.Element {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+    setErrorMsg('');
+
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          subject: `Contact form submission from ${name.trim()}`,
+          message: message.trim(),
+        }),
+      });
+
+      if (resp.ok) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        const data = await resp.json().catch(() => ({}));
+        setStatus('error');
+        setErrorMsg(data.error || data.detail || `Error ${resp.status}`);
+      }
+    } catch {
+      setStatus('error');
+      setErrorMsg('Network error. Please try again.');
+    }
+  };
+
   return (
     <div className="px-6 py-16 sm:py-20">
       <div className="mx-auto max-w-4xl">
@@ -16,11 +59,19 @@ export default function ContactPage(): JSX.Element {
             a message and we&apos;ll get back to you within 24 hours.
           </p>
 
-          <form
-            action="mailto:hello@completeautomate.com"
-            className="mt-10 grid gap-6"
-            method="GET"
-          >
+          {status === 'success' && (
+            <div className="mt-6 rounded-xl border border-green-500/40 bg-green-500/10 px-5 py-4 text-sm text-green-400">
+              Message sent successfully! We&apos;ll be in touch soon.
+            </div>
+          )}
+
+          {status === 'error' && (
+            <div className="mt-6 rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-4 text-sm text-red-400">
+              {errorMsg || 'Something went wrong. Please try again.'}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className={`mt-10 grid gap-6`}>
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label className="block text-sm font-medium text-foreground" htmlFor="name">
@@ -29,10 +80,12 @@ export default function ContactPage(): JSX.Element {
                 <input
                   className="mt-2 w-full rounded-xl border border-border/60 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                   id="name"
-                  name="subject"
                   placeholder="Your name"
                   required
                   type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  disabled={status === 'sending'}
                 />
               </div>
               <div>
@@ -42,10 +95,12 @@ export default function ContactPage(): JSX.Element {
                 <input
                   className="mt-2 w-full rounded-xl border border-border/60 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                   id="email"
-                  name="cc"
                   placeholder="you@example.com"
                   required
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === 'sending'}
                 />
               </div>
             </div>
@@ -57,18 +112,21 @@ export default function ContactPage(): JSX.Element {
               <textarea
                 className="mt-2 w-full rounded-xl border border-border/60 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                 id="message"
-                name="body"
                 placeholder="Tell us about your project or question..."
                 required
                 rows={5}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                disabled={status === 'sending'}
               />
             </div>
 
             <button
-              className="w-full rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-dark sm:w-auto"
+              className="w-full rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
               type="submit"
+              disabled={status === 'sending'}
             >
-              Send Message
+              {status === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
           </form>
 
