@@ -1,6 +1,6 @@
 'use client';
 
-import { JSX, useState, FormEvent } from 'react';
+import { FormEvent, JSX, useState } from 'react';
 
 const API_URL = 'https://messages.completeautomate.com/messages';
 
@@ -11,21 +11,21 @@ export default function ContactPage(): JSX.Element {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     setStatus('sending');
     setErrorMsg('');
 
     try {
       const resp = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: name.trim(),
           email: email.trim(),
-          subject: `Contact form submission from ${name.trim()}`,
           message: message.trim(),
+          name: name.trim(),
+          subject: `Contact form submission from ${name.trim()}`,
         }),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
       });
 
       if (resp.ok) {

@@ -134,10 +134,6 @@ Tasks organized by priority (P0 = critical, P1 = important, P2 = nice-to-have).
 - **Why:** Customers need a way to book consultations. Mailto link is a stopgap.
 - **Tech:** Could use a form service or direct email integration.
 
-#### [ ] Add robots.txt
-- **Files:** `public/robots.txt`
-- **Why:** SEO best practice. Already committed in `feature/elara-marks-her-territory`.
-- **Status:** ✅ Done (in feature branch)
 
 #### [ ] Set up dedicated social media accounts
 - **Files:** N/A (external work)
