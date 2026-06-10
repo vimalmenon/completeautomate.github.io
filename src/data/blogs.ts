@@ -155,7 +155,7 @@ export const BlogCollections: IBlogCollection[] = [
         readTime: '14 min video',
         status: 'Live',
         title: 'AI vs. Agents vs. Workflows | Tokens & Automation Explained',
-        uploadDate: '2026-03-25',
+        uploadDate: '2026-03-25T00:00:00+08:00',
         youtubeId: 'Vw_ilJWdzK8',
       },
       {
@@ -172,7 +172,7 @@ export const BlogCollections: IBlogCollection[] = [
         readTime: '25 min video',
         status: 'Live',
         title: 'AI Terms Explained | Temperature, Context & Tool Calling',
-        uploadDate: '2026-04-01',
+        uploadDate: '2026-04-01T00:00:00+08:00',
         youtubeId: 'd4j2OTJdO94',
       },
       {
@@ -189,7 +189,7 @@ export const BlogCollections: IBlogCollection[] = [
         readTime: '17 min video',
         status: 'Live',
         title: 'AI vs. AI Agents vs. Agentic AI: Understanding the Differences',
-        uploadDate: '2026-04-21',
+        uploadDate: '2026-04-21T00:00:00+08:00',
         youtubeId: '_HY4496idyk',
       },
       {
@@ -206,7 +206,7 @@ export const BlogCollections: IBlogCollection[] = [
         readTime: '9 min video',
         status: 'Live',
         title: 'AI Models Explained: Parameters, Multimodal & Context Size',
-        uploadDate: '2026-04-28',
+        uploadDate: '2026-04-28T00:00:00+08:00',
         youtubeId: 'zEBPv_KT6js',
       },
       {
@@ -225,7 +225,7 @@ export const BlogCollections: IBlogCollection[] = [
         readTime: '5 min video',
         status: 'Live',
         title: 'Vector Embeddings Explained Simply | AI Terms #5',
-        uploadDate: '2026-06-04',
+        uploadDate: '2026-06-04T00:00:00+08:00',
         youtubeId: 'zZwhT8GYj28',
       },
     ],
