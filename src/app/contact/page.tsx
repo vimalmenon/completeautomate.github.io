@@ -146,9 +146,16 @@ export default function ContactPage(): JSX.Element {
             </div>
             <div>
               <h2 className="text-sm font-semibold tracking-[0.24em] text-muted uppercase">
-                Location
+                X / Twitter
               </h2>
-              <p className="mt-2 text-base font-medium text-foreground">Remote — Worldwide</p>
+              <a
+                className="mt-2 block text-base font-medium text-foreground transition hover:text-primary"
+                href="https://x.com/TotalAutomate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @TotalAutomate
+              </a>
             </div>
           </div>
         </div>
