@@ -1,9 +1,12 @@
 # Changelog
 
-## [2026-06-10] — TODO migrated to Linear
+## [2026-06-10] — Frontend cleanup & Linear migration
 
-- **Changed** — Moved all frontend TODO items from README to Linear (COM-39 through COM-46)
-- **Removed** — Implementation Plan section from README (now tracked in Linear)
+- **Changed** — Moved frontend TODO items from README to Linear (COM-38 through COM-46)
+- **Removed** — Implementation Plan section from README
+- **Removed** — Changelog link from top navigation (kept in footer only)
+- **Closed** — COM-39 (CTAs already fixed), COM-40 (404 page already themed), COM-44 (sitemap exists)
+- **Removed** — COM-45 (scroll animations not needed), COM-46 (items not prioritized)
 
 ## [2026-06-10] — Video Structured Data Fixes
 
