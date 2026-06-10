@@ -44,6 +44,10 @@ export const contactNavigation: INavigation = {
   label: 'Contact',
   url: '/contact',
 };
+export const changelogNavigation: INavigation = {
+  label: 'Changelog',
+  url: '/changelog',
+};
 export const aboutNavigation: INavigation = {
   label: 'About',
   url: '/about',
@@ -64,6 +68,7 @@ export const HeaderNavigation: INavigation[] = [
   homeNavigation,
   servicesNavigation,
   blogsNavigation,
+  changelogNavigation,
   contactNavigation,
   aboutNavigation,
   adminNavigation,
