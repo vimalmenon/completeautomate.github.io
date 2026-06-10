@@ -2,7 +2,7 @@
 
 import { JSX, useState, FormEvent } from 'react';
 
-const API_URL = 'https://api.completeautomate.com/messages';
+const API_URL = 'https://messages.completeautomate.com/messages';
 
 export default function ContactPage(): JSX.Element {
   const [name, setName] = useState('');
