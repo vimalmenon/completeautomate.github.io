@@ -1,5 +1,10 @@
 # Changelog
 
+## [2026-06-10] — TODO migrated to Linear
+
+- **Changed** — Moved all frontend TODO items from README to Linear (COM-39 through COM-46)
+- **Removed** — Implementation Plan section from README (now tracked in Linear)
+
 ## [2026-06-10] — Video Structured Data Fixes
 
 - **Fixed** — Video structured data now includes timezone info for Google Search Console
