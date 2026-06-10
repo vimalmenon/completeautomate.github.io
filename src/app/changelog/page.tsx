@@ -1,6 +1,8 @@
-import { JSX } from 'react';
 import fs from 'fs';
 import path from 'path';
+
+import { JSX } from 'react';
+
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -11,8 +13,7 @@ export const metadata: Metadata = {
   description:
     "Track the latest updates, features, and fixes for Complete Automate's AI workflow automation platform and services.",
   openGraph: {
-    description:
-      'See what\'s new at Complete Automate — product updates, features, and fixes.',
+    description: "See what's new at Complete Automate — product updates, features, and fixes.",
     siteName: 'Complete Automate',
     title: 'Changelog | Complete Automate',
     type: 'article',
@@ -42,16 +43,14 @@ export default function ChangelogPage(): JSX.Element {
             Changelog
           </h1>
           <p className="mt-3 max-w-xl text-sm leading-7 text-muted sm:text-base">
-            Track the latest features, fixes, and improvements across Complete
-            Automate services and infrastructure.
+            Track the latest features, fixes, and improvements across Complete Automate services and
+            infrastructure.
           </p>
         </div>
 
         {/* Changelog Content */}
         <div className="prose prose-sm prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-[-0.03em] prose-h2:mt-12 prose-h2:border-b prose-h2:border-border/40 prose-h2:pb-3 prose-h2:text-xl prose-h2:font-semibold prose-h2:text-foreground prose-h3:text-lg prose-h3:text-foreground prose-strong:text-foreground prose-ul:list-none prose-ul:space-y-3 prose-ul:pl-0 prose-li:pl-0 prose-li:marker:text-primary prose-p:text-muted prose-p:leading-7 prose-a:text-primary prose-a:no-underline prose-code:rounded-lg prose-code:bg-surface/80 prose-code:px-2 prose-code:py-1 prose-code:text-sm prose-code:text-primary prose-pre:rounded-2xl prose-pre:border prose-pre:border-border/60 prose-pre:bg-surface/50">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {content}
-          </ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
         </div>
       </div>
     </div>
