@@ -68,7 +68,6 @@ export const HeaderNavigation: INavigation[] = [
   homeNavigation,
   servicesNavigation,
   blogsNavigation,
-  changelogNavigation,
   contactNavigation,
   aboutNavigation,
   adminNavigation,
