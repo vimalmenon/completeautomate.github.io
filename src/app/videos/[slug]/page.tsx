@@ -3,14 +3,13 @@ import { JSX } from 'react';
 import { BlogCollections } from '@data';
 
 import type { Metadata } from 'next';
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams(): { slug: string }[] {
   return BlogCollections.flatMap((collection) =>
-    collection.entries
-      .filter((entry) => entry.youtubeId)
-      .map((entry) => ({ slug: entry.id }))
+    collection.entries.filter((entry) => entry.youtubeId).map((entry) => ({ slug: entry.id }))
   );
 }
 
