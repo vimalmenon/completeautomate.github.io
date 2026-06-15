@@ -125,16 +125,9 @@ export default async function BlogPostPage({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
           type="application/ld+json"
         />
-        <Link
-          className="text-sm font-semibold tracking-[0.08em] text-primary transition hover:text-primary/80 uppercase"
-          href="/blogs"
-        >
-          &larr; Back to Blog
-        </Link>
-
-        {/* Video iframe above the article for Google prominence */}
+        {/* Video iframe above the fold for Google prominence */}
         {entry.youtubeId && (
-          <div className="mt-6 aspect-video overflow-hidden rounded-2xl border border-border/60 bg-surface/75 shadow-[0_20px_50px_rgb(15_23_42/0.08)]">
+          <div className="aspect-video overflow-hidden rounded-2xl border border-border/60 bg-surface/75 shadow-[0_20px_50px_rgb(15_23_42/0.08)]">
             <iframe
               className="h-full w-full"
               src={`https://www.youtube.com/embed/${entry.youtubeId}`}
@@ -144,6 +137,13 @@ export default async function BlogPostPage({
             />
           </div>
         )}
+
+        <Link
+          className="mt-6 block text-sm font-semibold tracking-[0.08em] text-primary transition hover:text-primary/80 uppercase"
+          href="/blogs"
+        >
+          &larr; Back to Blog
+        </Link>
 
         <article className="mt-6 rounded-[2rem] border border-border/60 bg-surface/75 p-8 shadow-[0_24px_60px_rgb(15_23_42/0.1)] backdrop-blur-xl sm:p-12">
           <header>
