@@ -127,14 +127,22 @@ export default async function BlogPostPage({
         />
         {/* Video iframe above the fold for Google prominence */}
         {entry.youtubeId && (
-          <div className="aspect-video overflow-hidden rounded-2xl border border-border/60 bg-surface/75 shadow-[0_20px_50px_rgb(15_23_42/0.08)]">
-            <iframe
-              className="h-full w-full"
-              src={`https://www.youtube.com/embed/${entry.youtubeId}`}
-              title={entry.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          <div>
+            <div className="aspect-video overflow-hidden rounded-2xl border border-border/60 bg-surface/75 shadow-[0_20px_50px_rgb(15_23_42/0.08)]">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${entry.youtubeId}`}
+                title={entry.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <Link
+              className="mt-2 inline-block text-xs font-semibold tracking-[0.08em] text-primary transition hover:text-primary/80 uppercase"
+              href={`/videos/${entry.id}`}
+            >
+              Open in video player &rarr;
+            </Link>
           </div>
         )}
 

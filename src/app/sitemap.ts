@@ -31,6 +31,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const videoRoutes = BlogCollections.flatMap((collection) =>
+    collection.entries
+      .filter((entry) => entry.youtubeId)
+      .map((entry) => ({
+        changeFrequency: 'weekly' as const,
+        lastModified: new Date(),
+        priority: 0.7,
+        url: `${SITE_URL}/videos/${entry.id}/`,
+      }))
+  );
+
   return [
     ...staticRoutes.map((route) => ({
       changeFrequency: route.changeFrequency,
@@ -39,5 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}${route.url}`,
     })),
     ...blogRoutes,
+    ...videoRoutes,
   ];
 }
