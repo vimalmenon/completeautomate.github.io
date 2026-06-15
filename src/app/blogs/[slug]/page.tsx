@@ -132,19 +132,21 @@ export default async function BlogPostPage({
           &larr; Back to Blog
         </Link>
 
-        <article className="mt-8 rounded-[2rem] border border-border/60 bg-surface/75 p-8 shadow-[0_24px_60px_rgb(15_23_42/0.1)] backdrop-blur-xl sm:p-12">
+        {/* Video iframe above the article for Google prominence */}
+        {entry.youtubeId && (
+          <div className="mt-6 aspect-video overflow-hidden rounded-2xl border border-border/60 bg-surface/75 shadow-[0_20px_50px_rgb(15_23_42/0.08)]">
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube.com/embed/${entry.youtubeId}`}
+              title={entry.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
+
+        <article className="mt-6 rounded-[2rem] border border-border/60 bg-surface/75 p-8 shadow-[0_24px_60px_rgb(15_23_42/0.1)] backdrop-blur-xl sm:p-12">
           <header>
-            {entry.youtubeId && (
-              <div className="mb-8 aspect-video overflow-hidden rounded-2xl">
-                <iframe
-                  className="h-full w-full"
-                  src={`https://www.youtube.com/embed/${entry.youtubeId}`}
-                  title={entry.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            )}
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold tracking-[0.18em] text-primary uppercase">
                 {entry.status}
